@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حاسبة النزيف التشغيلي | AI Operating System (AIOS) Audit</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #060b16;
+      --bg-card: #0c1425;
+      --bg-card-elevated: #111c33;
+      --accent-cyan: #22d3ee;
+      --accent-blue: #3b82f6;
+      --accent-rose: #f43f5e;
+      --accent-emerald: #10b981;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      color: #f1f5f9;
+      font-family: 'Cairo', 'Inter', system-ui, -apple-system, sans-serif;
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(34, 211, 238, 0.08) 0%, transparent 38%),
+        radial-gradient(circle at 88% 18%, rgba(59, 130, 246, 0.09) 0%, transparent 40%),
+        radial-gradient(circle at 50% 95%, rgba(244, 63, 94, 0.06) 0%, transparent 45%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    html[lang="en"] body {
+      font-family: 'Inter', 'Cairo', system-ui, -apple-system, sans-serif;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+      font-family: 'Inter', 'Cairo', sans-serif;
+    }
+
+    .glass-card {
+      background: linear-gradient(180deg, rgba(17, 28, 51, 0.88) 0%, rgba(11, 19, 36, 0.94) 100%);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(12px);
+    }
+
+    .leak-card {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.14) 0%, rgba(15, 23, 42, 0.95) 60%);
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      box-shadow: 0 0 40px -15px rgba(244, 63, 94, 0.35);
+    }
+
+    .recovery-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(15, 23, 42, 0.95) 60%);
+      border: 1px solid rgba(16, 185, 129, 0.32);
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.14) 0%, rgba(37, 99, 235, 0.16) 50%, rgba(11, 19, 36, 0.96) 100%);
+      border: 1px solid rgba(34, 211, 238, 0.42);
+      box-shadow: 0 0 50px -18px rgba(34, 211, 238, 0.35);
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.22);
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #22d3ee;
+      border: 3px solid #060b16;
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.28);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.12);
+      box-shadow: 0 0 0 5px rgba(34, 211, 238, 0.38);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #22d3ee;
+      border: 3px solid #060b16;
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.28);
+      cursor: pointer;
+    }
+
+    .preset-btn.active {
+      background: rgba(34, 211, 238, 0.16);
+      border-color: rgba(34, 211, 238, 0.7);
+      color: #67e8f9;
+      box-shadow: 0 0 20px -8px rgba(34, 211, 238, 0.65);
+    }
+
+    .speed-btn.active {
+      background: rgba(244, 63, 94, 0.16);
+      border-color: rgba(244, 63, 94, 0.65);
+      color: #fda4af;
+    }
+
+    .currency-btn.active {
+      background: #22d3ee;
+      color: #060b16;
+      font-weight: 800;
+    }
+
+    .unsure-btn.active {
+      background: rgba(245, 158, 11, 0.18);
+      border-color: rgba(245, 158, 11, 0.7);
+      color: #fcd34d;
+    }
+
+    .pulse-ring {
+      animation: pulseGlow 2.4s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.42); }
+      50% { box-shadow: 0 0 0 10px rgba(34, 211, 238, 0); }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-400/30 selection:text-cyan-100">
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-30 border-b border-slate-800/80 bg-[#060b16]/85 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <div class="flex items-center gap-2.5">
+        <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/40 bg-cyan-500/15 text-cyan-300">
+          <i data-lucide="cpu" class="h-5 w-5"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-sm font-extrabold tracking-wide text-white sm:text-base">AIOS Partner</span>
+            <span class="hidden rounded-full border border-cyan-400/30 bg-cyan-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-cyan-300 sm:inline-block" data-i18n="badgeTop">Diagnostic Engine</span>
+          </div>
+          <p class="text-[11px] text-slate-400" data-i18n="brandSub">AI Operating System for Businesses</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Currency Switcher -->
+        <div class="flex items-center rounded-xl border border-slate-700/80 bg-slate-900/90 p-1 text-xs" role="group" aria-label="Currency">
+          <button type="button" data-currency="EGP" class="currency-btn active rounded-lg px-2.5 py-1 transition">EGP</button>
+          <button type="button" data-currency="SAR" class="currency-btn rounded-lg px-2.5 py-1 text-slate-300 transition hover:text-white">SAR</button>
+          <button type="button" data-currency="AED" class="currency-btn rounded-lg px-2.5 py-1 text-slate-300 transition hover:text-white">AED</button>
+          <button type="button" data-currency="USD" class="currency-btn rounded-lg px-2.5 py-1 text-slate-300 transition hover:text-white">USD</button>
+        </div>
+
+        <!-- Language Switcher -->
+        <button type="button" id="langToggle" class="flex items-center gap-1.5 rounded-xl border border-slate-700/80 bg-slate-900/90 px-3 py-1.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/50 hover:text-cyan-300">
+          <i data-lucide="globe" class="h-3.5 w-3.5"></i>
+          <span id="langToggleLabel">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 lg:pt-10">
+    <!-- Hero Section -->
+    <section class="mx-auto mb-8 max-w-4xl text-center">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold text-cyan-300">
+        <span class="h-2 w-2 rounded-full bg-cyan-400"></span>
+        <span data-i18n="heroPill">تشخيص فوري في 60 ثانية — مجاني بالكامل لأي نوع بيزنس</span>
+      </div>
+      <h1 class="mb-3 text-2xl font-black leading-tight text-white sm:text-4xl lg:text-[42px]" data-i18n="heroTitle">
+        كام بتخسر شركتك شهريًا بسبب <span class="text-rose-400">الليدز الضايعة</span> و<span class="text-cyan-300">الشغل اليدوي</span>؟
+      </h1>
+      <p class="mx-auto max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base" data-i18n="heroDesc">
+        أغلب الشركات معندهاش مشكلة مبيعات — عندها مشكلة <strong class="text-white">نزيف تشغيلي صامت</strong>. حرّك المؤشرات تحت عشان تشوف الرقم الحقيقي اللي بيضيع منك كل شهر، وكم تقدر تسترده بنظام تشغيل ذكي <strong class="text-cyan-300">(AIOS)</strong> يعمل 24/7 بدون موظف واحد زيادة.
+      </p>
+    </section>
+
+    <!-- Industry Presets Strip -->
+    <section class="mb-7">
+      <div class="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+        <span class="text-xs font-bold text-slate-400" data-i18n="presetLabel">اختار نوع البيزنس لتعبئة أرقام مبدئية (أو عدّلها بحرية):</span>
+        <button type="button" id="noNumbersBtn" class="inline-flex items-center gap-1.5 rounded-full border border-amber-400/40 bg-amber-500/10 px-3 py-1 text-[11px] font-extrabold text-amber-300 transition hover:bg-amber-500/20">
+          <i data-lucide="help-circle" class="h-3.5 w-3.5"></i>
+          <span data-i18n="noNumbersBtn">معنديش أرقام دقيقة أصلًا؟</span>
+        </button>
+      </div>
+      <div id="noNumbersPanel" class="mb-3 hidden rounded-2xl border border-amber-400/35 bg-amber-500/10 p-4">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2 text-xs font-extrabold text-amber-300 sm:text-sm">
+              <i data-lucide="eye-off" class="h-4 w-4 shrink-0"></i>
+              <span data-i18n="noNumTitle">غياب الأرقام الدقيقة هو في حد ذاته أكبر نزيف غير مرئي!</span>
+            </div>
+            <p class="text-xs leading-relaxed text-slate-200" data-i18n="noNumDesc">
+              70% من الشركات في مصر والخليج بتدير المبيعات بدون CRM أو Data OS. تقدر تفعّل متوسطات قطاعك بضغطة واحدة تحت، أو تحجز جلسة التشخيص المجانية ونحسب أرقامك الحقيقية سوا في 15 دقيقة.
+            </p>
+          </div>
+          <div class="flex shrink-0 flex-wrap gap-2">
+            <button type="button" id="applyAllBenchmarksBtn" class="rounded-xl bg-amber-400 px-3.5 py-2 text-xs font-black text-slate-950 transition hover:brightness-110" data-i18n="applyBenchBtn">استخدم متوسطات قطاعي</button>
+            <button type="button" id="quickBookFromNoNumBtn" class="rounded-xl border border-cyan-400/60 bg-cyan-500/15 px-3.5 py-2 text-xs font-extrabold text-cyan-200 transition hover:bg-cyan-500/25" data-i18n="quickBookBtn">احجز الأوديت نحسبها سوا</button>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5" id="presetContainer">
+        <button type="button" data-preset="clinic" class="preset-btn active flex items-center justify-center gap-2 rounded-xl border border-slate-700/80 bg-slate-900/70 px-3 py-2.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/50">
+          <i data-lucide="stethoscope" class="h-4 w-4 shrink-0"></i>
+          <span data-i18n="presetClinic">عيادات ومراكز طبية</span>
+        </button>
+        <button type="button" data-preset="realestate" class="preset-btn flex items-center justify-center gap-2 rounded-xl border border-slate-700/80 bg-slate-900/70 px-3 py-2.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/50">
+          <i data-lucide="building-2" class="h-4 w-4 shrink-0"></i>
+          <span data-i18n="presetRealEstate">عقارات ومقاولات</span>
+        </button>
+        <button type="button" data-preset="ecommerce" class="preset-btn flex items-center justify-center gap-2 rounded-xl border border-slate-700/80 bg-slate-900/70 px-3 py-2.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/50">
+          <i data-lucide="shopping-bag" class="h-4 w-4 shrink-0"></i>
+          <span data-i18n="presetEcommerce">تجارة إلكترونية</span>
+        </button>
+        <button type="button" data-preset="agency" class="preset-btn flex items-center justify-center gap-2 rounded-xl border border-slate-700/80 bg-slate-900/70 px-3 py-2.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/50">
+          <i data-lucide="briefcase" class="h-4 w-4 shrink-0"></i>
+          <span data-i18n="presetAgency">شركات خدمات وB2B</span>
+        </button>
+        <button type="button" data-preset="general" class="preset-btn col-span-2 flex items-center justify-center gap-2 rounded-xl border border-slate-700/80 bg-slate-900/70 px-3 py-2.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/50 sm:col-span-1">
+          <i data-lucide="layers" class="h-4 w-4 shrink-0"></i>
+          <span data-i18n="presetGeneral">شركات عامة / مخصص</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Main 2-Column Calculator Grid -->
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
+      <!-- Left/Start Column: Inputs (5 cols on lg) -->
+      <div class="space-y-5 lg:col-span-5">
+        <!-- Pillar 1: Sales & Lead Leakage -->
+        <div class="glass-card rounded-2xl p-5 sm:p-6">
+          <div class="mb-5 flex items-center gap-3 border-b border-slate-800 pb-3.5">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-500/15 text-rose-400">
+              <i data-lucide="flame" class="h-5 w-5"></i>
+            </div>
+            <div>
+              <h2 class="text-base font-extrabold text-white" data-i18n="p1Title">1. نزيف المبيعات والاستفسارات</h2>
+              <p class="text-xs text-slate-400" data-i18n="p1Sub">الفرص اللي بتبرد أو بتضيع قبل ما تقفلها</p>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Monthly Leads -->
+            <div>
+              <div class="mb-2 flex items-center justify-between gap-2">
+                <label for="monthlyLeads" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblLeads">عدد الاستفسارات / الليدز شهريًا</label>
+                <div class="flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1">
+                  <input type="number" id="monthlyLeadsNum" min="10" max="5000" step="10" value="300" class="tabular-nums w-16 bg-transparent text-center text-sm font-extrabold text-cyan-300 outline-none" />
+                </div>
+              </div>
+              <input type="range" id="monthlyLeads" min="10" max="2000" step="10" value="300" />
+            </div>
+
+            <!-- Average Deal Value -->
+            <div>
+              <div class="mb-2 flex items-center justify-between gap-2">
+                <label for="avgDealValue" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblDeal">متوسط قيمة العميل / الصفقة</label>
+                <div class="flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1">
+                  <input type="number" id="avgDealValueNum" min="100" max="500000" step="100" value="4500" class="tabular-nums w-20 bg-transparent text-center text-sm font-extrabold text-cyan-300 outline-none" />
+                  <span class="currency-unit text-[11px] font-bold text-slate-400">EGP</span>
+                </div>
+              </div>
+              <input type="range" id="avgDealValue" min="200" max="100000" step="100" value="4500" />
+            </div>
+
+            <!-- Current Closing Rate -->
+            <div>
+              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <label for="closeRate" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblCloseRate">نسبة تحويل الليدز الحالية (تقريبًا)</label>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" data-unsure="closeRate" class="unsure-btn rounded-lg border border-slate-700/80 bg-slate-900/70 px-2 py-1 text-[10px] font-bold text-slate-400 transition hover:border-amber-400/50 hover:text-amber-300" data-i18n="unsureBtn">مش متأكد؟ متوسط السوق</button>
+                  <span class="tabular-nums rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-sm font-extrabold text-cyan-300"><span id="closeRateVal">15</span>%</span>
+                </div>
+              </div>
+              <input type="range" id="closeRate" min="2" max="50" step="1" value="15" />
+            </div>
+
+            <!-- Lead Response Speed -->
+            <div>
+              <label class="mb-2 block text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblSpeed">متوسط سرعة الرد على العميل الجديد</label>
+              <div class="grid grid-cols-2 gap-2" id="speedGroup">
+                <button type="button" data-speed="fast" class="speed-btn rounded-xl border border-slate-700/80 bg-slate-900/70 px-2.5 py-2 text-xs font-bold text-slate-300 transition hover:border-slate-500" data-i18n="spdFast">أقل من 5 دقائق</button>
+                <button type="button" data-speed="hour" class="speed-btn rounded-xl border border-slate-700/80 bg-slate-900/70 px-2.5 py-2 text-xs font-bold text-slate-300 transition hover:border-slate-500" data-i18n="spdHour">15 – 60 دقيقة</button>
+                <button type="button" data-speed="hours" class="speed-btn active rounded-xl border border-slate-700/80 bg-slate-900/70 px-2.5 py-2 text-xs font-bold text-slate-300 transition hover:border-slate-500" data-i18n="spdHours">2 – 6 ساعات</button>
+                <button type="button" data-speed="day" class="speed-btn rounded-xl border border-slate-700/80 bg-slate-900/70 px-2.5 py-2 text-xs font-bold text-slate-300 transition hover:border-slate-500" data-i18n="spdDay">أكثر من يوم / أحيانًا بننسى</button>
+              </div>
+            </div>
+
+            <!-- Missed Follow-up % -->
+            <div>
+              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <label for="missedFollowUp" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblFollowUp">نسبة العملاء اللي مش بيتعملهم متابعة تانية</label>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" data-unsure="missedFollowUp" class="unsure-btn rounded-lg border border-slate-700/80 bg-slate-900/70 px-2 py-1 text-[10px] font-bold text-slate-400 transition hover:border-amber-400/50 hover:text-amber-300" data-i18n="unsureBtn">مش متأكد؟ متوسط السوق</button>
+                  <span class="tabular-nums rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-sm font-extrabold text-rose-400"><span id="missedFollowUpVal">40</span>%</span>
+                </div>
+              </div>
+              <input type="range" id="missedFollowUp" min="0" max="80" step="5" value="40" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Manual Ops & Team Bottleneck -->
+        <div class="glass-card rounded-2xl p-5 sm:p-6">
+          <div class="mb-5 flex items-center gap-3 border-b border-slate-800 pb-3.5">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/15 text-amber-400">
+              <i data-lucide="clock" class="h-5 w-5"></i>
+            </div>
+            <div>
+              <h2 class="text-base font-extrabold text-white" data-i18n="p2Title">2. نزيف الشغل اليدوي والوقت المهدور</h2>
+              <p class="text-xs text-slate-400" data-i18n="p2Sub">نسخ ولصق، ردود متكررة، تقارير يدوية وتنسيق بين الفريق</p>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Team Size -->
+            <div>
+              <div class="mb-2 flex items-center justify-between gap-2">
+                <label for="opsTeamSize" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblTeam">عدد الموظفين في المبيعات / التشغيل / خدمة العملاء</label>
+                <span class="tabular-nums rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-sm font-extrabold text-cyan-300"><span id="opsTeamSizeVal">5</span></span>
+              </div>
+              <input type="range" id="opsTeamSize" min="1" max="50" step="1" value="5" />
+            </div>
+
+            <!-- Manual Hours Per Day -->
+            <div>
+              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <label for="manualHours" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblHours">ساعات الشغل اليدوي المتكرر يوميًا لكل موظف</label>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" data-unsure="manualHours" class="unsure-btn rounded-lg border border-slate-700/80 bg-slate-900/70 px-2 py-1 text-[10px] font-bold text-slate-400 transition hover:border-amber-400/50 hover:text-amber-300" data-i18n="unsureBtn">مش متأكد؟ متوسط السوق</button>
+                  <span class="tabular-nums rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-sm font-extrabold text-amber-300"><span id="manualHoursVal">2.5</span> <span class="text-[11px]" data-i18n="unitHr">ساعة</span></span>
+                </div>
+              </div>
+              <input type="range" id="manualHours" min="0.5" max="6" step="0.5" value="2.5" />
+            </div>
+
+            <!-- Average Monthly Salary -->
+            <div>
+              <div class="mb-2 flex items-center justify-between gap-2">
+                <label for="avgSalary" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblSalary">متوسط الراتب الشهري للموظف</label>
+                <div class="flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1">
+                  <input type="number" id="avgSalaryNum" min="500" max="100000" step="500" value="12000" class="tabular-nums w-20 bg-transparent text-center text-sm font-extrabold text-cyan-300 outline-none" />
+                  <span class="currency-unit text-[11px] font-bold text-slate-400">EGP</span>
+                </div>
+              </div>
+              <input type="range" id="avgSalary" min="1000" max="50000" step="500" value="12000" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right/End Column: Shock Results + Chart + Audit CTA (7 cols on lg) -->
+      <div class="space-y-5 lg:col-span-7">
+        <!-- Top Shock KPI Cards -->
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <!-- Monthly & Annual Leakage -->
+          <div class="leak-card rounded-2xl p-5 sm:p-6">
+            <div class="mb-2 flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-rose-300" data-i18n="kpiLeakLabel">إجمالي النزيف الشهري المقدر</span>
+              <span id="severityBadge" class="rounded-full bg-rose-500/20 px-2.5 py-0.5 text-[11px] font-extrabold text-rose-300">حرج</span>
+            </div>
+            <div id="monthlyLeakDisplay" class="tabular-nums text-3xl font-black tracking-tight text-white sm:text-4xl">0 EGP</div>
+            <div class="mt-3 flex items-center justify-between border-t border-rose-500/20 pt-3 text-xs">
+              <span class="text-slate-300" data-i18n="kpiAnnualLabel">خسارتك السنوية (12 شهر):</span>
+              <span id="annualLeakDisplay" class="tabular-nums font-extrabold text-rose-300">0 EGP</span>
+            </div>
+          </div>
+
+          <!-- Recoverable AIOS Value -->
+          <div class="recovery-card rounded-2xl p-5 sm:p-6">
+            <div class="mb-2 flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-300" data-i18n="kpiGainLabel">العائد القابل للاسترداد بـ AIOS</span>
+              <span class="rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[11px] font-extrabold text-emerald-300" data-i18n="kpiConservative">تقدير متحفظ 65%</span>
+            </div>
+            <div id="monthlyGainDisplay" class="tabular-nums text-3xl font-black tracking-tight text-emerald-300 sm:text-4xl">+0 EGP</div>
+            <div class="mt-3 flex items-center justify-between border-t border-emerald-500/20 pt-3 text-xs">
+              <span class="text-slate-300" data-i18n="kpiAnnualGainLabel">صافي القيمة المستردة سنويًا:</span>
+              <span id="annualGainDisplay" class="tabular-nums font-extrabold text-emerald-300">+0 EGP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Micro-Metrics Strip -->
+        <div class="grid grid-cols-3 gap-3">
+          <div class="glass-card rounded-xl p-3.5 text-center">
+            <div class="text-[11px] font-semibold text-slate-400" data-i18n="statSalesLeak">نزيف المبيعات/شهر</div>
+            <div id="salesLeakMini" class="tabular-nums mt-1 text-sm font-extrabold text-rose-300 sm:text-base">0</div>
+          </div>
+          <div class="glass-card rounded-xl p-3.5 text-center">
+            <div class="text-[11px] font-semibold text-slate-400" data-i18n="statOpsLeak">نزيف الشغل اليدوي/شهر</div>
+            <div id="opsLeakMini" class="tabular-nums mt-1 text-sm font-extrabold text-amber-300 sm:text-base">0</div>
+          </div>
+          <div class="glass-card rounded-xl p-3.5 text-center">
+            <div class="text-[11px] font-semibold text-slate-400" data-i18n="statHoursYr">ساعات مهدورة سنويًا</div>
+            <div id="wastedHoursYr" class="tabular-nums mt-1 text-sm font-extrabold text-cyan-300 sm:text-base">0</div>
+          </div>
+        </div>
+
+        <!-- Chart + Visual Breakdown -->
+        <div class="glass-card rounded-2xl p-5 sm:p-6">
+          <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 class="text-sm font-extrabold text-white sm:text-base" data-i18n="chartTitle">تحليل النزيف الشهري مقابل ما يسترده نظام AIOS</h3>
+              <p class="text-xs text-slate-400" data-i18n="chartSub">مقارنة واضحة بين الوضع الحالي والتشغيل الذكي 24/7</p>
+            </div>
+            <div class="rounded-lg border border-slate-700/80 bg-slate-900/80 px-3 py-1 text-xs font-bold text-slate-300">
+              <span data-i18n="headcountLabel">الوقت الضائع يعادل:</span>
+              <span id="idleHeadcount" class="tabular-nums text-cyan-300">0</span>
+              <span data-i18n="headcountUnit">موظف متفرغ</span>
+            </div>
+          </div>
+          <div class="relative h-60 w-full">
+            <canvas id="leakageChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Personalized Diagnosis Box -->
+        <div class="glass-card rounded-2xl p-5 sm:p-6">
+          <div class="mb-3 flex items-center gap-2">
+            <i data-lucide="stethoscope" class="h-4 w-4 text-cyan-400"></i>
+            <h3 class="text-sm font-extrabold text-white sm:text-base" data-i18n="diagTitle">التشخيص المبدئي لأكبر اختناق عندك حاليًا</h3>
+          </div>
+          <p id="diagnosisSummary" class="mb-3 text-xs leading-relaxed text-slate-300 sm:text-sm"></p>
+          <div id="blindSpotAlert" class="mb-4 hidden rounded-xl border border-amber-400/35 bg-amber-500/10 p-3 text-xs leading-relaxed text-amber-100"></div>
+          <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-3" id="aiosLayersGrid"></div>
+        </div>
+
+        <!-- High-Converting Free Audit CTA Card -->
+        <div class="cta-card rounded-2xl p-6 sm:p-7">
+          <div class="mb-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-400/35 bg-emerald-500/15 px-3 py-1 text-[11px] font-extrabold text-emerald-300">
+            <i data-lucide="sparkles" class="h-3.5 w-3.5"></i>
+            <span data-i18n="ctaTag">جلسة تشخيص 1-on-1 مجانية بالكامل (15 دقيقة)</span>
+          </div>
+          <h3 id="ctaHeadline" class="mb-2 text-lg font-black text-white sm:text-2xl">
+            وقف النزيف ده — واحصل على خارطة AIOS مخصصة لشركتك مجانًا
+          </h3>
+          <p class="mb-5 text-xs leading-relaxed text-slate-200 sm:text-sm" data-i18n="ctaDesc">
+            بدل ما تشتري أدوات عشوائية أو توظّف ناس زيادة، في جلسة الـ Free AIOS Audit هنراجع عملياتك الحالية ونحدد بالظبط أعلى 3 أنظمة ذكاء اصطناعي توقف النزيف ده وتسترد <strong class="text-emerald-300" id="ctaRecoverInline">0</strong> شهريًا — وهتاخد الخطة مكتوبة حتى لو مقررناش نشتغل سوا.
+          </p>
+
+          <div class="mb-5 grid grid-cols-1 gap-2 text-xs text-slate-200 sm:grid-cols-3">
+            <div class="flex items-center gap-2 rounded-xl bg-slate-900/60 px-3 py-2">
+              <i data-lucide="check-circle-2" class="h-4 w-4 shrink-0 text-cyan-400"></i>
+              <span data-i18n="ctaBullet1">أوديت كامل للمبيعات والتشغيل</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-xl bg-slate-900/60 px-3 py-2">
+              <i data-lucide="check-circle-2" class="h-4 w-4 shrink-0 text-cyan-400"></i>
+              <span data-i18n="ctaBullet2">خطة تنفيذ لأول 14 يومًا</span>
+            </div>
+            <div class="flex items-center gap-2 rounded-xl bg-slate-900/60 px-3 py-2">
+              <i data-lucide="check-circle-2" class="h-4 w-4 shrink-0 text-cyan-400"></i>
+              <span data-i18n="ctaBullet3">بدون أي التزام أو بيع ضاغط</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <button type="button" id="bookAuditBtn" class="pulse-ring flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 text-sm font-black text-slate-950 transition hover:brightness-110 sm:text-base">
+              <i data-lucide="calendar-check-2" class="h-5 w-5"></i>
+              <span data-i18n="ctaBtn">احجز جلسة التشخيص المجانية الآن (Free AIOS Audit)</span>
+            </button>
+            <button type="button" id="copyReportBtn" class="flex items-center justify-center gap-2 rounded-xl border border-slate-600/80 bg-slate-900/80 px-4 py-3.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/60 hover:text-cyan-300 sm:text-sm">
+              <i data-lucide="copy" class="h-4 w-4"></i>
+              <span data-i18n="copyBtn">نسخ التقرير</span>
+            </button>
+          </div>
+          <p class="mt-3 text-center text-[11px] text-slate-400" data-i18n="disclaimer">
+            * الأرقام تقديرية مبنية على مدخلاتك المباشرة لتوضيح حجم الفرصة المهدورة — وفي الجلسة المجانية بنحسب الرقم الدقيق لبيزنسك.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Booking Link Setup / Redirect Modal (Shows only if CAL_COM_URL is not yet configured) -->
+  <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
+    <div class="glass-card w-full max-w-md rounded-2xl p-6">
+      <div class="mb-3 flex items-center justify-between">
+        <h4 class="text-base font-extrabold text-white" data-i18n="modalTitle">جاهز لتحويل العميل لحجز Cal.com</h4>
+        <button type="button" id="closeModalBtn" class="rounded-lg p-1 text-slate-400 hover:bg-slate-800 hover:text-white">
+          <i data-lucide="x" class="h-5 w-5"></i>
+        </button>
+      </div>
+      <p class="mb-4 text-xs leading-relaxed text-slate-300" data-i18n="modalDesc">
+        الزر ده هيفتح صفحة الحجز على Cal.com ومعاه أرقام النزيف بتاعة العميل جاهزة تلقائيًا. قبل ما ترفع الملف على Vercel، غيّر قيمة <code class="rounded bg-slate-800 px-1.5 py-0.5 text-cyan-300">CAL_COM_URL</code> في أول سطر في الكود لرابطك الحقيقي — أو جرّب رابطك هنا دلوقتي:
+      </p>
+      <input type="url" id="testCalUrlInput" placeholder="https://cal.com/your-name/aios-audit" class="mb-3 w-full rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-left text-xs text-white outline-none focus:border-cyan-400" dir="ltr" />
+      <div class="flex gap-2">
+        <button type="button" id="openCalNowBtn" class="flex-1 rounded-xl bg-cyan-400 px-4 py-2.5 text-xs font-black text-slate-950 hover:brightness-110" data-i18n="modalGo">افتح رابط الحجز بالأرقام</button>
+        <button type="button" id="copySummaryModalBtn" class="rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-bold text-slate-200 hover:border-cyan-400" data-i18n="copyBtn">نسخ التقرير</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="pointer-events-none fixed bottom-5 left-1/2 z-50 -translate-x-1/2 translate-y-4 rounded-xl border border-cyan-400/40 bg-slate-900/95 px-4 py-2.5 text-xs font-bold text-cyan-200 opacity-0 shadow-2xl transition-all duration-300">
+    تم نسخ ملخص التشخيص بنجاح
+  </div>
+
+  <script>
+    // =========================================================================
+    // IMPORTANT: REPLACE THIS WITH YOUR REAL CAL.COM LINK BEFORE DEPLOYING TO VERCEL
+    // Example: const CAL_COM_URL = "https://cal.com/ahmed-alsharqawy/aios-audit";
+    // =========================================================================
+    const CAL_COM_URL = "https://cal.com/ahmed-alsharqawy/aios-audit";
+
+    const CURRENCY_CONFIG = {
+      EGP: { symbol: "ج.م", code: "EGP", rate: 1, dealMin: 500, dealMax: 150000, dealStep: 500, salMin: 4000, salMax: 60000, salStep: 500 },
+      SAR: { symbol: "ر.س", code: "SAR", rate: 0.08, dealMin: 100, dealMax: 30000, dealStep: 100, salMin: 2000, salMax: 25000, salStep: 250 },
+      AED: { symbol: "د.إ", code: "AED", rate: 0.08, dealMin: 100, dealMax: 30000, dealStep: 100, salMin: 2000, salMax: 25000, salStep: 250 },
+      USD: { symbol: "$", code: "USD", rate: 0.02, dealMin: 50, dealMax: 10000, dealStep: 50, salMin: 300, salMax: 8000, salStep: 100 }
+    };
+
+    const PRESETS_EGP = {
+      clinic:     { leads: 350, deal: 4500,  close: 18, speed: "hours", missed: 40, team: 5, hours: 2.5, salary: 10000 },
+      realestate: { leads: 250, deal: 35000, close: 6,  speed: "hours", missed: 45, team: 6, hours: 3.0, salary: 14000 },
+      ecommerce:  { leads: 900, deal: 1200,  close: 12, speed: "hour",  missed: 50, team: 4, hours: 3.0, salary: 9000  },
+      agency:     { leads: 120, deal: 25000, close: 14, speed: "hours", missed: 35, team: 5, hours: 2.5, salary: 15000 },
+      general:    { leads: 300, deal: 6000,  close: 15, speed: "hours", missed: 40, team: 5, hours: 2.5, salary: 12000 }
+    };
+
+    // Transparent leakage multipliers by response speed
+    const SPEED_DROP_FACTOR = {
+      fast: 0.06,
+      hour: 0.16,
+      hours: 0.28,
+      day: 0.42
+    };
+
+    const I18N = {
+      ar: {
+        badgeTop: "محرك التشخيص",
+        brandSub: "أنظمة التشغيل بالذكاء الاصطناعي للشركات",
+        heroPill: "تشخيص فوري في 60 ثانية — مجاني بالكامل لأي نوع بيزنس",
+        heroTitle: 'كام بتخسر شركتك شهريًا بسبب <span class="text-rose-400">الليدز الضايعة</span> و<span class="text-cyan-300">الشغل اليدوي</span>؟',
+        heroDesc: 'أغلب الشركات معندهاش مشكلة مبيعات — عندها مشكلة <strong class="text-white">نزيف تشغيلي صامت</strong>. حرّك المؤشرات تحت عشان تشوف الرقم الحقيقي اللي بيضيع منك كل شهر، وكم تقدر تسترده بنظام تشغيل ذكي <strong class="text-cyan-300">(AIOS)</strong> يعمل 24/7 بدون موظف واحد زيادة.',
+        presetLabel: "اختار نوع البيزنس لتعبئة أرقام مبدئية (أو عدّلها بحرية):",
+        presetClinic: "عيادات ومراكز طبية",
+        presetRealEstate: "عقارات ومقاولات",
+        presetEcommerce: "تجارة إلكترونية",
+        presetAgency: "شركات خدمات وB2B",
+        presetGeneral: "شركات عامة / مخصص",
+        p1Title: "1. نزيف المبيعات والاستفسارات",
+        p1Sub: "الفرص اللي بتبرد أو بتضيع قبل ما تقفلها",
+        lblLeads: "عدد الاستفسارات / الليدز شهريًا",
+        lblDeal: "متوسط قيمة العميل / الصفقة",
+        lblCloseRate: "نسبة تحويل الليدز الحالية (تقريبًا)",
+        lblSpeed: "متوسط سرعة الرد على العميل الجديد",
+        spdFast: "أقل من 5 دقائق",
+        spdHour: "15 – 60 دقيقة",
+        spdHours: "2 – 6 ساعات",
+        spdDay: "أكثر من يوم / بننسى أحيانًا",
+        lblFollowUp: "نسبة العملاء اللي مش بيتعملهم متابعة تانية",
+        p2Title: "2. نزيف الشغل اليدوي والوقت المهدور",
+        p2Sub: "نسخ ولصق، ردود متكررة، تقارير يدوية وتنسيق بين الفريق",
+        lblTeam: "عدد الموظفين في المبيعات / التشغيل / خدمة العملاء",
+        lblHours: "ساعات الشغل اليدوي المتكرر يوميًا لكل موظف",
+        unitHr: "ساعة",
+        lblSalary: "متوسط الراتب الشهري للموظف",
+        kpiLeakLabel: "إجمالي النزيف الشهري المقدر",
+        kpiAnnualLabel: "خسارتك السنوية (12 شهر):",
+        kpiGainLabel: "العائد القابل للاسترداد بـ AIOS",
+        kpiConservative: "تقدير متحفظ 65%",
+        kpiAnnualGainLabel: "صافي القيمة المستردة سنويًا:",
+        statSalesLeak: "نزيف المبيعات/شهر",
+        statOpsLeak: "نزيف الشغل اليدوي/شهر",
+        statHoursYr: "ساعات مهدورة سنويًا",
+        chartTitle: "تحليل النزيف الشهري مقابل ما يسترده نظام AIOS",
+        chartSub: "مقارنة واضحة بين الوضع الحالي والتشغيل الذكي 24/7",
+        headcountLabel: "الوقت الضائع يعادل:",
+        headcountUnit: "موظف متفرغ",
+        diagTitle: "التشخيص المبدئي لأكبر اختناق عندك حاليًا",
+        ctaTag: "جلسة تشخيص 1-on-1 مجانية بالكامل (15 دقيقة)",
+        ctaDesc: 'بدل ما تشتري أدوات عشوائية أو توظّف ناس زيادة، في جلسة الـ Free AIOS Audit هنراجع عملياتك الحالية ونحدد بالظبط أعلى 3 أنظمة ذكاء اصطناعي توقف النزيف ده وتسترد <strong class="text-emerald-300" id="ctaRecoverInline">0</strong> شهريًا — وهتاخد الخطة مكتوبة حتى لو مقررناش نشتغل سوا.',
+        ctaBullet1: "أوديت كامل للمبيعات والتشغيل",
+        ctaBullet2: "خطة تنفيذ لأول 14 يومًا",
+        ctaBullet3: "بدون أي التزام أو بيع ضاغط",
+        ctaBtn: "احجز جلسة التشخيص المجانية الآن (Free AIOS Audit)",
+        copyBtn: "نسخ التقرير",
+        disclaimer: "* الأرقام تقديرية مبنية على مدخلاتك المباشرة لتوضيح حجم الفرصة المهدورة — وفي الجلسة المجانية بنحسب الرقم الدقيق لبيزنسك.",
+        modalTitle: "تفعيل رابط الحجز على Cal.com",
+        modalDesc: 'الزر ده هيفتح صفحة الحجز على Cal.com ومعاه أرقام النزيف بتاعة العميل جاهزة تلقائيًا. قبل ما ترفع الملف على Vercel، غيّر قيمة <code class="rounded bg-slate-800 px-1.5 py-0.5 text-cyan-300">CAL_COM_URL</code> في أول سطر في الكود لرابطك الحقيقي — أو جرّب رابطك هنا دلوقتي:',
+        modalGo: "افتح رابط الحجز بالأرقام",
+        sevCritical: "نزيف حرج",
+        sevHigh: "نزيف مرتفع",
+        sevMod: "فرصة تحسين قوية",
+        chartLabels: ["نزيف المبيعات", "نزيف الشغل اليدوي", "إجمالي النزيف/شهر", "المسترد بـ AIOS (65%)"],
+        toastCopied: "تم نسخ ملخص التشخيص بنجاح!",
+        noNumbersBtn: "معنديش أرقام دقيقة أصلًا؟",
+        noNumTitle: "غياب الأرقام الدقيقة هو في حد ذاته أكبر نزيف غير مرئي!",
+        noNumDesc: "70% من الشركات في مصر والخليج بتدير المبيعات بدون CRM أو Data OS. تقدر تفعّل متوسطات قطاعك بضغطة واحدة تحت، أو تحجز جلسة التشخيص المجانية ونحسب أرقامك الحقيقية سوا في 15 دقيقة.",
+        applyBenchBtn: "استخدم متوسطات قطاعي",
+        quickBookBtn: "احجز الأوديت نحسبها سوا",
+        unsureBtn: "مش متأكد؟ متوسط السوق",
+        toastBenchApplied: "تم تطبيق متوسطات قطاعك وتفعيل تنبيه غياب الـ Data OS"
+      },
+      en: {
+        badgeTop: "Diagnostic Engine",
+        brandSub: "AI Operating System for Businesses",
+        heroPill: "60-Second Instant Audit — 100% Free for Any Business",
+        heroTitle: 'How Much Is <span class="text-rose-400">Lead Leakage</span> & <span class="text-cyan-300">Manual Work</span> Costing You Every Month?',
+        heroDesc: 'Most businesses don’t have a lead problem — they have a <strong class="text-white">silent operational leakage problem</strong>. Adjust the sliders below to see what you lose monthly and how much a 24/7 <strong class="text-cyan-300">AI Operating System (AIOS)</strong> can recover without hiring extra staff.',
+        presetLabel: "Pick a business preset (or customize every number):",
+        presetClinic: "Clinics & Medical",
+        presetRealEstate: "Real Estate",
+        presetEcommerce: "E-Commerce",
+        presetAgency: "B2B & Agencies",
+        presetGeneral: "General / Custom",
+        p1Title: "1. Sales & Lead Leakage",
+        p1Sub: "Opportunities going cold before your team closes them",
+        lblLeads: "Monthly Inbound Leads / Inquiries",
+        lblDeal: "Average Client / Deal Value",
+        lblCloseRate: "Current Lead-to-Client Close Rate",
+        lblSpeed: "Average First-Response Speed",
+        spdFast: "Under 5 mins",
+        spdHour: "15 – 60 mins",
+        spdHours: "2 – 6 hours",
+        spdDay: "1+ day / Sometimes missed",
+        lblFollowUp: "% of Leads Never Followed Up Twice",
+        p2Title: "2. Manual Ops & Team Bottleneck",
+        p2Sub: "Copy-pasting, repetitive replies, manual reports & admin",
+        lblTeam: "Team Members in Sales / Ops / Support",
+        lblHours: "Manual Repetitive Hours / Day per Person",
+        unitHr: "hrs",
+        lblSalary: "Average Monthly Salary per Employee",
+        kpiLeakLabel: "Estimated Monthly Leakage",
+        kpiAnnualLabel: "Annualized Loss (12 Months):",
+        kpiGainLabel: "Recoverable with AIOS",
+        kpiConservative: "Conservative 65%",
+        kpiAnnualGainLabel: "Projected Annual Recovery:",
+        statSalesLeak: "Sales Leakage / mo",
+        statOpsLeak: "Manual Ops Cost / mo",
+        statHoursYr: "Wasted Hours / yr",
+        chartTitle: "Monthly Leakage vs. AIOS Recoverable Value",
+        chartSub: "Current manual baseline vs. 24/7 AI Operating System",
+        headcountLabel: "Wasted time equals:",
+        headcountUnit: "Full-Time Staff",
+        diagTitle: "Primary Bottleneck Diagnosis",
+        ctaTag: "Free 1-on-1 Diagnostic Session (15 Minutes)",
+        ctaDesc: 'Stop buying disconnected tools or adding headcount. In your Free AIOS Audit, we map your exact workflows and pinpoint the top 3 AI systems to stop this leak and recover <strong class="text-emerald-300" id="ctaRecoverInline">0</strong>/month — you keep the written roadmap even if we never work together.',
+        ctaBullet1: "Full Sales & Ops Audit",
+        ctaBullet2: "14-Day Quick-Win Roadmap",
+        ctaBullet3: "Zero Pressure, Zero Obligation",
+        ctaBtn: "Book Your Free AIOS Audit Now",
+        copyBtn: "Copy Summary",
+        disclaimer: "* Estimates are calculated directly from your inputs to illustrate operational leakage. We verify exact numbers during your free audit.",
+        modalTitle: "Connect Your Cal.com Booking Link",
+        modalDesc: 'This button sends visitors directly to your Cal.com page with their exact leakage numbers pre-filled. Before deploying to Vercel, replace <code class="rounded bg-slate-800 px-1.5 py-0.5 text-cyan-300">CAL_COM_URL</code> at the top of the script — or test your link live below:',
+        modalGo: "Open Booking Link with Data",
+        sevCritical: "Critical Leak",
+        sevHigh: "High Leakage",
+        sevMod: "Strong Upside",
+        chartLabels: ["Sales Leakage", "Manual Ops Cost", "Total Leak / mo", "AIOS Recovery (65%)"],
+        toastCopied: "Audit summary copied to clipboard!",
+        noNumbersBtn: "Don't have exact numbers?",
+        noNumTitle: "Flying without exact metrics is your biggest hidden leak!",
+        noNumDesc: "Most growing businesses run on scattered WhatsApp & spreadsheets with zero Data OS. Apply your industry benchmarks in one click below, or book your free 15-min audit so we calculate your real numbers together.",
+        applyBenchBtn: "Use My Industry Averages",
+        quickBookBtn: "Book Audit to Calculate Together",
+        unsureBtn: "Not sure? Market avg",
+        toastBenchApplied: "Industry benchmarks applied + Data OS blind-spot flagged"
+      }
+    };
+
+    const state = {
+      lang: "ar",
+      currency: "EGP",
+      preset: "clinic",
+      leads: 350,
+      deal: 4500,
+      closeRate: 18,
+      speed: "hours",
+      missedFollowUp: 40,
+      team: 5,
+      hours: 2.5,
+      salary: 10000,
+      unsure: { closeRate: false, missedFollowUp: false, manualHours: false }
+    };
+
+    let chartInstance = null;
+    let latestResults = {};
+
+    const els = {
+      monthlyLeads: document.getElementById("monthlyLeads"),
+      monthlyLeadsNum: document.getElementById("monthlyLeadsNum"),
+      avgDealValue: document.getElementById("avgDealValue"),
+      avgDealValueNum: document.getElementById("avgDealValueNum"),
+      closeRate: document.getElementById("closeRate"),
+      closeRateVal: document.getElementById("closeRateVal"),
+      missedFollowUp: document.getElementById("missedFollowUp"),
+      missedFollowUpVal: document.getElementById("missedFollowUpVal"),
+      opsTeamSize: document.getElementById("opsTeamSize"),
+      opsTeamSizeVal: document.getElementById("opsTeamSizeVal"),
+      manualHours: document.getElementById("manualHours"),
+      manualHoursVal: document.getElementById("manualHoursVal"),
+      avgSalary: document.getElementById("avgSalary"),
+      avgSalaryNum: document.getElementById("avgSalaryNum"),
+      monthlyLeakDisplay: document.getElementById("monthlyLeakDisplay"),
+      annualLeakDisplay: document.getElementById("annualLeakDisplay"),
+      monthlyGainDisplay: document.getElementById("monthlyGainDisplay"),
+      annualGainDisplay: document.getElementById("annualGainDisplay"),
+      salesLeakMini: document.getElementById("salesLeakMini"),
+      opsLeakMini: document.getElementById("opsLeakMini"),
+      wastedHoursYr: document.getElementById("wastedHoursYr"),
+      idleHeadcount: document.getElementById("idleHeadcount"),
+      severityBadge: document.getElementById("severityBadge"),
+      diagnosisSummary: document.getElementById("diagnosisSummary"),
+      blindSpotAlert: document.getElementById("blindSpotAlert"),
+      aiosLayersGrid: document.getElementById("aiosLayersGrid"),
+      noNumbersBtn: document.getElementById("noNumbersBtn"),
+      noNumbersPanel: document.getElementById("noNumbersPanel"),
+      applyAllBenchmarksBtn: document.getElementById("applyAllBenchmarksBtn"),
+      quickBookFromNoNumBtn: document.getElementById("quickBookFromNoNumBtn"),
+      ctaHeadline: document.getElementById("ctaHeadline"),
+      langToggle: document.getElementById("langToggle"),
+      langToggleLabel: document.getElementById("langToggleLabel"),
+      bookAuditBtn: document.getElementById("bookAuditBtn"),
+      copyReportBtn: document.getElementById("copyReportBtn"),
+      bookingModal: document.getElementById("bookingModal"),
+      closeModalBtn: document.getElementById("closeModalBtn"),
+      testCalUrlInput: document.getElementById("testCalUrlInput"),
+      openCalNowBtn: document.getElementById("openCalNowBtn"),
+      copySummaryModalBtn: document.getElementById("copySummaryModalBtn"),
+      toast: document.getElementById("toast")
+    };
+
+    function formatMoney(amount) {
+      const cfg = CURRENCY_CONFIG[state.currency];
+      const rounded = Math.round(Number.isFinite(amount) ? amount : 0);
+      const formatted = rounded.toLocaleString("en-US");
+      if (state.currency === "USD") return "$" + formatted;
+      return state.lang === "ar" ? `${formatted} ${cfg.symbol}` : `${formatted} ${cfg.code}`;
+    }
+
+    function computeMetrics() {
+      // 1. Sales & Lead Leakage:
+      // Estimated recoverable deals lost to slow response + unfollowed leads
+      const speedDrop = SPEED_DROP_FACTOR[state.speed] || 0.28;
+      const followUpDrop = (state.missedFollowUp / 100) * 0.35; // ~35% of unfollowed leads convert when systematically nurtured
+      const combinedLeakRate = Math.min(0.65, speedDrop + followUpDrop);
+      const baseClose = Math.max(0.02, state.closeRate / 100);
+      // Missed potential deals = leads * baseClose * combinedLeakRate
+      const lostDealsPerMonth = state.leads * baseClose * combinedLeakRate;
+      const salesLeakMonthly = lostDealsPerMonth * state.deal;
+
+      // 2. Manual Ops & Team Cost:
+      // 22 working days/month, 8 hrs/day = 176 hrs/month
+      const hourlyCost = state.salary / 176;
+      const wastedHoursMonthly = state.team * state.hours * 22;
+      const wastedHoursYearly = wastedHoursMonthly * 12;
+      const opsLeakMonthly = wastedHoursMonthly * hourlyCost;
+      const idleHeadcount = (state.team * state.hours) / 8;
+
+      const totalLeakMonthly = salesLeakMonthly + opsLeakMonthly;
+      const totalLeakAnnual = totalLeakMonthly * 12;
+      const recoverableMonthly = totalLeakMonthly * 0.65;
+      const recoverableAnnual = totalLeakAnnual * 0.65;
+
+      latestResults = {
+        salesLeakMonthly,
+        opsLeakMonthly,
+        totalLeakMonthly,
+        totalLeakAnnual,
+        recoverableMonthly,
+        recoverableAnnual,
+        wastedHoursYearly,
+        idleHeadcount,
+        lostDealsPerMonth
+      };
+      return latestResults;
+    }
+
+    function updateDiagnosis(res) {
+      const salesDominant = res.salesLeakMonthly >= res.opsLeakMonthly;
+      const salesPct = res.totalLeakMonthly > 0 ? Math.round((res.salesLeakMonthly / res.totalLeakMonthly) * 100) : 50;
+      const opsPct = 100 - salesPct;
+
+      if (state.lang === "ar") {
+        if (salesDominant) {
+          els.diagnosisSummary.innerHTML = `أكبر ثقب عندك حاليًا هو <strong class="text-rose-300">نزيف المبيعات والرد المتأخر (${salesPct}% من إجمالي خسارتك)</strong> — بتفقد ما يعادل <strong class="text-white">${res.lostDealsPerMonth.toFixed(1)} صفقة شهريًا</strong> بسبب بطء الرد الأول وغياب المتابعة التلقائية، بجانب <strong class="text-amber-300">${Math.round(res.wastedHoursYearly).toLocaleString("en-US")} ساعة عمل يدوي سنويًا</strong>.`;
+          els.aiosLayersGrid.innerHTML = `
+            <div class="rounded-xl border border-cyan-500/25 bg-cyan-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-cyan-300">الطبقة 1: AI Speed-to-Lead</div>
+              <p class="mt-1 text-[11px] text-slate-300">رد وتأهيل فوري للعميل خلال أقل من 60 ثانية 24/7 على واتساب وكل القنوات.</p>
+            </div>
+            <div class="rounded-xl border border-blue-500/25 bg-blue-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-blue-300">الطبقة 2: متابعة ذكية 30 يوم</div>
+              <p class="mt-1 text-[11px] text-slate-300">سلسلة متابعة تلقائية تسترجع العملاء اللي سألوا ومشيوا بدون تدخل يدوي.</p>
+            </div>
+            <div class="rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-emerald-300">الطبقة 3: لوحة تحكم وتقارير</div>
+              <p class="mt-1 text-[11px] text-slate-300">ملخص يومي آلي لمدير الشركة بأهم الصفقات وأداء الفريق بدون شيتات يدوية.</p>
+            </div>
+          `;
+        } else {
+          els.diagnosisSummary.innerHTML = `أكبر ثقب عندك حاليًا هو <strong class="text-amber-300">اختناق الشغل اليدوي (${opsPct}% من إجمالي خسارتك)</strong> — فريقك بيستهلك <strong class="text-white">${Math.round(res.wastedHoursYearly).toLocaleString("en-US")} ساعة سنويًا</strong> في مهام متكررة تعادل راتب <strong class="text-cyan-300">${res.idleHeadcount.toFixed(1)} موظف متفرغ</strong>، بجانب نزيف المبيعات الشهري.`;
+          els.aiosLayersGrid.innerHTML = `
+            <div class="rounded-xl border border-amber-500/25 bg-amber-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-amber-300">الطبقة 1: أتمتة التشغيل اليومي</div>
+              <p class="mt-1 text-[11px] text-slate-300">ربط CRM والفواتير والرسائل لإلغاء النسخ واللصق وتوفير 65%+ من وقت الفريق.</p>
+            </div>
+            <div class="rounded-xl border border-cyan-500/25 bg-cyan-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-cyan-300">الطبقة 2: مساعد فريق ذكي</div>
+              <p class="mt-1 text-[11px] text-slate-300">مساعد AI مدرب على ملفات وسياسات شركتك يجهز الردود والتقارير في ثوانٍ.</p>
+            </div>
+            <div class="rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-emerald-300">الطبقة 3: التقاط ومتابعة الليدز</div>
+              <p class="mt-1 text-[11px] text-slate-300">نظام رد فوري وحجز مواعيد تلقائي يضاعف إنتاجية نفس الفريق الحالي.</p>
+            </div>
+          `;
+        }
+        els.ctaHeadline.textContent = `شركتك بتخسر ${formatMoney(res.totalLeakMonthly)} شهريًا — خُد خارطة إيقاف النزيف مجانًا`;
+      } else {
+        if (salesDominant) {
+          els.diagnosisSummary.innerHTML = `Your #1 bottleneck is <strong class="text-rose-300">Sales & Lead Leakage (${salesPct}% of total loss)</strong> — losing roughly <strong class="text-white">${res.lostDealsPerMonth.toFixed(1)} deals/month</strong> to slow first responses and missed follow-ups, plus <strong class="text-amber-300">${Math.round(res.wastedHoursYearly).toLocaleString("en-US")} wasted manual hours/year</strong>.`;
+          els.aiosLayersGrid.innerHTML = `
+            <div class="rounded-xl border border-cyan-500/25 bg-cyan-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-cyan-300">Layer 1: 24/7 Speed-to-Lead</div>
+              <p class="mt-1 text-[11px] text-slate-300">Sub-60-second AI response & qualification across WhatsApp, web, and socials.</p>
+            </div>
+            <div class="rounded-xl border border-blue-500/25 bg-blue-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-blue-300">Layer 2: 30-Day Auto Follow-Up</div>
+              <p class="mt-1 text-[11px] text-slate-300">Smart nurture sequences that recover ghosted leads automatically.</p>
+            </div>
+            <div class="rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-emerald-300">Layer 3: Executive Daily Brief</div>
+              <p class="mt-1 text-[11px] text-slate-300">Automated daily CEO summary of pipeline health and team execution.</p>
+            </div>
+          `;
+        } else {
+          els.diagnosisSummary.innerHTML = `Your #1 bottleneck is <strong class="text-amber-300">Manual Operations Drag (${opsPct}% of total loss)</strong> — burning <strong class="text-white">${Math.round(res.wastedHoursYearly).toLocaleString("en-US")} hours/year</strong> on repetitive admin equal to <strong class="text-cyan-300">${res.idleHeadcount.toFixed(1)} full-time employees</strong>, on top of monthly lead leakage.`;
+          els.aiosLayersGrid.innerHTML = `
+            <div class="rounded-xl border border-amber-500/25 bg-amber-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-amber-300">Layer 1: Automated Ops Backbone</div>
+              <p class="mt-1 text-[11px] text-slate-300">Connect CRM, invoicing, and messaging to eliminate 65%+ of manual copy-paste.</p>
+            </div>
+            <div class="rounded-xl border border-cyan-500/25 bg-cyan-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-cyan-300">Layer 2: Internal AI Team Copilot</div>
+              <p class="mt-1 text-[11px] text-slate-300">Custom AI trained on your SOPs to draft replies, summaries, and reports in seconds.</p>
+            </div>
+            <div class="rounded-xl border border-emerald-500/25 bg-emerald-500/5 p-3">
+              <div class="text-[11px] font-extrabold text-emerald-300">Layer 3: Automated Lead Capture</div>
+              <p class="mt-1 text-[11px] text-slate-300">Instant lead routing and self-booking so your current team closes more.</p>
+            </div>
+          `;
+        }
+        els.ctaHeadline.textContent = `You're Leaking ${formatMoney(res.totalLeakMonthly)}/mo — Get Your Free AIOS Fix Roadmap`;
+      }
+
+      const inlineEl = document.getElementById("ctaRecoverInline");
+      if (inlineEl) inlineEl.textContent = formatMoney(res.recoverableMonthly);
+
+      const hasBlindSpot = state.unsure.closeRate || state.unsure.missedFollowUp || state.unsure.manualHours;
+      if (hasBlindSpot) {
+        els.blindSpotAlert.classList.remove("hidden");
+        if (state.lang === "ar") {
+          els.blindSpotAlert.innerHTML = `<strong class="text-amber-300">تنبيه غياب لوحة التحكم (Data OS Blind Spot):</strong> اعتمادك على متوسطات السوق لعدم وجود أرقام دقيقة لنسبة التحويل أو المتابعة يعني إنك بتدير البيزنس بدون رؤية لحظية — أول خطوة في جلسة الـ Free AIOS Audit هي استخراج أرقامك الحقيقية وبناء لوحة متابعة دقيقة.`;
+        } else {
+          els.blindSpotAlert.innerHTML = `<strong class="text-amber-300">Data OS Blind-Spot Alert:</strong> Relying on market averages because close rate or follow-up metrics aren't tracked means you're flying blind — Step 1 of your Free AIOS Audit is uncovering your real numbers and building a live Data OS.`;
+        }
+      } else {
+        els.blindSpotAlert.classList.add("hidden");
+      }
+    }
+
+    function updateChart(res) {
+      const ctx = document.getElementById("leakageChart").getContext("2d");
+      const labels = I18N[state.lang].chartLabels;
+      const dataValues = [
+        Math.round(res.salesLeakMonthly),
+        Math.round(res.opsLeakMonthly),
+        Math.round(res.totalLeakMonthly),
+        Math.round(res.recoverableMonthly)
+      ];
+
+      if (chartInstance) {
+        chartInstance.data.labels = labels;
+        chartInstance.data.datasets[0].data = dataValues;
+        chartInstance.update();
+        return;
+      }
+
+      chartInstance = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels,
+          datasets: [{
+            data: dataValues,
+            backgroundColor: [
+              "rgba(244, 63, 94, 0.78)",
+              "rgba(245, 158, 11, 0.78)",
+              "rgba(225, 29, 72, 0.92)",
+              "rgba(16, 185, 129, 0.88)"
+            ],
+            borderColor: ["#fb7185", "#fbbf24", "#f43f5e", "#34d399"],
+            borderWidth: 1.5,
+            borderRadius: 10,
+            barPercentage: 0.58
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "#0f172a",
+              borderColor: "rgba(34, 211, 238, 0.35)",
+              borderWidth: 1,
+              titleColor: "#f8fafc",
+              bodyColor: "#67e8f9",
+              padding: 10,
+              callbacks: {
+                label: (ctx) => formatMoney(ctx.parsed.y)
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: "#cbd5e1", font: { family: "Cairo, Inter, sans-serif", size: 11, weight: "bold" } }
+            },
+            y: {
+              beginAtZero: true,
+              grid: { color: "rgba(148, 163, 184, 0.1)" },
+              ticks: {
+                color: "#94a3b8",
+                font: { family: "Inter, sans-serif", size: 11 },
+                callback: (val) => val >= 1000 ? (val / 1000).toFixed(0) + "k" : val
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function render() {
+      const res = computeMetrics();
+      const t = I18N[state.lang];
+
+      els.monthlyLeakDisplay.textContent = formatMoney(res.totalLeakMonthly);
+      els.annualLeakDisplay.textContent = formatMoney(res.totalLeakAnnual);
+      els.monthlyGainDisplay.textContent = "+" + formatMoney(res.recoverableMonthly);
+      els.annualGainDisplay.textContent = "+" + formatMoney(res.recoverableAnnual);
+
+      els.salesLeakMini.textContent = formatMoney(res.salesLeakMonthly);
+      els.opsLeakMini.textContent = formatMoney(res.opsLeakMonthly);
+      els.wastedHoursYr.textContent = Math.round(res.wastedHoursYearly).toLocaleString("en-US");
+      els.idleHeadcount.textContent = res.idleHeadcount.toFixed(1);
+
+      // Severity threshold normalized to USD equivalent
+      const usdMonthly = res.totalLeakMonthly * (CURRENCY_CONFIG.USD.rate / CURRENCY_CONFIG[state.currency].rate);
+      if (usdMonthly >= 3500) {
+        els.severityBadge.textContent = t.sevCritical;
+        els.severityBadge.className = "rounded-full bg-rose-500/20 px-2.5 py-0.5 text-[11px] font-extrabold text-rose-300";
+      } else if (usdMonthly >= 1200) {
+        els.severityBadge.textContent = t.sevHigh;
+        els.severityBadge.className = "rounded-full bg-amber-500/20 px-2.5 py-0.5 text-[11px] font-extrabold text-amber-300";
+      } else {
+        els.severityBadge.textContent = t.sevMod;
+        els.severityBadge.className = "rounded-full bg-cyan-500/20 px-2.5 py-0.5 text-[11px] font-extrabold text-cyan-300";
+      }
+
+      updateDiagnosis(res);
+      updateChart(res);
+    }
+
+    function syncInputsFromState() {
+      const cfg = CURRENCY_CONFIG[state.currency];
+      els.avgDealValue.min = cfg.dealMin;
+      els.avgDealValue.max = cfg.dealMax;
+      els.avgDealValue.step = cfg.dealStep;
+      els.avgSalary.min = cfg.salMin;
+      els.avgSalary.max = cfg.salMax;
+      els.avgSalary.step = cfg.salStep;
+
+      els.monthlyLeads.value = Math.min(2000, state.leads);
+      els.monthlyLeadsNum.value = state.leads;
+      els.avgDealValue.value = Math.min(cfg.dealMax, state.deal);
+      els.avgDealValueNum.value = state.deal;
+      els.closeRate.value = state.closeRate;
+      els.closeRateVal.textContent = state.closeRate;
+      els.missedFollowUp.value = state.missedFollowUp;
+      els.missedFollowUpVal.textContent = state.missedFollowUp;
+      els.opsTeamSize.value = state.team;
+      els.opsTeamSizeVal.textContent = state.team;
+      els.manualHours.value = state.hours;
+      els.manualHoursVal.textContent = state.hours;
+      els.avgSalary.value = Math.min(cfg.salMax, state.salary);
+      els.avgSalaryNum.value = state.salary;
+
+      document.querySelectorAll(".currency-unit").forEach(el => {
+        el.textContent = cfg.code;
+      });
+      document.querySelectorAll(".speed-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.speed === state.speed);
+      });
+    }
+
+    function applyPreset(presetKey) {
+      state.preset = presetKey;
+      const base = PRESETS_EGP[presetKey] || PRESETS_EGP.general;
+      const cfg = CURRENCY_CONFIG[state.currency];
+      state.leads = base.leads;
+      state.deal = Math.max(cfg.dealMin, Math.round((base.deal * cfg.rate) / cfg.dealStep) * cfg.dealStep);
+      state.closeRate = base.close;
+      state.speed = base.speed;
+      state.missedFollowUp = base.missed;
+      state.team = base.team;
+      state.hours = base.hours;
+      state.salary = Math.max(cfg.salMin, Math.round((base.salary * cfg.rate) / cfg.salStep) * cfg.salStep);
+
+      document.querySelectorAll(".preset-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.preset === presetKey);
+      });
+      syncInputsFromState();
+      render();
+    }
+
+    function switchCurrency(newCurr) {
+      if (newCurr === state.currency) return;
+      const oldRate = CURRENCY_CONFIG[state.currency].rate;
+      const newCfg = CURRENCY_CONFIG[newCurr];
+      const ratio = newCfg.rate / oldRate;
+
+      state.currency = newCurr;
+      state.deal = Math.max(newCfg.dealMin, Math.round((state.deal * ratio) / newCfg.dealStep) * newCfg.dealStep);
+      state.salary = Math.max(newCfg.salMin, Math.round((state.salary * ratio) / newCfg.salStep) * newCfg.salStep);
+
+      document.querySelectorAll(".currency-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.currency === newCurr);
+        if (btn.dataset.currency !== newCurr) btn.classList.add("text-slate-300");
+        else btn.classList.remove("text-slate-300");
+      });
+      syncInputsFromState();
+      render();
+    }
+
+    function applyLanguage(lang) {
+      state.lang = lang;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      els.langToggleLabel.textContent = lang === "ar" ? "EN" : "العربية";
+
+      const t = I18N[lang];
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key]) el.innerHTML = t[key];
+      });
+      render();
+    }
+
+    function buildSummaryText() {
+      const r = latestResults;
+      const missingKeys = Object.entries(state.unsure).filter(([, v]) => v).map(([k]) => k);
+      if (state.lang === "ar") {
+        const blindNote = missingKeys.length ? `\n- تنبيه: استخدم متوسطات السوق لعدم وجود تتبع دقيق (${missingKeys.join(", ")}) — يحتاج تأسيس Data OS` : "";
+        return `تقرير حاسبة النزيف التشغيلي (AIOS Audit):\n- إجمالي النزيف الشهري: ${formatMoney(r.totalLeakMonthly)}\n- الخسارة السنوية المتوقعة: ${formatMoney(r.totalLeakAnnual)}\n- نزيف المبيعات والليدز: ${formatMoney(r.salesLeakMonthly)}/شهر\n- تكلفة الشغل اليدوي: ${formatMoney(r.opsLeakMonthly)}/شهر (${Math.round(r.wastedHoursYearly)} ساعة/سنة)\n- العائد القابل للاسترداد بـ AIOS (65%): +${formatMoney(r.recoverableMonthly)}/شهر${blindNote}`;
+      }
+      const blindNoteEn = missingKeys.length ? `\n- Flag: Used market averages (missing tracking on: ${missingKeys.join(", ")}) — needs Data OS` : "";
+      return `AIOS Operational Bleeding Audit Summary:\n- Monthly Leakage: ${formatMoney(r.totalLeakMonthly)}\n- Annualized Loss: ${formatMoney(r.totalLeakAnnual)}\n- Sales Leakage: ${formatMoney(r.salesLeakMonthly)}/mo\n- Manual Ops Cost: ${formatMoney(r.opsLeakMonthly)}/mo (${Math.round(r.wastedHoursYearly)} hrs/yr)\n- Recoverable with AIOS (65%): +${formatMoney(r.recoverableMonthly)}/mo${blindNoteEn}`;
+    }
+
+    function showToast(msg) {
+      els.toast.textContent = msg;
+      els.toast.classList.remove("opacity-0", "translate-y-4");
+      els.toast.classList.add("opacity-100", "translate-y-0");
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        els.toast.classList.add("opacity-0", "translate-y-4");
+        els.toast.classList.remove("opacity-100", "translate-y-0");
+      }, 2600);
+    }
+
+    function copySummary() {
+      const text = buildSummaryText();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(I18N[state.lang].toastCopied)).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      showToast(I18N[state.lang].toastCopied);
+    }
+
+    function buildCalUrl(baseUrl) {
+      const cleanBase = baseUrl.trim();
+      const notes = encodeURIComponent(buildSummaryText());
+      const sep = cleanBase.includes("?") ? "&" : "?";
+      return `${cleanBase}${sep}notes=${notes}`;
+    }
+
+    // Event Listeners
+    els.monthlyLeads.addEventListener("input", e => {
+      state.leads = Math.max(1, Number(e.target.value) || 1);
+      els.monthlyLeadsNum.value = state.leads;
+      render();
+    });
+    els.monthlyLeadsNum.addEventListener("input", e => {
+      state.leads = Math.max(1, Number(e.target.value) || 1);
+      els.monthlyLeads.value = Math.min(2000, state.leads);
+      render();
+    });
+
+    els.avgDealValue.addEventListener("input", e => {
+      state.deal = Math.max(1, Number(e.target.value) || 1);
+      els.avgDealValueNum.value = state.deal;
+      render();
+    });
+    els.avgDealValueNum.addEventListener("input", e => {
+      state.deal = Math.max(1, Number(e.target.value) || 1);
+      els.avgDealValue.value = Math.min(CURRENCY_CONFIG[state.currency].dealMax, state.deal);
+      render();
+    });
+
+    function syncUnsureUI() {
+      document.querySelectorAll(".unsure-btn").forEach(btn => {
+        const key = btn.dataset.unsure;
+        btn.classList.toggle("active", Boolean(state.unsure[key]));
+      });
+    }
+
+    function applyBenchmarkFor(key) {
+      const base = PRESETS_EGP[state.preset] || PRESETS_EGP.general;
+      if (key === "closeRate") state.closeRate = base.close;
+      if (key === "missedFollowUp") state.missedFollowUp = base.missed;
+      if (key === "manualHours") state.hours = base.hours;
+      syncInputsFromState();
+      syncUnsureUI();
+      render();
+    }
+
+    els.closeRate.addEventListener("input", e => {
+      state.closeRate = Number(e.target.value) || 1;
+      state.unsure.closeRate = false;
+      els.closeRateVal.textContent = state.closeRate;
+      syncUnsureUI();
+      render();
+    });
+
+    els.missedFollowUp.addEventListener("input", e => {
+      state.missedFollowUp = Number(e.target.value) || 0;
+      state.unsure.missedFollowUp = false;
+      els.missedFollowUpVal.textContent = state.missedFollowUp;
+      syncUnsureUI();
+      render();
+    });
+
+    els.opsTeamSize.addEventListener("input", e => {
+      state.team = Math.max(1, Number(e.target.value) || 1);
+      els.opsTeamSizeVal.textContent = state.team;
+      render();
+    });
+
+    els.manualHours.addEventListener("input", e => {
+      state.hours = Number(e.target.value) || 0.5;
+      state.unsure.manualHours = false;
+      els.manualHoursVal.textContent = state.hours;
+      syncUnsureUI();
+      render();
+    });
+
+    document.querySelectorAll(".unsure-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.dataset.unsure;
+        state.unsure[key] = !state.unsure[key];
+        if (state.unsure[key]) {
+          applyBenchmarkFor(key);
+        } else {
+          syncUnsureUI();
+          render();
+        }
+      });
+    });
+
+    els.noNumbersBtn.addEventListener("click", () => {
+      els.noNumbersPanel.classList.toggle("hidden");
+    });
+
+    els.applyAllBenchmarksBtn.addEventListener("click", () => {
+      state.unsure.closeRate = true;
+      state.unsure.missedFollowUp = true;
+      state.unsure.manualHours = true;
+      applyPreset(state.preset);
+      syncUnsureUI();
+      els.noNumbersPanel.classList.add("hidden");
+      showToast(I18N[state.lang].toastBenchApplied);
+    });
+
+    els.quickBookFromNoNumBtn.addEventListener("click", () => {
+      state.unsure.closeRate = true;
+      state.unsure.missedFollowUp = true;
+      state.unsure.manualHours = true;
+      syncUnsureUI();
+      render();
+      els.bookAuditBtn.click();
+    });
+
+    els.avgSalary.addEventListener("input", e => {
+      state.salary = Math.max(1, Number(e.target.value) || 1);
+      els.avgSalaryNum.value = state.salary;
+      render();
+    });
+    els.avgSalaryNum.addEventListener("input", e => {
+      state.salary = Math.max(1, Number(e.target.value) || 1);
+      els.avgSalary.value = Math.min(CURRENCY_CONFIG[state.currency].salMax, state.salary);
+      render();
+    });
+
+    document.querySelectorAll(".speed-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.speed = btn.dataset.speed;
+        document.querySelectorAll(".speed-btn").forEach(b => b.classList.toggle("active", b === btn));
+        render();
+      });
+    });
+
+    document.querySelectorAll(".preset-btn").forEach(btn => {
+      btn.addEventListener("click", () => applyPreset(btn.dataset.preset));
+    });
+
+    document.querySelectorAll(".currency-btn").forEach(btn => {
+      btn.addEventListener("click", () => switchCurrency(btn.dataset.currency));
+    });
+
+    els.langToggle.addEventListener("click", () => {
+      applyLanguage(state.lang === "ar" ? "en" : "ar");
+    });
+
+    els.copyReportBtn.addEventListener("click", copySummary);
+    els.copySummaryModalBtn.addEventListener("click", copySummary);
+
+    els.bookAuditBtn.addEventListener("click", () => {
+      if (CAL_COM_URL.includes("YOUR-USERNAME")) {
+        els.bookingModal.classList.remove("hidden");
+        els.bookingModal.classList.add("flex");
+      } else {
+        window.open(buildCalUrl(CAL_COM_URL), "_blank", "noopener,noreferrer");
+      }
+    });
+
+    els.closeModalBtn.addEventListener("click", () => {
+      els.bookingModal.classList.add("hidden");
+      els.bookingModal.classList.remove("flex");
+    });
+
+    els.bookingModal.addEventListener("click", e => {
+      if (e.target === els.bookingModal) {
+        els.bookingModal.classList.add("hidden");
+        els.bookingModal.classList.remove("flex");
+      }
+    });
+
+    els.openCalNowBtn.addEventListener("click", () => {
+      const url = els.testCalUrlInput.value.trim();
+      if (url && /^https?:\/\//i.test(url)) {
+        window.open(buildCalUrl(url), "_blank", "noopener,noreferrer");
+      } else {
+        showToast(state.lang === "ar" ? "أدخل رابط Cal.com يبدأ بـ https://" : "Enter a valid https:// Cal.com URL");
+      }
+    });
+
+    // Initialize
+    lucide.createIcons();
+    applyPreset("clinic");
+  </script>
+</body>
+</html>
