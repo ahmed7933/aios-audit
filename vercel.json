@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/cv.pdf",
+      "destination": "https://ahmed-alsharqawy-old-portfolio.vercel.app/cv.pdf",
+      "permanent": false
+    }
+  ]
+}
