@@ -168,6 +168,14 @@
     <section class="mb-14">
       <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
         <h2 class="text-lg font-black text-white sm:text-xl">خزنة الأصول والبرومبتات الجاهزة للنسخ</h2>
+        <div id="kitUsageNote" class="mb-4 rounded-2xl border border-cyan-400/35 bg-cyan-500/10 p-4 text-start text-xs leading-relaxed text-cyan-100 sm:text-sm">
+          <div class="mb-1 flex items-center gap-1.5 font-black text-cyan-300"><i data-lucide="info" class="h-4 w-4"></i><span>إزاي تستخدم الملفات والبرومبتات دي خطوة بخطوة؟</span></div>
+          <p>إزاي تستخدم البرومبت ده؟ افتح ملف الـ n8n Workflow اللي حملته تحت، اضغط على نود الـ AI Agent، والصق البرومبت ده في خانة System Message بعد ما تغيّر اسم شركتك وأسعارك — واربط نود Google Sheets بملف الـ CRM المرفق تحت عشان كل عميل مؤهل ينزل فيه تلقائيًا.</p>
+        </div>
+        <button type="button" id="downloadExtraKitBtn" class="mb-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-400/50 bg-emerald-500/15 px-5 py-3.5 text-xs font-black text-emerald-200 transition hover:bg-emerald-500/25 sm:w-auto sm:text-sm">
+          <i data-lucide="workflow" class="h-4 w-4"></i>
+          <span>تحميل قالب شيت الـ CRM المطابق للـ Workflow (.csv)</span>
+        </button>
         <button type="button" id="downloadFileBtn" class="inline-flex items-center gap-2 rounded-xl border border-emerald-400/45 bg-emerald-500/15 px-4 py-2 text-xs font-extrabold text-emerald-200 transition hover:bg-emerald-500/25">
           <i data-lucide="download" class="h-4 w-4"></i>
           <span>تحميل قالب n8n Workflow جاهز للاستيراد (.json)</span>
@@ -435,6 +443,26 @@
             showToast("المسار على الموقع الحي: " + dest);
           }
         });
+      });
+    })();
+
+    
+    // Companion Complete-Kit Download Handler (AIOS_Qualified_Leads_CRM_Template.csv)
+    (function initExtraKitDownload() {
+      const btn = document.getElementById("downloadExtraKitBtn");
+      if (!btn) return;
+      const payload = "Lead_ID,Date,Name,Phone,Channel,Interest,Budget_Tier,Lead_Score,Status,Assigned_Rep,Notes\nL-001,2026-11-27,Ahmed Sample,+201000000000,WhatsApp,AIOS Sprint,High,Hot,Qualified,Sales_1,Ready for 15m call\n";
+      btn.addEventListener("click", () => {
+        const blob = new Blob([payload], { type: "text/csv;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "AIOS_Qualified_Leads_CRM_Template.csv";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        if (typeof showToast === "function") showToast("تم تحميل الملف الجاهز: AIOS_Qualified_Leads_CRM_Template.csv");
       });
     })();
 

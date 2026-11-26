@@ -198,6 +198,14 @@
     <section class="mb-14">
       <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
         <h2 class="text-lg font-black text-white sm:text-xl">خزنة الأصول والبرومبتات الجاهزة للنسخ</h2>
+        <div id="kitUsageNote" class="mb-4 rounded-2xl border border-cyan-400/35 bg-cyan-500/10 p-4 text-start text-xs leading-relaxed text-cyan-100 sm:text-sm">
+          <div class="mb-1 flex items-center gap-1.5 font-black text-cyan-300"><i data-lucide="info" class="h-4 w-4"></i><span>إزاي تستخدم الملفات والبرومبتات دي خطوة بخطوة؟</span></div>
+          <p>إزاي تشغّل نظام حجز العيادة ده؟ استورد ملف الـ n8n Workflow تحت، اربطه بـ Google Calendar بتاع العيادة + رقم واتساب، وحط رسالة التذكير اللي فوق عشان النظام يحجز للمريض ويبعتله تذكير قبل الموعد بـ 24 ساعة وساعتين تلقائيًا.</p>
+        </div>
+        <button type="button" id="downloadExtraKitBtn" class="mb-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-400/50 bg-emerald-500/15 px-5 py-3.5 text-xs font-black text-emerald-200 transition hover:bg-emerald-500/25 sm:w-auto sm:text-sm">
+          <i data-lucide="workflow" class="h-4 w-4"></i>
+          <span>تحميل ملف n8n Workflow لحجز العيادات وتذكير المرضى (.json)</span>
+        </button>
         <button type="button" id="downloadFileBtn" class="inline-flex items-center gap-2 rounded-xl border border-emerald-400/45 bg-emerald-500/15 px-4 py-2 text-xs font-extrabold text-emerald-200 transition hover:bg-emerald-500/25">
           <i data-lucide="download" class="h-4 w-4"></i>
           <span>تحميل دليل أتمتة حجوزات العيادات الكامل (.txt)</span>
@@ -459,6 +467,26 @@
             showToast("المسار على الموقع الحي: " + dest);
           }
         });
+      });
+    })();
+
+    
+    // Companion Complete-Kit Download Handler (AIOS_Clinic_Booking_And_Reminder.json)
+    (function initExtraKitDownload() {
+      const btn = document.getElementById("downloadExtraKitBtn");
+      if (!btn) return;
+      const payload = "{\n  \"name\": \"AIOS Clinic WhatsApp Booking & No-Show Reminder\",\n  \"nodes\": [\n    {\n      \"id\": \"1\",\n      \"name\": \"WhatsApp Patient Message\",\n      \"type\": \"n8n-nodes-base.webhook\",\n      \"typeVersion\": 2,\n      \"position\": [\n        200,\n        300\n      ],\n      \"parameters\": {\n        \"path\": \"clinic-booking\",\n        \"httpMethod\": \"POST\"\n      }\n    },\n    {\n      \"id\": \"2\",\n      \"name\": \"Check Doctor Slots (Google Calendar)\",\n      \"type\": \"n8n-nodes-base.googleCalendar\",\n      \"typeVersion\": 1.2,\n      \"position\": [\n        450,\n        300\n      ],\n      \"parameters\": {\n        \"operation\": \"getAll\"\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"name\": \"Book Appointment & Log Patient\",\n      \"type\": \"n8n-nodes-base.googleCalendar\",\n      \"typeVersion\": 1.2,\n      \"position\": [\n        700,\n        300\n      ],\n      \"parameters\": {\n        \"operation\": \"create\"\n      }\n    },\n    {\n      \"id\": \"4\",\n      \"name\": \"Send 24h & 2h WhatsApp Reminder\",\n      \"type\": \"n8n-nodes-base.httpRequest\",\n      \"typeVersion\": 4.2,\n      \"position\": [\n        950,\n        300\n      ],\n      \"parameters\": {\n        \"method\": \"POST\",\n        \"url\": \"https://graph.facebook.com/v20.0/YOUR_PHONE_ID/messages\"\n      }\n    }\n  ],\n  \"connections\": {\n    \"WhatsApp Patient Message\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Check Doctor Slots (Google Calendar)\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Check Doctor Slots (Google Calendar)\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Book Appointment & Log Patient\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Book Appointment & Log Patient\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Send 24h & 2h WhatsApp Reminder\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  },\n  \"active\": false,\n  \"settings\": {\n    \"executionOrder\": \"v1\"\n  }\n}";
+      btn.addEventListener("click", () => {
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "AIOS_Clinic_Booking_And_Reminder.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        if (typeof showToast === "function") showToast("تم تحميل الملف الجاهز: AIOS_Clinic_Booking_And_Reminder.json");
       });
     })();
 
