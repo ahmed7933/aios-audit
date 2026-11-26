@@ -145,18 +145,20 @@
   <!-- Top Navigation Bar -->
   <header class="sticky top-0 z-30 border-b border-slate-800/80 bg-[#060b16]/85 backdrop-blur-xl">
     <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
-      <div class="flex items-center gap-2.5">
-        <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-400/40 bg-cyan-500/15 text-cyan-300">
-          <i data-lucide="cpu" class="h-5 w-5"></i>
-        </div>
+      <button type="button" data-aud-route="/" class="flex items-center gap-2.5 text-start">
+        <img src="data:image/jpeg;base64,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" alt="Ahmed Alsharqawy" class="h-8 w-8 rounded-full border border-cyan-400/50 object-cover" />
         <div>
-          <div class="flex items-center gap-2">
-            <span class="text-sm font-extrabold tracking-wide text-white sm:text-base">AIOS Partner</span>
-            <span class="hidden rounded-full border border-cyan-400/30 bg-cyan-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-cyan-300 sm:inline-block" data-i18n="badgeTop">Diagnostic Engine</span>
-          </div>
-          <p class="text-[11px] text-slate-400" data-i18n="brandSub">AI Operating System for Businesses</p>
+          <div class="text-sm font-extrabold tracking-wide text-white">Ahmed Alsharqawy</div>
+          <div class="text-[10px] font-bold text-cyan-300">AIOS Partner</div>
         </div>
-      </div>
+      </button>
+
+      <nav class="hidden items-center gap-4 text-xs font-bold text-slate-300 lg:flex">
+        <button type="button" data-aud-route="/" class="transition hover:text-cyan-300">الرئيسية</button>
+        <button type="button" data-aud-route="/services.html" class="transition hover:text-cyan-300">خدماتنا (AIOS)</button>
+        <span class="text-cyan-300">حاسبة النزيف</span>
+        <button type="button" data-aud-route="/#vaultSection" class="transition hover:text-cyan-300">مكتبة الهدايا</button>
+      </nav>
 
       <div class="flex items-center gap-2 sm:gap-3">
         <!-- Currency Switcher -->
@@ -168,6 +170,7 @@
         </div>
 
         <!-- Language Switcher -->
+        <a id="audTopBook" href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-1 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-3 py-1.5 text-xs font-black text-slate-950 transition hover:brightness-110 sm:inline-flex">احجز 15د</a>
         <button type="button" id="langToggle" class="flex items-center gap-1.5 rounded-xl border border-slate-700/80 bg-slate-900/90 px-3 py-1.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/50 hover:text-cyan-300">
           <i data-lucide="globe" class="h-3.5 w-3.5"></i>
           <span id="langToggleLabel">EN</span>
@@ -176,7 +179,7 @@
     </div>
   </header>
 
-  <main class="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 lg:pt-10">
+  <main class="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:pb-20 sm:px-6 lg:pt-10">
     <!-- Hero Section -->
     <section class="mx-auto mb-8 max-w-4xl text-center">
       <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold text-cyan-300">
@@ -487,7 +490,29 @@
         </div>
       </div>
     </div>
+    <footer class="mt-12 border-t border-slate-800/80 pt-8 text-center">
+      <p class="text-xs font-bold text-slate-300">Ahmed Alsharqawy — AI Operating System (AIOS) Partner • MENA &amp; GCC</p>
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-2.5">
+        <a href="https://www.linkedin.com/in/ahmed-alsharqawy-aios" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-3 py-1.5 text-xs font-bold text-slate-300 transition hover:border-cyan-400/60 hover:text-cyan-300">LinkedIn</a>
+        <a href="https://youtube.com/@ahmed-alsharqawy-aios" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-3 py-1.5 text-xs font-bold text-slate-300 transition hover:border-rose-400/60 hover:text-rose-300">YouTube</a>
+        <a href="https://www.instagram.com/ahmed.alsharqawy.aios/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-3 py-1.5 text-xs font-bold text-slate-300 transition hover:border-pink-400/60 hover:text-pink-300">Instagram</a>
+        <a href="https://www.facebook.com/ahmed.alsharqawy.aios" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-3 py-1.5 text-xs font-bold text-slate-300 transition hover:border-blue-400/60 hover:text-blue-300">Facebook</a>
+        <a href="https://www.tiktok.com/@ahmed.alsharqawy.aios" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-3 py-1.5 text-xs font-bold text-slate-300 transition hover:border-cyan-400/60 hover:text-cyan-200">TikTok</a>
+        <a href="https://x.com/Ahmed_AIOS" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-900/80 px-3 py-1.5 text-xs font-bold text-slate-300 transition hover:border-slate-400 hover:text-white">X (Twitter)</a>
+      </div>
+    </footer>
   </main>
+
+  <!-- Mobile-Only Live Leakage Sticky Bar -->
+  <div id="mobileLiveBar" class="fixed bottom-0 left-0 right-0 z-30 border-t border-slate-800/90 bg-[#060b16]/95 px-3 py-2.5 backdrop-blur-xl sm:hidden">
+    <div class="mx-auto flex max-w-md items-center justify-between gap-2">
+      <div>
+        <div class="text-[10px] font-bold text-rose-300">النزيف الشهري المقدر</div>
+        <div id="mobileLiveLeak" class="tabular-nums text-sm font-black text-white">0 ج.م</div>
+      </div>
+      <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2 text-xs font-black text-slate-950">احجز 15د مجانًا</a>
+    </div>
+  </div>
 
   <!-- Booking Link Setup / Redirect Modal (Shows only if CAL_COM_URL is not yet configured) -->
   <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
@@ -956,6 +981,8 @@
       const t = I18N[state.lang];
 
       els.monthlyLeakDisplay.textContent = formatMoney(res.totalLeakMonthly);
+      const ml = document.getElementById("mobileLiveLeak");
+      if (ml) ml.textContent = formatMoney(res.totalLeakMonthly);
       els.annualLeakDisplay.textContent = formatMoney(res.totalLeakAnnual);
       els.monthlyGainDisplay.textContent = "+" + formatMoney(res.recoverableMonthly);
       els.annualGainDisplay.textContent = "+" + formatMoney(res.recoverableAnnual);
@@ -1288,6 +1315,13 @@
     });
 
     // Initialize
+    document.querySelectorAll("[data-aud-route]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (window.location.protocol === "http:" || window.location.protocol === "https:") {
+          window.location.href = btn.dataset.audRoute;
+        }
+      });
+    });
     lucide.createIcons();
     applyPreset("clinic");
   </script>
