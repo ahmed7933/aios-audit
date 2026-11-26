@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,10 +8,12 @@
   <title>حاسبة النزيف التشغيلي | AI Operating System (AIOS) Audit</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js" onload="if(window.lucide)lucide.createIcons()"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&family=Inter:wght@500;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <style>
     :root {
       --bg-deep: #060b16;
@@ -159,7 +161,7 @@
 
       <nav class="hidden items-center gap-5 text-xs font-bold md:flex">
         <button type="button" data-nav-go="/" class="text-slate-300 transition hover:text-cyan-300" data-i18n="navHome">الرئيسية</button>
-        <button type="button" data-nav-go="/services.html" class="text-slate-300 transition hover:text-cyan-300" data-i18n="navServices">خدمات AIOS</button>
+        <button type="button" data-nav-go="/services.html" class="text-slate-300 transition hover:text-cyan-300" data-i18n="navServices">خدماتنا</button>
         <button type="button" data-nav-go="/audit.html" class="text-cyan-300 font-extrabold" data-i18n="navCalc">حاسبة النزيف</button>
         <button type="button" data-nav-go="/vault.html" class="text-slate-300 transition hover:text-cyan-300" data-i18n="navVault">خزنة الهدايا</button>
         <button type="button" data-nav-go="/contact.html" class="text-slate-300 transition hover:text-cyan-300" data-i18n="navContact">تواصل معنا</button>
@@ -178,7 +180,7 @@
         </a>
         <button type="button" id="langToggle" class="flex items-center gap-1 rounded-xl border border-slate-700/80 bg-slate-900/90 px-2.5 py-1.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/50 hover:text-cyan-300">
           <i data-lucide="globe" class="h-3.5 w-3.5"></i>
-          <span id="langToggleLabel">EN</span>
+          <span id="langToggleLabel">العربية</span>
         </button>
         <button type="button" id="unifiedMenuBtn" class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-700/80 bg-slate-900/90 text-slate-200 transition hover:border-cyan-400/50 md:hidden" aria-label="Menu" aria-expanded="false">
           <i data-lucide="menu" class="h-4 w-4"></i>
@@ -189,7 +191,7 @@
     <div id="unifiedMobileMenu" class="hidden border-t border-slate-800 bg-[#080f1f] px-4 py-3 md:hidden">
       <div class="flex flex-col gap-1.5 text-xs font-bold">
         <button type="button" data-nav-go="/" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navHome">الرئيسية</button>
-        <button type="button" data-nav-go="/services.html" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navServices">خدمات AIOS</button>
+        <button type="button" data-nav-go="/services.html" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navServices">خدماتنا</button>
         <button type="button" data-nav-go="/audit.html" class="rounded-xl bg-cyan-500/15 px-3 py-2.5 text-start text-cyan-300 font-extrabold" data-i18n="navCalc">حاسبة النزيف</button>
         <button type="button" data-nav-go="/vault.html" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navVault">خزنة الهدايا</button>
         <button type="button" data-nav-go="/about.html" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navAbout">عن أحمد</button>
@@ -538,8 +540,8 @@
           <h3 class="mb-4 text-xs font-black uppercase tracking-wider text-white" data-i18n="fColNav">التنقل</h3>
           <ul class="space-y-2.5 text-xs font-semibold text-slate-400">
             <li><button type="button" data-nav-go="/" class="transition hover:text-cyan-300" data-i18n="fHome">الرئيسية</button></li>
-            <li><button type="button" data-nav-go="/services.html" class="transition hover:text-cyan-300" data-i18n="fServices">خدمات AIOS</button></li>
-            <li><button type="button" data-nav-go="/about.html" class="transition hover:text-cyan-300" data-i18n="fAbout">عن أحمد (فلسفة AIOS)</button></li>
+            <li><button type="button" data-nav-go="/services.html" class="transition hover:text-cyan-300" data-i18n="fServices">خدماتنا</button></li>
+            <li><button type="button" data-nav-go="/about.html" class="transition hover:text-cyan-300" data-i18n="fAbout">عن أحمد الشرقاوي</button></li>
             <li><button type="button" data-nav-go="/contact.html" class="transition hover:text-cyan-300" data-i18n="fContact">تواصل معنا</button></li>
           </ul>
         </div>
@@ -549,7 +551,7 @@
           <h3 class="mb-4 text-xs font-black uppercase tracking-wider text-white" data-i18n="fColRes">الأدوات والموارد</h3>
           <ul class="space-y-2.5 text-xs font-semibold text-slate-400">
             <li><button type="button" data-nav-go="/audit.html" class="transition hover:text-cyan-300" data-i18n="fCalc">حاسبة النزيف التشغيلي</button></li>
-            <li><button type="button" data-nav-go="/vault.html" class="transition hover:text-cyan-300" data-i18n="fVault">خزنة الهدايا المجانية (8 أدوات)</button></li>
+            <li><button type="button" data-nav-go="/vault.html" class="transition hover:text-cyan-300" data-i18n="fVault">خزنة الهدايا المجانية</button></li>
             <li><a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-cyan-300 transition hover:text-cyan-200" data-i18n="fBook">احجز جلسة تشخيص 15 دقيقة</a></li>
           </ul>
         </div>
@@ -764,7 +766,7 @@
     };
 
     const state = {
-      lang: "ar",
+      lang: "en",
       currency: "EGP",
       preset: "clinic",
       leads: 350,
@@ -1142,8 +1144,8 @@
     
     // Merge Shared Navbar & Pro Footer I18N + Persist Language Across Pages
     (function mergeSharedI18N() {
-      const sAr = {"navHome": "الرئيسية", "navServices": "خدمات AIOS", "navCalc": "حاسبة النزيف", "navVault": "خزنة الهدايا", "navContact": "تواصل معنا", "navAbout": "عن أحمد", "navBook": "احجز 15د", "navBookMob": "احجز جلسة تشخيص 15 دقيقة مجانًا", "fTagline": "نحوّل المبيعات والفرق وعمليات البيزنس اليومية لماكينة تشغيل ذكية تعمل 24/7 بدون موظف واحد زيادة — الشرق الأوسط والخليج.", "fColNav": "التنقل", "fColRes": "الأدوات والموارد", "fHome": "الرئيسية", "fServices": "خدمات AIOS", "fAbout": "عن أحمد (فلسفة AIOS)", "fContact": "تواصل معنا", "fCalc": "حاسبة النزيف التشغيلي", "fVault": "خزنة الهدايا المجانية (8 أدوات)", "fBook": "احجز جلسة تشخيص 15 دقيقة", "fRights": "جميع الحقوق محفوظة."};
-      const sEn = {"navHome": "Home", "navServices": "AIOS Services", "navCalc": "Calculator", "navVault": "Free Vault", "navContact": "Contact", "navAbout": "About Ahmed", "navBook": "Book 15m", "navBookMob": "Book Free 15-Min Audit", "fTagline": "Turning sales, teams, and daily business ops into a 24/7 AI Operating System — more output, less leakage, zero extra headcount (MENA & GCC).", "fColNav": "Navigation", "fColRes": "Free Resources", "fHome": "Home", "fServices": "AIOS Services", "fAbout": "About Ahmed (Why AIOS)", "fContact": "Contact Us", "fCalc": "Operational Bleeding Calculator", "fVault": "Free AIOS Vault (8 Live Tools)", "fBook": "Book Free 15-Min Diagnostic Audit", "fRights": "All rights reserved."};
+      const sAr = {"navHome": "الرئيسية", "navServices": "خدماتنا", "navCalc": "حاسبة النزيف", "navVault": "خزنة الهدايا", "navContact": "تواصل معنا", "navAbout": "عن أحمد", "navBook": "احجز 15د", "navBookMob": "احجز جلسة تشخيص 15 دقيقة مجانًا", "fTagline": "نحوّل المبيعات والفرق وعمليات البيزنس اليومية لماكينة تشغيل ذكية تعمل 24/7 بدون موظف واحد زيادة — الشرق الأوسط والخليج.", "fColNav": "التنقل", "fColRes": "الأدوات والموارد", "fHome": "الرئيسية", "fServices": "خدماتنا", "fAbout": "عن أحمد الشرقاوي", "fContact": "تواصل معنا", "fCalc": "حاسبة النزيف التشغيلي", "fVault": "خزنة الهدايا المجانية", "fBook": "احجز جلسة تشخيص 15 دقيقة", "fRights": "جميع الحقوق محفوظة."};
+      const sEn = {"navHome": "Home", "navServices": "AIOS Services", "navCalc": "Calculator", "navVault": "Free Vault", "navContact": "Contact", "navAbout": "About Ahmed", "navBook": "Book 15m", "navBookMob": "Book Free 15-Min Audit", "fTagline": "Turning sales, teams, and daily business ops into a 24/7 AI Operating System — more output, less leakage, zero extra headcount (MENA & GCC).", "fColNav": "Navigation", "fColRes": "Free Resources", "fHome": "Home", "fServices": "AIOS Services", "fAbout": "About Ahmed (Why AIOS)", "fContact": "Contact Us", "fCalc": "Operational Bleeding Calculator", "fVault": "Free AIOS Vault", "fBook": "Book Free 15-Min Diagnostic Audit", "fRights": "All rights reserved."};
       if (typeof I18N !== "undefined" && I18N.ar && I18N.en) {
         Object.assign(I18N.ar, sAr);
         Object.assign(I18N.en, sEn);
@@ -1170,7 +1172,7 @@
       const missingKeys = Object.entries(state.unsure).filter(([, v]) => v).map(([k]) => k);
       if (state.lang === "ar") {
         const blindNote = missingKeys.length ? `\n- تنبيه: استخدم متوسطات السوق لعدم وجود تتبع دقيق (${missingKeys.join(", ")}) — يحتاج تأسيس Data OS` : "";
-        return `تقرير حاسبة النزيف التشغيلي (AIOS Audit):\n- إجمالي النزيف الشهري: ${formatMoney(r.totalLeakMonthly)}\n- الخسارة السنوية المتوقعة: ${formatMoney(r.totalLeakAnnual)}\n- نزيف المبيعات والليدز: ${formatMoney(r.salesLeakMonthly)}/شهر\n- تكلفة الشغل اليدوي: ${formatMoney(r.opsLeakMonthly)}/شهر (${Math.round(r.wastedHoursYearly)} ساعة/سنة)\n- العائد القابل للاسترداد بـ AIOS (65%): +${formatMoney(r.recoverableMonthly)}/شهر${blindNote}`;
+        return `تقرير حاسبة النزيف التشغيلي للشركات:\n- إجمالي النزيف الشهري: ${formatMoney(r.totalLeakMonthly)}\n- الخسارة السنوية المتوقعة: ${formatMoney(r.totalLeakAnnual)}\n- نزيف المبيعات والليدز: ${formatMoney(r.salesLeakMonthly)}/شهر\n- تكلفة الشغل اليدوي: ${formatMoney(r.opsLeakMonthly)}/شهر (${Math.round(r.wastedHoursYearly)} ساعة/سنة)\n- العائد القابل للاسترداد بـ AIOS (65%): +${formatMoney(r.recoverableMonthly)}/شهر${blindNote}`;
       }
       const blindNoteEn = missingKeys.length ? `\n- Flag: Used market averages (missing tracking on: ${missingKeys.join(", ")}) — needs Data OS` : "";
       return `AIOS Operational Bleeding Audit Summary:\n- Monthly Leakage: ${formatMoney(r.totalLeakMonthly)}\n- Annualized Loss: ${formatMoney(r.totalLeakAnnual)}\n- Sales Leakage: ${formatMoney(r.salesLeakMonthly)}/mo\n- Manual Ops Cost: ${formatMoney(r.opsLeakMonthly)}/mo (${Math.round(r.wastedHoursYearly)} hrs/yr)\n- Recoverable with AIOS (65%): +${formatMoney(r.recoverableMonthly)}/mo${blindNoteEn}`;
@@ -1425,8 +1427,8 @@
       });
     })();
 
-    try { const _sl = localStorage.getItem("aios_lang"); if (_sl === "en" || _sl === "ar") applyLanguage(_sl); } catch (e) {}
-    lucide.createIcons();
+    try { const _sl = localStorage.getItem("aios_lang"); applyLanguage(_sl === "ar" ? "ar" : "en"); } catch (e) {}
+    if (typeof lucide !== "undefined") lucide.createIcons(); window.addEventListener("DOMContentLoaded", () => { if (typeof lucide !== "undefined") lucide.createIcons(); });
     applyPreset("clinic");
   </script>
 </body>
