@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="data:image/png;base64,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" />
+  <link rel="apple-touch-icon" href="data:image/png;base64,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" />
+  <title>نظام فرز وتأهيل الليدز تلقائيًا 24/7 (AI Lead Qualification) | أحمد الشرقاوي (AIOS Partner)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #060b16;
+      color: #f1f5f9;
+      font-family: 'Cairo', 'Inter', system-ui, sans-serif;
+      background-image:
+        radial-gradient(circle at 15% 8%, rgba(34, 211, 238, 0.10) 0%, transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.09) 0%, transparent 42%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    p, li { line-height: 1.85; }
+    h1, h2, h3 { line-height: 1.45; }
+    .glass-card {
+      background: linear-gradient(180deg, rgba(17, 28, 51, 0.88) 0%, rgba(11, 19, 36, 0.95) 100%);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.78);
+    }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.15) 0%, rgba(37, 99, 235, 0.18) 55%, rgba(11, 19, 36, 0.97) 100%);
+      border: 1px solid rgba(34, 211, 238, 0.48);
+      box-shadow: 0 0 55px -18px rgba(34, 211, 238, 0.35);
+    }
+    pre { font-family: 'Cairo', 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-400/30 selection:text-cyan-100">
+  <!-- Unified Navbar -->
+  <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#060b16]/90 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <button type="button" data-route="/" class="flex items-center gap-2.5 text-start">
+        <img src="data:image/jpeg;base64,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" alt="Ahmed Alsharqawy" class="h-8 w-8 rounded-full border border-cyan-400/50 object-cover" />
+        <div>
+          <div class="text-sm font-extrabold text-white">Ahmed Alsharqawy</div>
+          <div class="text-[10px] font-bold text-cyan-300">AIOS Partner</div>
+        </div>
+      </button>
+      <div class="flex items-center gap-2 sm:gap-4 text-xs font-bold">
+        <button type="button" data-route="/" class="text-slate-300 transition hover:text-cyan-300">مكتبة الهدايا</button>
+        <button type="button" data-route="/services.html" class="hidden text-slate-300 transition hover:text-cyan-300 sm:inline-block">خدماتنا (AIOS)</button>
+        <button type="button" data-route="/audit.html" class="rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-3.5 py-1.5 text-xs font-black text-slate-950 transition hover:brightness-110">حاسبة النزيف</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-4xl px-4 pb-24 pt-10 sm:px-6 sm:pt-14">
+    <!-- Hero -->
+    <section class="mb-12 text-center">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-500/10 px-4 py-1 text-xs font-extrabold text-cyan-300">
+        <span>AIOS Executive Playbook • 01</span>
+        <span>•</span>
+        <span>Trigger: ليدز</span>
+      </div>
+      <h1 class="mb-4 text-2xl font-black text-white sm:text-4xl">نظام فرز وتأهيل الليدز تلقائيًا 24/7 (AI Lead Qualification)</h1>
+      <p class="mx-auto mb-8 max-w-2xl text-sm text-slate-300 sm:text-base">كيف توقف هدر 70% من وقت فريق المبيعات في رسائل «بكام؟» وتدخل لهم العملاء الجاهزين للشراء (Hot Leads) فقط خلال 30 ثانية.</p>
+      <div class="grid grid-cols-3 gap-3 sm:gap-5">
+        <div class="glass-card rounded-2xl p-4 text-center">
+          <div class="text-lg font-black text-cyan-300 sm:text-xl">70%</div>
+          <div class="mt-1 text-[11px] font-bold text-slate-400">توفير من وقت المبيعات</div>
+        </div>
+<div class="glass-card rounded-2xl p-4 text-center">
+          <div class="text-lg font-black text-cyan-300 sm:text-xl">30 ثانية</div>
+          <div class="mt-1 text-[11px] font-bold text-slate-400">زمن فرز كل عميل</div>
+        </div>
+<div class="glass-card rounded-2xl p-4 text-center">
+          <div class="text-lg font-black text-cyan-300 sm:text-xl">2.5x</div>
+          <div class="mt-1 text-[11px] font-bold text-slate-400">زيادة نسبة إغلاق الصفقات</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before vs After -->
+    <section class="mb-14 grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div class="rounded-3xl border border-rose-500/30 bg-rose-500/5 p-6">
+        <h2 class="mb-4 text-base font-black text-rose-300">❌ الطريقة اليدوية التقليدية</h2>
+        <ul class="space-y-3 text-xs text-slate-200 sm:text-sm"><li class="flex items-start gap-2"><span class="text-rose-400">✕</span><span>موظف المبيعات يرد يدويًا على 80 رسالة غير جادة يوميًا.</span></li>
+<li class="flex items-start gap-2"><span class="text-rose-400">✕</span><span>العميل الجاد ينتظر 4 ساعات وسط الزحمة فيروح للمنافس.</span></li>
+<li class="flex items-start gap-2"><span class="text-rose-400">✕</span><span>صفر تصنيف (Hot / Warm / Cold) في الـ CRM.</span></li></ul>
+      </div>
+      <div class="rounded-3xl border border-emerald-500/30 bg-emerald-500/5 p-6">
+        <h2 class="mb-4 text-base font-black text-emerald-300">✅ بنظام AIOS الذكي 24/7</h2>
+        <ul class="space-y-3 text-xs text-slate-200 sm:text-sm"><li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>طبقة AI ترد فورًا في 30 ثانية وتطرح 4 أسئلة تأهيل ذكية.</span></li>
+<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>تسجيل تلقائي للـ Hot Leads فقط في الـ CRM مع تنبيه فوري للسيلز.</span></li>
+<li class="flex items-start gap-2"><span class="text-emerald-400">✓</span><span>العملاء غير المؤهلين يستلمون عرضًا إرشاديًا بدون إشغال فريقك.</span></li></ul>
+      </div>
+    </section>
+
+    <!-- Interactive Execution Checklist with Progress Bar -->
+    <section class="mb-14">
+      <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+        <h2 class="text-lg font-black text-white sm:text-xl">خطة التنفيذ العملية (علّم على كل خطوة تخلصها)</h2>
+        <span id="progressLabel" class="rounded-full border border-cyan-400/40 bg-cyan-500/15 px-3 py-1 text-xs font-black text-cyan-300">0% مكتمل</span>
+      </div>
+      <div class="mb-5 h-2 w-full overflow-hidden rounded-full bg-slate-800">
+        <div id="progressBar" class="h-full w-0 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300"></div>
+      </div>
+      <div class="space-y-3" id="checklistWrap">
+        <label class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4 transition hover:border-cyan-400/40">
+          <input type="checkbox" data-step-idx="0" class="step-check mt-1 h-4 w-4 shrink-0 accent-cyan-400" />
+          <span class="text-xs leading-relaxed text-slate-200 sm:text-sm"><strong class="text-cyan-300">الخطوة 1:</strong> حدّد شروط الـ Hot Lead في شركتك (الحد الأدنى للميزانية، نوع الخدمة، وصاحب القرار).</span>
+        </label>
+<label class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4 transition hover:border-cyan-400/40">
+          <input type="checkbox" data-step-idx="1" class="step-check mt-1 h-4 w-4 shrink-0 accent-cyan-400" />
+          <span class="text-xs leading-relaxed text-slate-200 sm:text-sm"><strong class="text-cyan-300">الخطوة 2:</strong> صغ 4 أسئلة تأهيل قصيرة وطبيعية بلهجة شركتك (النسخة الجاهزة تحت).</span>
+        </label>
+<label class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4 transition hover:border-cyan-400/40">
+          <input type="checkbox" data-step-idx="2" class="step-check mt-1 h-4 w-4 shrink-0 accent-cyan-400" />
+          <span class="text-xs leading-relaxed text-slate-200 sm:text-sm"><strong class="text-cyan-300">الخطوة 3:</strong> اربط واتساب / إنستغرام بـ n8n Webhook لاستقبال الرسالة الأولى تلقائيًا.</span>
+        </label>
+<label class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4 transition hover:border-cyan-400/40">
+          <input type="checkbox" data-step-idx="3" class="step-check mt-1 h-4 w-4 shrink-0 accent-cyan-400" />
+          <span class="text-xs leading-relaxed text-slate-200 sm:text-sm"><strong class="text-cyan-300">الخطوة 4:</strong> أضف عقدة AI Agent بالـ System Prompt المرفق لتصنيف العميل (Hot / Warm / Cold).</span>
+        </label>
+<label class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4 transition hover:border-cyan-400/40">
+          <input type="checkbox" data-step-idx="4" class="step-check mt-1 h-4 w-4 shrink-0 accent-cyan-400" />
+          <span class="text-xs leading-relaxed text-slate-200 sm:text-sm"><strong class="text-cyan-300">الخطوة 5:</strong> وجّه الـ Hot Leads مباشرة لرابط الحجز أو إشعار فوري لمسؤول المبيعات على واتساب/Slack.</span>
+        </label>
+<label class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4 transition hover:border-cyan-400/40">
+          <input type="checkbox" data-step-idx="5" class="step-check mt-1 h-4 w-4 shrink-0 accent-cyan-400" />
+          <span class="text-xs leading-relaxed text-slate-200 sm:text-sm"><strong class="text-cyan-300">الخطوة 6:</strong> اختبر النظام بـ 5 سيناريوهات مختلفة (عميل مستعجل، باحث عن سعر فقط، استفسار عام).</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Plug-and-Play Copyable Assets + Instant Download -->
+    <section class="mb-14">
+      <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+        <h2 class="text-lg font-black text-white sm:text-xl">خزنة الأصول والبرومبتات الجاهزة للنسخ</h2>
+        <button type="button" id="downloadFileBtn" class="inline-flex items-center gap-2 rounded-xl border border-emerald-400/45 bg-emerald-500/15 px-4 py-2 text-xs font-extrabold text-emerald-200 transition hover:bg-emerald-500/25">
+          <i data-lucide="download" class="h-4 w-4"></i>
+          <span>تحميل قالب n8n Workflow جاهز للاستيراد (.json)</span>
+        </button>
+      </div>
+      <div class="space-y-5">
+        <div class="glass-card rounded-2xl p-5 sm:p-6">
+          <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="mb-1 inline-block rounded-full border border-cyan-400/35 bg-cyan-500/10 px-2.5 py-0.5 text-[10px] font-extrabold text-cyan-300">جاهز للنسخ في n8n / OpenAI</span>
+              <h3 class="text-sm font-black text-white sm:text-base">برومبت نظام الفرز والتأهيل الجاهز (AI Qualification System Prompt)</h3>
+            </div>
+            <button type="button" data-copy-idx="0" class="copy-asset-btn inline-flex items-center gap-1.5 rounded-xl border border-cyan-400/40 bg-cyan-500/15 px-3.5 py-2 text-xs font-extrabold text-cyan-200 transition hover:bg-cyan-500/25">
+              <i data-lucide="copy" class="h-3.5 w-3.5"></i>
+              <span>نسخ جاهز</span>
+            </button>
+          </div>
+          <pre id="assetText0" class="overflow-x-auto whitespace-pre-wrap rounded-xl border border-slate-800 bg-[#060b16]/90 p-4 text-xs leading-loose text-slate-200 sm:text-sm">أنت مساعد تأهيل مبيعات ذكي لشركة [اسم شركتك]. هدفك الرد بلهجة عربية محترمة وودودة (مصرية/خليجية واضحة)، والإجابة باختصار على سؤال العميل، ثم طرح سؤال واحد فقط في كل رسالة لمعرفة:
+1. نوع الخدمة أو المشكلة التي يريد حلها بالضبط.
+2. حجم الشركة أو عدد الفروع/الموظفين (إن وجد).
+3. متى يريد البدء بالتنفيذ (هذا الأسبوع / هذا الشهر / استكشاف فقط).
+4. هل هو صاحب القرار النهائي.
+
+قواعد صارمة:
+- لا ترسل رسائل طويلة (بحد أقصى 3 سطور في الرد).
+- لا تخترع أي أسعار غير موجودة في قاعدة البيانات.
+- بمجرد اكتمال الـ 4 نقاط، صنّف العميل في JSON داخلي كـ HOT أو WARM أو COLD، وإذا كان HOT أرسل له رابط الحجز المباشر فورًا.</pre>
+        </div>
+<div class="glass-card rounded-2xl p-5 sm:p-6">
+          <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="mb-1 inline-block rounded-full border border-cyan-400/35 bg-cyan-500/10 px-2.5 py-0.5 text-[10px] font-extrabold text-cyan-300">سكريبت واتساب مجرّب</span>
+              <h3 class="text-sm font-black text-white sm:text-base">قالب الرد الذكي على سؤال «بكام؟» بدون ما تخسر العميل</h3>
+            </div>
+            <button type="button" data-copy-idx="1" class="copy-asset-btn inline-flex items-center gap-1.5 rounded-xl border border-cyan-400/40 bg-cyan-500/15 px-3.5 py-2 text-xs font-extrabold text-cyan-200 transition hover:bg-cyan-500/25">
+              <i data-lucide="copy" class="h-3.5 w-3.5"></i>
+              <span>نسخ جاهز</span>
+            </button>
+          </div>
+          <pre id="assetText1" class="overflow-x-auto whitespace-pre-wrap rounded-xl border border-slate-800 bg-[#060b16]/90 p-4 text-xs leading-loose text-slate-200 sm:text-sm">أهلاً بك يا [الاسم] 👋
+التكلفة بتعتمد على حجم احتياجك عشان مدفعكش جنيه زيادة عن اللي محتاجه فعلًا.
+عشان أديك رقم دقيق في 30 ثانية: هل الخدمة لـ [الخيار أ] ولا [الخيار ب]؟ وعدد [الفروع/الموظفين] عندكم تقريبًا كام؟</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Fatal Mistakes -->
+    <section class="mb-14">
+      <h2 class="mb-5 text-lg font-black text-white sm:text-xl">3 أخطاء قاتلة تجنّبها أثناء التنفيذ</h2>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3 rounded-2xl border border-rose-500/25 bg-rose-500/5 p-4">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-rose-500/20 text-xs font-black text-rose-300">1</span>
+          <p class="text-xs leading-relaxed text-slate-200 sm:text-sm">إرسال الـ 4 أسئلة في رسالة واحدة طويلة (العميل بيقفل الشات فورًا — اسأل سؤال واحد كل مرة).</p>
+        </div>
+<div class="flex items-start gap-3 rounded-2xl border border-rose-500/25 bg-rose-500/5 p-4">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-rose-500/20 text-xs font-black text-rose-300">2</span>
+          <p class="text-xs leading-relaxed text-slate-200 sm:text-sm">استخدام لغة روبوتية جافة بدل اللهجة اليومية المحترمة اللي عميلك متعود عليها.</p>
+        </div>
+<div class="flex items-start gap-3 rounded-2xl border border-rose-500/25 bg-rose-500/5 p-4">
+          <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-rose-500/20 text-xs font-black text-rose-300">3</span>
+          <p class="text-xs leading-relaxed text-slate-200 sm:text-sm">إهمال ربط نتيجة الفرز بـ CRM أو Google Sheet عشان تعرف نسبة الـ Hot Leads الحقيقية كل أسبوع.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mandatory Funnel Bridge: Calculator Primary + Services/Cal.com Secondary -->
+    <section class="cta-box rounded-3xl p-7 text-center sm:p-9">
+      <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-rose-400/40 bg-rose-500/15 px-3.5 py-1 text-xs font-extrabold text-rose-300">
+        الخطوة التالية الأهم (60 ثانية مجانًا)
+      </div>
+      <h2 class="mb-3 text-xl font-black text-white sm:text-2xl">
+        عايز تعرف شركتك بتخسر كام شهريًا بالظبط من الاختناق ده؟
+      </h2>
+      <p class="mx-auto mb-6 max-w-xl text-xs text-slate-200 sm:text-sm">
+        الأدلة العملية بداية ممتازة، لكن الخطوة اللي بتغيّر النتيجة فعليًا هي معرفة رقم النزيف الحقيقي لشركتك عشان نحدد أعلى 3 أنظمة AIOS تحققلك أسرع عائد.
+      </p>
+      <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <button type="button" data-route="/audit.html" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-7 py-4 text-sm font-black text-slate-950 transition hover:brightness-110 sm:w-auto sm:text-base">
+          <i data-lucide="calculator" class="h-5 w-5"></i>
+          <span>احسب نزيف شركتك الآن مجانًا (60 ثانية)</span>
+        </button>
+        <button type="button" data-route="/services.html" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-600 bg-slate-900/80 px-5 py-4 text-xs font-bold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300 sm:w-auto sm:text-sm">
+          <span>شوف نظام AIOS قبل وبعد</span>
+        </button>
+      </div>
+      <div class="mt-4">
+        <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-cyan-300 underline decoration-cyan-400/40 underline-offset-4 hover:text-cyan-200">
+          عارف اختناقك بالفعل؟ احجز جلسة تشخيص AIOS المجانية (15 دقيقة) مباشرة ←
+        </a>
+      </div>
+    </section>
+
+    <footer class="mt-12 border-t border-slate-800/80 pt-6 text-center text-xs text-slate-500">
+      Ahmed Alsharqawy — AI Operating System (AIOS) Partner • MENA &amp; GCC
+    </footer>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="pointer-events-none fixed bottom-5 left-1/2 z-50 -translate-x-1/2 translate-y-4 rounded-xl border border-cyan-400/40 bg-slate-900/95 px-4 py-2.5 text-xs font-bold text-cyan-200 opacity-0 shadow-2xl transition-all duration-300">
+    تم النسخ بنجاح!
+  </div>
+
+  <script>
+    const STORAGE_KEY = "aios_playbook_leads_v1";
+    const DOWNLOAD_DATA = {"filename": "AIOS_Lead_Qualification_n8n_Workflow.json", "content": "{\n  \"name\": \"AIOS - 24/7 AI Lead Qualification Blueprint\",\n  \"nodes\": [\n    {\n      \"id\": \"1\",\n      \"name\": \"Inbound Lead Webhook\",\n      \"type\": \"n8n-nodes-base.webhook\",\n      \"typeVersion\": 2.1,\n      \"position\": [\n        -400,\n        200\n      ],\n      \"parameters\": {\n        \"httpMethod\": \"POST\",\n        \"path\": \"aios-lead-qualify\"\n      }\n    },\n    {\n      \"id\": \"2\",\n      \"name\": \"AI Lead Qualifier (4 Questions)\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        -140,\n        200\n      ],\n      \"parameters\": {\n        \"jsCode\": \"// Score inbound lead by urgency, budget, and decision maker\\nconst d = $input.first().json.body || $input.first().json;\\nconst score = (d.budget_ok ? 4 : 0) + (d.urgent ? 3 : 0) + (d.decision_maker ? 3 : 0);\\nreturn [{ json: { ...d, lead_score: score, tier: score >= 7 ? 'HOT' : (score >= 4 ? 'WARM' : 'COLD') } }];\"\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"name\": \"Is HOT Lead?\",\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 2.2,\n      \"position\": [\n        120,\n        200\n      ],\n      \"parameters\": {\n        \"conditions\": {\n          \"conditions\": [\n            {\n              \"leftValue\": \"={{ $json.tier }}\",\n              \"rightValue\": \"HOT\",\n              \"operator\": {\n                \"type\": \"string\",\n                \"operation\": \"equals\"\n              }\n            }\n          ],\n          \"combinator\": \"and\"\n        }\n      }\n    },\n    {\n      \"id\": \"4\",\n      \"name\": \"Log HOT Lead to CRM Sheet\",\n      \"type\": \"n8n-nodes-base.googleSheets\",\n      \"typeVersion\": 4.5,\n      \"position\": [\n        380,\n        120\n      ],\n      \"parameters\": {\n        \"operation\": \"append\"\n      }\n    }\n  ],\n  \"connections\": {\n    \"Inbound Lead Webhook\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"AI Lead Qualifier (4 Questions)\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"AI Lead Qualifier (4 Questions)\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Is HOT Lead?\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Is HOT Lead?\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Log HOT Lead to CRM Sheet\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ],\n        []\n      ]\n    }\n  }\n}"};
+
+    const toastEl = document.getElementById("toast");
+    function showToast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.remove("opacity-0", "translate-y-4");
+      toastEl.classList.add("opacity-100", "translate-y-0");
+      clearTimeout(window._tTimer);
+      window._tTimer = setTimeout(() => {
+        toastEl.classList.add("opacity-0", "translate-y-4");
+        toastEl.classList.remove("opacity-100", "translate-y-0");
+      }, 2400);
+    }
+
+    // Interactive Checklist + Progress
+    const checks = Array.from(document.querySelectorAll(".step-check"));
+    const pBar = document.getElementById("progressBar");
+    const pLbl = document.getElementById("progressLabel");
+
+    function updateProgress() {
+      const done = checks.filter(c => c.checked).length;
+      const pct = checks.length ? Math.round((done / checks.length) * 100) : 0;
+      pBar.style.width = pct + "%";
+      pLbl.textContent = pct + "% مكتمل";
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(checks.map(c => c.checked)));
+      } catch (e) {}
+    }
+
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      checks.forEach((c, i) => { if (saved[i]) c.checked = true; });
+    } catch (e) {}
+    checks.forEach(c => c.addEventListener("change", updateProgress));
+    updateProgress();
+
+    // Copy buttons
+    document.querySelectorAll(".copy-asset-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const el = document.getElementById("assetText" + btn.dataset.copyIdx);
+        if (!el) return;
+        const text = el.textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => showToast("تم نسخ النص بنجاح — الصقه مباشرة في شغلك!")).catch(() => fallbackCopy(text));
+        } else {
+          fallbackCopy(text);
+        }
+      });
+    });
+
+    function fallbackCopy(text) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      showToast("تم نسخ النص بنجاح!");
+    }
+
+    // Instant Blob Download
+    document.getElementById("downloadFileBtn").addEventListener("click", () => {
+      const blob = new Blob([DOWNLOAD_DATA.content], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = DOWNLOAD_DATA.filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("جاري تحميل الملف: " + DOWNLOAD_DATA.filename);
+    });
+
+    // Clean routing on live Vercel site
+    document.querySelectorAll("[data-route]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (window.location.protocol === "http:" || window.location.protocol === "https:") {
+          window.location.href = btn.dataset.route;
+        } else {
+          showToast("على موقعك الحي سينقلك إلى: " + btn.dataset.route);
+        }
+      });
+    });
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
