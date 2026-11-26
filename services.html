@@ -5,1035 +5,683 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="data:image/png;base64,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" />
   <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAY0UlEQVR42uWbWbBlZ3men39aa+21pzP23BK0JjCi3SAxCQEGGxMoxoQ4TqVIyslVLuL7pHKRqtykfJdyJXElTlJFUpTtxAIZF7IJSFgOGGGBEJqQWq2h5zPuee81/EMu1tr7nBatHpichFO165yzz6m11//+3/d+7/d+/4Jf8C/x8/ywE0/thhv5v5feuiL+vwDgRhf8NwmI+HkuOv17H8K7Eq0NSgp2d7eJkxQZN5nkFuc9AMmfPPpzA0P8LBeeffJ9CCE42GmgXM7W9iatZovJdEocxxR5xlq3TZCarUlAxSm5LQnBI4Soby8QfekvfmZAiJ/2wrNPvr++eUBKVqNASzs2+iP64xlaK8aTCcudDp1mg83tHUprsc7TOfBGQtxC2zFCKgACobrNUH1M9KVv/FSBED+txWefeF91QSEQQqC0phFyjq60mGU5l/pDCIEkiriwsUGr1cKWJc47irIkm85IOmuE9CBLDRAiEAJUWApCCFU8hOr9+MFv/FRAED/xwj/5vsWlhBR10Aqa0hKHnEbaZDAcsjMaUVpHaS3eB5ppyng6pSwtURQRfKDVbOJVSqvRQMUR1oca0EUAVFERAqF+I/7STwaE+El3XUhZ7ZIQVNEqkALaYco0nzEYTwFBYR0iBDqJ5tj6Ghd3BzSN5PhqG601Zy7vcKk/xiOJG12USYibKUIIpBAE5iDsLX7+FX3xkR8bBPGT7LxAIKTcC30gCIFRksn2ObI8xyFoasmpE0e5567buPeOY6y0Gvzw5Qu0DZw4vMx4MuOHF7Z5/MxFHvzOs0xkiyjt0l09gAkzELLe+nr3CQgEIfjFvZkHHv6xQBA3u/jpx9+LlLIKeSEWITr/HQFSasR0l+3tDZYbMb/727/Je95xD52Vg4x3Npj1ttDGMN7dIsumbOwO2RzM6M8K/vKZl3nwey9SLp9gZXmFZhjhkXv5T2DBi3XZnEdHCIH4iw/fFAjyphb/iffWi5wvXNYQVu9Rv6ckdNsphMC//ief4ZO//gFU3GCa55Q+4IWmdIEgwDuPCAFrLc47Tt5xB/efPIUVMU5qqmIoriBYKQVSSIRU1T3UqSGEIPv0r9yUCJM/1uLrm5GyWrCQEqUkUkqkVMjgOXtpgw/fezcfv/9t7A7H4C2UM+JGgkliZAgkrSWSVpdWu8tKt0PDSJSUHL37g6goRhUjUKbGdz/wVdTJ+c9SMKdfKSX5TYAgbzTnF+gvBMqV78+BQIBSktXlZX7pxHG00QC0Wm2Wj91G0j2MijqgGlhnGM4Ep3uOH/YsfRchdUzjDadIDt+OD6CkQEqJkKJesCSwB0a1IWLBQfN7ulE5rm8kTCYfvw8pRYXXvgjYDwBUN+gBajAG0xxfZqRLXZ481+Pr/+NRyvGQI03NbcsNtBL82Q/O8OC3nySzlnYj5ujB4xy4o0tr/Th267nqs6Ss8l3sy7j6F+E9SAnew5wr8JR/+0NXEONNAzBHbvyxd4MQhFCTXZgHwOKHRTogBBKBlxInNBe3dnAu8MA3vs+ff+t7jHYuIW3J6NAB3vRr72U0GnDx0gXe2Im4+8TtxLHh/O6U2WiHZiOlT0AoifAgVJXrgYr85p8uBAQf9ig9VFwQgOIzHyL64sOceGo3vB4pymstfvSxdy9Kjqjl6EKa7svJQPUStQaolJtAKM0rG0OKYY/Pvf8k973lLprG0DKSN99xOw0V09vtEXSDx871+NozZ5lOhhyYnCVWGuvdvnK1xz8V9yyosdIiUi7Icl4RAPLPfOiaqXDNFJhfJNRQCyH3cUH1oVLWabEXm0gp8EKz0RvSbjdYTwIPfP2veKU3pRUCtx5ex3hIVMTxA6tkXqFFwKsEQaC59QR3tu/lyC23cmGwA7h68RX8MkAVA3tSed57EABfiaX9XHDDKTBHaudXTyGlQhtzxYXCvu/iR4gQpJSEEEhbLaJGAFeytpTy6fvfxqg/wgvFfe88iTCGZppwbH2NRqRZb7dot1KEFJztTRkeOcr0Qsq5/mbN9LLekID3do8EQ1gIokoxSrz0SC9rzRDIP/1B4i89ctVUeN0IyEZ9lI7wSYMkbS4WLfctvAqQK8lQScmosHzqrsP8+luOIrXh1NvfTjb1zKYZcZwgbE7UWSOIc7Raq7hyyvGDB2m3OwzGQ5plTLJ6iAvNVZw7g4li9sdvkGqPiINHEggefKgTVAiCCOCvL/fk1XZf//2PkGcTskmf2XAXZy34sE/z1GmgZK39xRXVIDaG05d3OQC0Okv4uEt05DZa68d47vHv8uxzL/HQlx/iO089xzOvXmSrP+apMy/R64+wQeCTNXyjQ7/0SClR2iw0hpIKKRVCqop7gqjLYk1L842pwahYE7JPXV0bXJUEq/qr6q7LY8sS690i1AK8RpRIhJA1LwgaWnFmYjkTEiIhKFwA53jx+9/l3MYmSWeNh594nr988RWePn+erUnOpeGM773wPL1+n5n1jGc5mQsoJevwlvskuKz7g7oXqX8PYo+PFr1J7Sm8toG6JgB7qqsqObbIa5dG7hMdYp/+r1WhrIGQFVl++dlz7I5n2HzC8NyLvPD8cxw8cQKWu6h2E+Pg9vV1JqVlo4AnL21zdvMS3s4I/cvExiCkRtU7XkmMShhJUQukGniEqqrPPBQQi4gQiBq8awCwqPsffUclOkJYaH0ffFVr59VA1q+FNt+3cKlAKqIoYmec8erlHiFYBv0tgpY8eWGL3VfP8c61Vd53+x2cvOU4J9ZWyQZjtJI0WynWFexefpWdrZdppC20iVBKo5Tek9tSVbleuyZCSqTSCCmqMlj7EvP7DFw9DX4EljfffQofHD74udRYUP8ijMLe7st9QCyaIaWJTMTMwdPndhmOJiDh9jtuYfvVl3nsse9z7F2nuP2j93Pne+/l4NoBQmE5cXAJj2BUSvrjPkZCHCdoozHGoLVB66gGnBp0VUdmFe+CPU56rWwPhOuXwchEuLLcd/Gq/nJFV3alBBaCWhNolNZIpdBKY4EvPP4yt65EnDpxiBXR4aP3n6KTHqMxUAxOn4XdIXpzynvuvRvrJ/RnU7ZlwbR/mWYzhSDQzmGlQ0qBcw4hwDkQwiOo2N97iRCOIPanQUDUJo1YbNx1APj2o1/DO0vSaBKoUkDUoXXlTu8jm5oEldZopVBKo40hMobCC772ww3esNZCYTl8cJ2llS5PP/48X/nOE5zu7fLm2w9xTC4zLTxBN9kuImJTYFSCD+CsRVi72FnqLfFzsTNXwkIiRADhEUHgwx4JLqrC1ThgnhPn3n6UbDqiLHJAoKMYEzfQUYxS6rU6cR9h7iMnqdDaVCFrDK005oWh5OGnz6KlIPclO71t2qsxx+48xPGjK9x5aAVBQMVLnBlqtqJ10kZKI03RxmDiGB1FSK2RsuIBJSughZQL+3yR+WIes2Fxn6H+efbJ919Z8vcvyUTxvnIRUFJhkmSRDrxOKyyFWjC/VAqlKwVpTISJIrLCsTHo882nXuJtb72Lwysd4rjJfSolkYphaZl4xdPbMzYmnvZawjf/6tu8//77EXJGUdq6PPvq/urv0nu8AKlUpRCdfV3Da9Esi2ukgFQKH65sdqRSdRmSC/NhLxTrf5MVCPNKIFUtWowhaTQ4//IzHD61xOH1Lr/7h1/lA/eeJNGGF18+z8uXNtgcTdmYBkqV8iu/dAe7SnD5pWf5/pE7uPeuW2A8wDuHkgon3eJe5spM7O9d5q86JcAvrLS5lH5dAJwPew2PlIhF2Ic9Alzk2l45klKjlMIYQxRFxHGjigCt6W9eZjbs0etLPvLp+xmMJnzh4W9y+uI20yzHWoeQmqPra7zreJd2GDDceJaGHfLCmTNkrSPcuyxJGw2yyhygqEWQDwHv6iwPiiArrRJCeUWazmcJ122GlNYIWbG4lBqtzeIyPgTUXtONlILZZMR0MsLoCG0M2kR1BCi6S8sstdsU2QwTRQzHE/Ig+LX3vJVjKy0e+s5z/PXzrzKazjiy0uXQapdUO2w5Irv8EiFYknyHs5d3mDz/LLceP4qbDclHPZwP+BBw1uFciXduscveV/I5StLaLA3zYL6iTX4dAAxSa5SO9lrexWvRbS9azcl4wPbFsyilcM4SgHZ7idX1w0TLy3hbghDEUcQLZy8wHg3RjRZvuPUon1CaW9c6nD53icIGkiRCSoWzBRu9PkiNKUYUIWe4u8UzWxcQSQsbAmF4Gaa9aiOUrsTXnJ+8Rycp64dvqclwnwwWP5IBry2DtbVFpabm1tNiOvOasPLOE4IjoFheXefWN96JkhrvPWmaUlpLCJDEEWde7fH0c2c4efedKKVY6qS88dhBpDZs7PQonaW0jt3JlN5oTNpIUVowGV5CRxHJdICbTIjTZfJb3wGuQPZexU928GWGCKC0wtcCyAcPgTo6wHvHZLALBNLXA0DsMz0Q1ZBjTwGKhf3kvEVKRbPZovWGO1laXqXVWaLV7nLpwlnKogBxAB8qh0hpzcY456tPnObNbzzGpCgpioLgPLFSpHGE9ZrLO31G40lFsqZBp91mPN5AuBKpDB6LyPpEuy+hlSRqtnDtJWw2xs2GFJM+eEsIMUWeL2YJUimCd8zGfaTS1xZCYl+oCELVVweBEFWZkcbQ6XRpJAlmbYVIGZy3DAeDKoSdxbmyalDwKKXxZUlkNP/hz77LsSNH+Ox9b0I4S1GWFKVlqd3CKMnFrV1kFHNme0Jr9Qitdpd4tIEQoE1ECA6pIkQooHQIn6FNQqIF5W3vhsJiz/8AP96kKIqqNZKSSCpsWeC9uz4Ae4wZFkgIUZFLHMUcOXwErTWNJGF7c4NxUbCytrbwA8sir4adwdcgBIqiREpNYS3/6guP8INXNvn0u+5ERzGH1iMOri/zzJlznN4Y8t1XNhkXnmPdZZKkQbORUDqPCBZtooVLrFRFvDbPEEmLWe8SqxEU93yczTNP4HZeQMRNVAj44JlNhvUk6Sok+NJbV8SJp3bDysNP0v/wPfW6ZQVBmIe958D6AdrtLpcvnkOtrNFstji/8wqra+skSUpZFLiyRKdNvHMQPEpGICRSG+IoxijBH/3vp/mTx55jOY1oRFUbe2Frl93RBCUlK8urNJptvPcYSd3qKlQdylpHGKOx1tJImxS2xIx3aKwfYKu3jT18kjA4S7AF0sSUeUaZTYnihKN/ffaK0Zm8mhcg9k1hQwg450gbKWur64yHA9K0yfbmZbTWaK3p9XpEcURZlkxnU7Q2CKnIZlNOv/A058++hBCCpJHinKMVa6QQbAzGnL64w3NnLzPNSxpxhFaC7vIajUY1GZ6Mdtk8/wKTwTa2LFBKkTYac5+atNkkmwxJm002p5Zw/klajYTiyClEXk2m89kYISUmaV7fENlrHvZ+d85x6OChup4GyrJEG0Ovt0vabDOdjJlMJkglKYqMWTbjheee5InHv8nZV86QFxmj0QBjYpQ21dTYWRQQaUkaG6LIUBQ5UZTQanfIshlRHBEnaTVez6eMBjt4V50nmE7HpGlzIYuzLIPxNke6TezueeyhuwlxG2/zavcbrUrOXw8A8Zo/eu9I05SV1VWmsynBB6LIIIVgNp0uJPR4NEAphS0tu9ubTCZT7nzzKd70lnswJqYsC5xzRHEDa8va3ZF15xhVpCUEabNVeQBaMRmP2d66TLPZobu0zsrqIbpLqxRFDgSazSbWWhABrQSrawcYjoZ0JxeRUUx54E7cpF/xV9K8Ypz+IwDMc6L71cdZtDxC4J1jaWkZgaAsS/IiJ8/z2oVROO8QQuK8ZzbLkFKysnqAY7ecYGVlrVaTlYiQSpOmrZpsPUoptNZYW9a7H5M220ipMCZmNOxXx2hcibMFUkq00pRFTlx3qEWeYUxMu73EaDyi00oRxRS2XsGt3UFRZFU3ayLWH332R0bn8uoDEeryV53W6nS6WGeRVGZpkedMJhMAbGmrQYjzjEcDojhGa02RZ9iyWJzuiJKEVqdL0kgXOz6vOlmW1W6Podls42sDdnd3CyEgihvESUoUxURxRFHkaF3xyHgyRCvFcNjHGMNg0MPnY1rTy/i4gzMtojh5XWv86gDUBOiDx5iIJEmYTSaVwCFgtIEQGI0GlLbEh8BkPKxLYEwcJ4tkCsFVC2t16XaWkFIRJym2LAn1uQDr7MI/MCbCe0+e50wnIxppk3Z7iVarQ5zEaKUoy7waexUF3jmybIaQEmstRkfgHUXvEtgCtXILWuu9+eG1AJiHRvuhxyqryflFvnvvKJ0lyzLKsqyGIEoxHPZw1lKUOVJKTJTUf5OLExxxnJAkDaIoQkqB1mbR24fgUfWIrdFIq0ZMSEajAc46VlYPkTZbGF27w0JS5HkNUkaeZcSNJsaY6h5tgQA6ssT4Arl0GEmg/ZVvXfXkiL7W4ZkQAlEUA9Vi4zhBBJhNJ5S2xDlHWeRkWYaqGVZrg7UlSlUegveeKIoXFrvRuvYPFX7f8DOEQJq2FgOXQX+HZqtDu7OEkALvPUkUY21JnmdorRkN+0hd6QPvHEnSqPc0MHUSm03RUUq4mQMSc4RaX3mMQMCYakFlWULwlQpMm6SNJkmSYEzMrK6z3vuFT6C1piznQAiSpFE1R7XxKmqD07kqErQ2REmC9w5rLcNBj/WDR6pZo68dICmZzWZ47/AhMB6PSJKUOI5J0yYCSVlkDAc9JqMhctbHxSt0v/6D1z03dM3psJSSdrOJs2Wl27MM7yzBe7yvbjpppIzHg8oFdpaWiQghkOcZUZxUnp1zyBoQKSXaGKRUWGuvsNMjEyOEZDjooXREu93FWlv3+NWkajweAVSlMDjW1w+TZTPG0xG2LOuSl6KCIEy3KcWPcURmURL//HFmeUZWL3w+iCjKglk2YTadQAjV4m1Zd16SyWSCta6WrvU4zfsFuUlVmS0V21djr8pRigAYDHZZWlolhEBZFviawPI8J8+mSCHJsxntzhJZNqPIpxhdTbHjpIF3lmw2JVcJx/7771/z1Ji83qnsyX99kCiOaq8woJQmbbZotTpEcVwTnsaWVVkr8pzpdIIxGmct1rmKK8qycmyCr0m0SpkQ/OKMQVEWWFuSzWY00rQyWWozwznHbDbFlTlCVPPLRCoawuFRlGVBs9lGConWmtbqYW75n39w3SNzN3RG6OK//TyHf/tz2KKskM0yQqjKobMOIUsQFTkmjXZloYsqx6219Qx/z5T0tgLLew/CV2WVQFlayjKvI0lTFFWJDb5Ku7LIwTucD6QK/s1v/QbDrU02rSTLpvzHR76DUgplIsQfP3RD5x/ljT6o4J1DCoiiiGazSRzHOOcq/83EJEmTIp9VXoBUeOdxzi38Ou99xeBFQWld5TPWETAfc6XNJrNpRaiq9hZsWXl+ZZHjyhxblhgBv/OPPsYvH4y5+7Y1fvM9b2VJAt5homgxybqRA5PXPSc4v8DGv/tCfXq7ul5VFmMQAutsPU6H6XRcl1BPWRY1g3ucsxRlgXe2OhTp7BW9ua8nmtPJGKVNPe7yBALOVlLY2QJvc37nn/4G7z55F0NjmE1HjPOCE8eO0TK6qt8PPHLDp0Vv6KTo/EKbv/cH9YL2SE2raigyn9nls/GCuZ0tKfIpzpYE7xby2LmyIsD9HWjwWGeZzSpLzJYl1pbYIqcoZkg8o+GQf/CBe/hbv3wXO9MCX5Z0V9e4uLPJv3/oYTKhsH/01Zs6KntDHLDfNNn5/T+uDj7+w0/gaxAqpq8GlUWWUWYTtPB4ZynzGTiLMhG2yPFqTn5hca5n7sCWRdUUNdtLOOcosmntLME0zzm81OTv/up7GM5yIiXR3WU6psEPTj/Ds//pwR/rsPQNA7AfBIDx57+M+DsfJJtVJUjXQ5RZnrGxdZlIV7W+tA4hAstLqzhn0SapHeXa01eaosgxcUJZ5uT5FCEUeT6rBJYQaCkZ9Hv84898kFuOH+PS1i7D3oRO5jgzk/zLz/3zn89x+asdPx1+6CRZNiEyEThLKkvuvf04zTgiiWOWWg2WOy1WO02+/NQlXh1YjIKiKCjyDCEEZVlQFAVxkjKdDGi1l3GupL+zSbPVJY6rJujk7W+g8DCYzBhnJZGEjf/8pZ/vAxOvB8T0w6cY93f47Dvv4rc+ch+ry20azRRlDJHRbO/2+Gef/xa7k4LIaLwP1SSqBuDsKy9y6PAxmq0O2mguXzxPd2mFOE7qqQ9Ms6walQP5F77yU3lkRv8kAOxPifR/fZ8U6PyLz9JZP0C6vIQVCiskaRrx/IvbXOpPSWOz4IDgHT7AxuWLHDh4hHZ3eeHlV2XTolTVdAGo4JntW/jf+ENT13ts7k9/+IekRmHw/N6ffov/9ujTdNOkOm8oJVEcM5tOyYuCpeVlertbDAd9kkYTrQ1FnrN+4BD9//LA/72Pzd3Mg5PFpz5AJ02oTxxijKEoCvLZhO3tyzjnieIGK3/xzP97D07eLBg3m2o/q3v8hX94+hf+6/8AlB8aPy/mjxYAAAAASUVORK5CYII=" />
-  <title>خدمات نظام AIOS | أحمد الشرقاوي — AI Operating System Partner</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js" onload="if(window.lucide)lucide.createIcons()"></script>
+  <title>AIOS Services | Ahmed Alsharqawy — AI Operating System Partner</title>
+  <!-- ZERO RENDER-BLOCKING EXTERNAL SCRIPTS! Instant 0.1s Paint Worldwide -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&family=Inter:wght@500;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg-deep: #060b16;
-      --bg-card: #0c1425;
-      --accent-cyan: #22d3ee;
-      --accent-blue: #3b82f6;
-      --accent-rose: #f43f5e;
-      --accent-emerald: #10b981;
+      --bg: #060b16; --card: #0c1528; --border: rgba(148,163,184,0.16);
+      --cyan: #22d3ee; --blue: #3b82f6; --rose: #fb7185; --emerald: #34d399;
+      --text: #f1f5f9; --muted: #94a3b8;
     }
-
+    html { scroll-behavior: smooth; }
     body {
-      background-color: var(--bg-deep);
-      color: #f1f5f9;
-      font-family: 'Cairo', 'Inter', system-ui, -apple-system, sans-serif;
-      background-image:
-        radial-gradient(circle at 15% 8%, rgba(34, 211, 238, 0.11) 0%, transparent 40%),
-        radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.10) 0%, transparent 42%),
-        radial-gradient(circle at 50% 88%, rgba(16, 185, 129, 0.07) 0%, transparent 45%);
+      background: #060b16;
+      background-image: radial-gradient(circle at 18% 6%, rgba(34,211,238,0.11), transparent 38%), radial-gradient(circle at 82% 18%, rgba(59,130,246,0.09), transparent 40%);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      line-height: 1.7;
       min-height: 100vh;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
+    html[lang="ar"] body { font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; background: none; border: none; color: inherit; }
+    .wrap { max-width: 1152px; margin: 0 auto; padding: 0 18px; }
 
-    html[lang="en"] body {
-      font-family: 'Inter', 'Cairo', system-ui, -apple-system, sans-serif;
-    }
+    /* Header */
+    .hdr { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid rgba(30,41,59,0.85); background: rgba(6,11,22,0.94); }
+    .hdr-in { max-width: 1152px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-align: start; }
+    .brand img { width: 34px; height: 34px; border-radius: 999px; border: 1.5px solid rgba(34,211,238,0.55); object-fit: cover; }
+    .brand-name { font-size: 14px; font-weight: 800; color: #fff; line-height: 1.2; }
+    .brand-sub { font-size: 10px; font-weight: 700; color: var(--cyan); }
+    .nav-links { display: none; align-items: center; gap: 22px; font-size: 12.5px; font-weight: 700; }
+    .nav-links button { color: #cbd5e1; transition: color 0.15s; }
+    .nav-links button:hover, .nav-links button.active { color: var(--cyan); font-weight: 800; }
+    .hdr-acts { display: flex; align-items: center; gap: 8px; }
+    .btn-grad { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border-radius: 12px; background: linear-gradient(90deg, #22d3ee, #3b82f6); color: #020617; font-weight: 900; transition: filter 0.15s; }
+    .btn-grad:hover { filter: brightness(1.08); }
+    .btn-sm { padding: 7px 14px; font-size: 12px; }
+    .btn-lg { padding: 14px 24px; font-size: 14px; border-radius: 14px; }
+    .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border-radius: 14px; border: 1px solid #334155; background: rgba(15,23,42,0.9); color: #e2e8f0; font-size: 14px; font-weight: 700; padding: 14px 22px; transition: border-color 0.15s, color 0.15s; }
+    .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+    .btn-lang { display: inline-flex; align-items: center; gap: 5px; border-radius: 11px; border: 1px solid #334155; background: #0f172a; padding: 7px 11px; font-size: 12px; font-weight: 700; color: #e2e8f0; }
+    .btn-lang:hover { border-color: var(--cyan); color: var(--cyan); }
+    .btn-menu { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 11px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0; }
+    .mob-menu { display: none; border-top: 1px solid #1e293b; background: #080f1f; padding: 12px 18px 16px; }
+    .mob-menu.open { display: block; }
+    .mob-col { display: flex; flex-direction: column; gap: 6px; }
+    .mob-col button { text-align: start; padding: 10px 12px; border-radius: 10px; font-size: 13px; font-weight: 700; color: #e2e8f0; }
+    .mob-col button.active { background: rgba(34,211,238,0.14); color: var(--cyan); font-weight: 800; }
+    .hide-sm { display: none; }
 
-    .glass-card {
-      background: linear-gradient(180deg, rgba(17, 28, 51, 0.88) 0%, rgba(11, 19, 36, 0.95) 100%);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-      box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(12px);
-    }
+    /* Hero & Sections */
+    main { padding: 44px 0 64px; }
+    .sec { margin-bottom: 68px; }
+    .center { text-align: center; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; border: 1px solid rgba(34,211,238,0.35); background: rgba(34,211,238,0.1); padding: 6px 15px; font-size: 12px; font-weight: 800; color: #67e8f9; margin-bottom: 16px; }
+    .dot-c { width: 7px; height: 7px; border-radius: 999px; background: var(--cyan); }
+    h1 { font-size: clamp(26px, 4.4vw, 44px); font-weight: 900; line-height: 1.25; color: #fff; max-width: 860px; margin: 0 auto 16px; }
+    h2 { font-size: clamp(22px, 3vw, 32px); font-weight: 900; line-height: 1.3; color: #fff; margin-bottom: 8px; }
+    .txt-rose { color: var(--rose); }
+    .txt-cyan { color: #67e8f9; }
+    .lead { font-size: 15px; color: #cbd5e1; max-width: 700px; margin: 0 auto 26px; line-height: 1.8; }
+    .sub { font-size: 14px; color: var(--muted); max-width: 660px; margin: 0 auto 28px; }
+    .cta-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
 
-    .sim-stage-before {
-      background: linear-gradient(135deg, rgba(244, 63, 94, 0.13) 0%, rgba(15, 23, 42, 0.96) 65%);
-      border: 1px solid rgba(244, 63, 94, 0.35);
-    }
+    /* Glass Cards & Grids */
+    .card { background: linear-gradient(180deg, rgba(17,28,51,0.9), rgba(10,18,34,0.96)); border: 1px solid var(--border); border-radius: 22px; padding: 24px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr; gap: 22px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
 
-    .sim-stage-after {
-      background: linear-gradient(135deg, rgba(34, 211, 238, 0.12) 0%, rgba(16, 185, 129, 0.10) 50%, rgba(11, 19, 36, 0.96) 100%);
-      border: 1px solid rgba(34, 211, 238, 0.45);
-    }
+    /* Dual Visual Canvas Panels (Stacked Before->After on Mobile, Side-by-Side on Desktop!) */
+    .vis-card-before { background: #14070e; border: 1.5px solid rgba(244,63,94,0.42); border-radius: 24px; padding: 14px; }
+    .vis-card-after { background: #051320; border: 1.5px solid rgba(34,211,238,0.45); border-radius: 24px; padding: 14px; }
+    .vis-hdr { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 6px 12px; }
+    .vis-badge-b { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; border: 1px solid rgba(244,63,94,0.5); background: rgba(136,19,55,0.45); padding: 5px 13px; font-size: 11.5px; font-weight: 800; color: #fda4af; }
+    .vis-badge-a { display: inline-flex; align-items: center; gap: 7px; border-radius: 999px; border: 1px solid rgba(16,185,129,0.5); background: rgba(6,78,59,0.45); padding: 5px 13px; font-size: 11.5px; font-weight: 800; color: #6ee7b7; }
+    .canvas-box { position: relative; width: 100%; aspect-ratio: 16 / 10; border-radius: 16px; overflow: hidden; }
+    .canvas-box canvas { display: block; width: 100%; height: 100%; }
 
-    .cta-box {
-      background: linear-gradient(135deg, rgba(34, 211, 238, 0.15) 0%, rgba(37, 99, 235, 0.18) 55%, rgba(11, 19, 36, 0.97) 100%);
-      border: 1px solid rgba(34, 211, 238, 0.48);
-      box-shadow: 0 0 55px -18px rgba(34, 211, 238, 0.38);
-    }
+    /* Core Systems & Roadmap */
+    .ico-box { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .ico-c { background: rgba(34,211,238,0.14); color: var(--cyan); border: 1px solid rgba(34,211,238,0.3); }
+    .ico-e { background: rgba(16,185,129,0.14); color: var(--emerald); border: 1px solid rgba(16,185,129,0.3); }
+    .ico-b { background: rgba(59,130,246,0.14); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+    .card h3 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .card p { font-size: 13.5px; color: #cbd5e1; line-height: 1.75; }
+    .out-tag { margin-top: 14px; font-size: 12px; font-weight: 800; color: var(--emerald); }
+    .step-tag { display: inline-block; border-radius: 8px; padding: 4px 10px; font-size: 11px; font-weight: 800; margin-bottom: 12px; }
 
-    .mode-tab.active-before {
-      background: rgba(244, 63, 94, 0.2);
-      border-color: rgba(244, 63, 94, 0.75);
-      color: #fda4af;
-    }
+    /* FAQs */
+    .faq-item { background: rgba(15,23,42,0.85); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 12px; }
+    .faq-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; text-align: start; font-size: 14px; font-weight: 800; color: #fff; }
+    .faq-body { display: none; border-top: 1px solid rgba(30,41,59,0.8); padding: 14px 20px; font-size: 13.5px; color: #cbd5e1; line-height: 1.8; }
+    .faq-item.open .faq-body { display: block; }
+    .faq-item.open .faq-chev { transform: rotate(180deg); }
+    .faq-chev { transition: transform 0.2s; color: var(--cyan); flex-shrink: 0; }
 
-    .mode-tab.active-after {
-      background: rgba(16, 185, 129, 0.2);
-      border-color: rgba(16, 185, 129, 0.75);
-      color: #6ee7b7;
-    }
+    /* Final CTA Box */
+    .final-box { background: linear-gradient(135deg, rgba(34,211,238,0.14), rgba(15,23,42,0.96) 55%, rgba(59,130,246,0.12)); border: 1px solid rgba(34,211,238,0.42); border-radius: 28px; padding: 38px 24px; text-align: center; }
 
-    .pulse-node {
-      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-    }
+    /* Pro 3-Column Footer */
+    .ftr { margin-top: 64px; border-top: 1px solid rgba(30,41,59,0.85); padding: 44px 0 24px; }
+    .ftr-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+    .ftr-col h4 { font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; margin-bottom: 14px; }
+    .ftr-list { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: var(--muted); font-weight: 600; }
+    .ftr-list button, .ftr-list a { transition: color 0.15s; text-align: start; }
+    .ftr-list button:hover, .ftr-list a:hover { color: var(--cyan); }
+    .soc-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .soc-btn { width: 36px; height: 36px; border-radius: 10px; border: 1px solid #1e293b; background: #0f172a; display: flex; align-items: center; justify-content: center; color: #cbd5e1; transition: border-color 0.15s, color 0.15s; }
+    .soc-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+    .soc-wa { border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.12); color: #6ee7b7; }
+    .ftr-bot { margin-top: 34px; padding-top: 20px; border-top: 1px solid rgba(30,41,59,0.7); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 11.5px; color: #64748b; }
 
-    .pulse-node.is-active-rose {
-      border-color: rgba(244, 63, 94, 0.85);
-      box-shadow: 0 0 28px -8px rgba(244, 63, 94, 0.65);
-      transform: translateY(-2px);
+    @media (min-width: 640px) {
+      .hide-sm { display: inline-flex; }
     }
-
-    .pulse-node.is-active-cyan {
-      border-color: rgba(34, 211, 238, 0.9);
-      box-shadow: 0 0 28px -8px rgba(34, 211, 238, 0.65);
-      transform: translateY(-2px);
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .btn-menu { display: none; }
+      .mob-menu { display: none !important; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .ftr-grid { grid-template-columns: 5fr 3fr 4fr; }
     }
-
-    .flow-beam {
-      background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.85), transparent);
-      background-size: 200% 100%;
-      animation: flowMove 2.2s linear infinite;
+    @media (min-width: 1024px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
     }
-
-    @keyframes flowMove {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .pulse-cta {
-      animation: pulseGlow 2.4s infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.42); }
-      50% { box-shadow: 0 0 0 10px rgba(34, 211, 238, 0); }
-    }
-
-    /* Calm executive Arabic reading rhythm & generous breathing room */
-    p, li { line-height: 1.85; }
-    h1, h2, h3 { line-height: 1.45; letter-spacing: -0.01em; }
-  
-    
-    /* Ultra-Light GPU-Only Motion (Zero backdrop-blur, Zero box-shadow repaints, Instant Load) */
-    @keyframes gpuFlow {
-      0% { transform: translateX(-100%); opacity: 0; }
-      25% { opacity: 1; }
-      75% { opacity: 1; }
-      100% { transform: translateX(260%); opacity: 0; }
-    }
-    @keyframes gpuPulse {
-      0%, 100% { opacity: 0.45; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.18); }
-    }
-    .gpu-beam {
-      animation: gpuFlow 2.6s linear infinite;
-      will-change: transform, opacity;
-    }
-    .gpu-dot {
-      animation: gpuPulse 1.8s ease-in-out infinite;
-      will-change: transform, opacity;
-    }
-    .ba-panel-before {
-      background: linear-gradient(160deg, #1b0b14 0%, #110913 100%);
-      border: 1px solid rgba(244, 63, 94, 0.35);
-    }
-    .ba-panel-after {
-      background: linear-gradient(160deg, #071928 0%, #071f24 100%);
-      border: 1px solid rgba(34, 211, 238, 0.4);
-    }
-
   </style>
 </head>
-<body class="antialiased selection:bg-cyan-400/30 selection:text-cyan-100">
-  <!-- Unified Executive Navbar (Desktop + Mobile Menu) -->
-  <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#060b16]/90 backdrop-blur-xl">
-    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-      <button type="button" data-nav-go="/" class="flex items-center gap-2.5 text-start">
-        <img src="data:image/jpeg;base64,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" alt="Ahmed Alsharqawy" class="h-8 w-8 rounded-full border border-cyan-400/50 object-cover" />
+<body>
+  <header class="hdr">
+    <div class="hdr-in">
+      <button type="button" data-nav-go="/" class="brand">
+        <img src="data:image/jpeg;base64,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" alt="Ahmed Alsharqawy" />
         <div>
-          <div class="text-sm font-extrabold tracking-wide text-white">Ahmed Alsharqawy</div>
-          <div class="text-[10px] font-bold text-cyan-300">AIOS Partner</div>
+          <div class="brand-name">Ahmed Alsharqawy</div>
+          <div class="brand-sub">AIOS Partner</div>
         </div>
       </button>
 
-      <nav class="hidden items-center gap-5 text-xs font-bold md:flex">
-        <button type="button" data-nav-go="/" class="text-slate-300 transition hover:text-cyan-300" data-i18n="navHome">الرئيسية</button>
-        <button type="button" data-nav-go="/services.html" class="text-cyan-300 font-extrabold" data-i18n="navServices">خدماتنا</button>
-        <button type="button" data-nav-go="/audit.html" class="text-slate-300 transition hover:text-cyan-300" data-i18n="navCalc">حاسبة النزيف</button>
-        <button type="button" data-nav-go="/vault.html" class="text-slate-300 transition hover:text-cyan-300" data-i18n="navVault">خزنة الهدايا</button>
-        <button type="button" data-nav-go="/contact.html" class="text-slate-300 transition hover:text-cyan-300" data-i18n="navContact">تواصل معنا</button>
+      <nav class="nav-links">
+        <button type="button" data-nav-go="/" data-i18n="navHome">Home</button>
+        <button type="button" data-nav-go="/services.html" class="active" data-i18n="navServices">AIOS Services</button>
+        <button type="button" data-nav-go="/audit.html" data-i18n="navCalc">Calculator</button>
+        <button type="button" data-nav-go="/vault.html" data-i18n="navVault">Free Vault</button>
+        <button type="button" data-nav-go="/contact.html" data-i18n="navContact">Contact</button>
       </nav>
 
-      <div class="flex items-center gap-2">
-
-        <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-3.5 py-1.5 text-xs font-black text-slate-950 transition hover:brightness-110 sm:inline-flex">
-          <i data-lucide="calendar-check-2" class="h-3.5 w-3.5"></i>
-          <span data-i18n="navBook">احجز 15د</span>
-        </a>
-        <button type="button" id="langToggle" class="flex items-center gap-1 rounded-xl border border-slate-700/80 bg-slate-900/90 px-2.5 py-1.5 text-xs font-bold text-slate-200 transition hover:border-cyan-400/50 hover:text-cyan-300">
-          <i data-lucide="globe" class="h-3.5 w-3.5"></i>
-          <span id="langToggleLabel">العربية</span>
-        </button>
-        <button type="button" id="unifiedMenuBtn" class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-700/80 bg-slate-900/90 text-slate-200 transition hover:border-cyan-400/50 md:hidden" aria-label="Menu" aria-expanded="false">
-          <i data-lucide="menu" class="h-4 w-4"></i>
-        </button>
+      <div class="hdr-acts">
+        <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="btn-grad btn-sm hide-sm"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg><span data-i18n="navBook">Book 15m</span></a>
+        <button type="button" id="langToggle" class="btn-lang"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="langToggleLabel">العربية</span></button>
+        <button type="button" id="unifiedMenuBtn" class="btn-menu" aria-label="Menu" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
       </div>
     </div>
 
-    <div id="unifiedMobileMenu" class="hidden border-t border-slate-800 bg-[#080f1f] px-4 py-3 md:hidden">
-      <div class="flex flex-col gap-1.5 text-xs font-bold">
-        <button type="button" data-nav-go="/" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navHome">الرئيسية</button>
-        <button type="button" data-nav-go="/services.html" class="rounded-xl bg-cyan-500/15 px-3 py-2.5 text-start text-cyan-300 font-extrabold" data-i18n="navServices">خدماتنا</button>
-        <button type="button" data-nav-go="/audit.html" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navCalc">حاسبة النزيف</button>
-        <button type="button" data-nav-go="/vault.html" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navVault">خزنة الهدايا</button>
-        <button type="button" data-nav-go="/about.html" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navAbout">عن أحمد</button>
-        <button type="button" data-nav-go="/contact.html" class="rounded-xl px-3 py-2.5 text-start text-slate-200 hover:bg-slate-800/70" data-i18n="navContact">تواصل معنا</button>
-        <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2.5 text-xs font-black text-slate-950" data-i18n="navBookMob">احجز جلسة تشخيص 15 دقيقة مجانًا</a>
+    <div id="unifiedMobileMenu" class="mob-menu">
+      <div class="mob-col">
+        <button type="button" data-nav-go="/" data-i18n="navHome">Home</button>
+        <button type="button" data-nav-go="/services.html" class="active" data-i18n="navServices">AIOS Services</button>
+        <button type="button" data-nav-go="/audit.html" data-i18n="navCalc">Calculator</button>
+        <button type="button" data-nav-go="/vault.html" data-i18n="navVault">Free Vault</button>
+        <button type="button" data-nav-go="/about.html" data-i18n="navAbout">About Ahmed</button>
+        <button type="button" data-nav-go="/contact.html" data-i18n="navContact">Contact</button>
+        <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="btn-grad btn-sm" style="margin-top:8px;padding:11px;" data-i18n="navBookMob">Book Free 15-Min Audit</a>
       </div>
     </div>
   </header>
 
-  <main class="mx-auto max-w-6xl px-4 pb-28 pt-8 sm:px-6 sm:pb-20 sm:pt-12">
-    <!-- Hero Section -->
-    <section class="mx-auto mb-14 sm:mb-16 max-w-4xl text-center">
-      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-500/10 px-4 py-1.5 text-xs font-extrabold text-cyan-300">
-        <span class="h-2 w-2 rounded-full bg-cyan-400"></span>
-        <span data-i18n="heroBadge">نبني نظام تشغيل ذكي (AIOS) — مش بوتات عشوائية منفصلة</span>
-      </div>
-      <h1 class="mb-4 text-2xl font-black leading-tight text-white sm:text-4xl lg:text-[44px]" data-i18n="heroTitle">
-        حوّل شركتك من <span class="text-rose-400">فوضى يدوية</span> إلى <span class="text-cyan-300">ماكينة تشغيل ذكية 24/7</span> بدون موظف واحد زيادة
-      </h1>
-      <p class="mx-auto mb-6 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base" data-i18n="heroDesc">
-        نصمّم ونبني لشركتك في الشرق الأوسط والخليج بنية <strong class="text-white">AI Operating System (AIOS)</strong> كاملة تربط المبيعات، الواتساب، الـ CRM، وتقارير الإدارة في منظومة واحدة تشتغل بدقة حتى وأنت بعيد عن المكتب.
-      </p>
-      <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="pulse-cta inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-7 py-3.5 text-sm font-black text-slate-950 transition hover:brightness-110 sm:w-auto">
-          <i data-lucide="calendar-check-2" class="h-4 w-4"></i>
-          <span data-i18n="heroPrimaryCta">احجز جلسة التشخيص المجانية (15 دقيقة)</span>
-        </a>
-        <button type="button" data-route="/audit.html" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/90 px-6 py-3.5 text-sm font-bold text-slate-200 transition hover:border-cyan-400/50 hover:text-cyan-300 sm:w-auto">
-          <i data-lucide="calculator" class="h-4 w-4"></i>
-          <span data-i18n="heroSecCta">احسب نزيف شركتك الأول (60 ثانية)</span>
-        </button>
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="sec center">
+      <div class="pill"><span class="dot-c"></span><span data-i18n="heroBadge">Unified AI Operating System (AIOS) — Not Isolated Chatbots</span></div>
+      <h1 data-i18n-html="heroTitle">Turn <span class="txt-rose">Manual Chaos</span> into a <span class="txt-cyan">24/7 AI Operating Machine</span> — Zero Extra Headcount</h1>
+      <p class="lead" data-i18n="heroDesc">We architect and deploy custom AI Operating Systems (AIOS) for MENA &amp; GCC businesses — connecting Sales, Team Ops, Live Dashboards, and Guardrails into one seamless engine.</p>
+      <div class="cta-row">
+        <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="btn-grad btn-lg"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg><span data-i18n="heroPrimary">Book Free 15-Min AIOS Audit</span></a>
+        <button type="button" data-nav-go="/audit.html" class="btn-ghost"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="12" y2="18.01"/><line x1="16" y1="18" x2="16" y2="18.01"/></svg><span data-i18n="heroSec">Calculate Your Leak First (60s)</span></button>
       </div>
     </section>
 
-    <!-- ULTRA-FAST DUAL-GIF MOTION BEFORE vs AFTER DRAG SLIDER (Zero Overlap, Instant Load) -->
-    <section class="mb-16 sm:mb-20">
-      <div class="mb-6 text-center">
-        <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-500/10 px-3.5 py-1 text-xs font-extrabold text-cyan-300">
-          <i data-lucide="move-horizontal" class="h-3.5 w-3.5"></i>
-          <span data-i18n="dragHint">Drag Left &amp; Right to See the Transformation</span>
-        </div>
-        <h2 class="text-xl font-black text-white sm:text-3xl" data-i18n="simTitle">Your Business Before vs. After AIOS</h2>
-        <p class="mx-auto mt-2 max-w-2xl text-xs text-slate-400 sm:text-sm" data-i18n="simSub">Live looping comparison across Inbox, Team &amp; Ops, and Profit — drag the handle to switch instantly.</p>
+    <!-- TWO SEPARATE LIVE ICON-DRIVEN 5-LAYER VISUAL CANVASES (Side-by-Side Desktop, Before->After Mobile, Zero Slider Overlap!) -->
+    <section class="sec">
+      <div class="center">
+        <div class="pill"><span class="dot-c"></span><span data-i18n="visBadge">Live 5-Layer Visual Comparison</span></div>
+        <h2 data-i18n="visTitle">Before vs. After AIOS — Across All 5 Business Layers</h2>
+        <p class="sub" data-i18n="visSub">Side-by-side on desktop, stacked cleanly on mobile — watch how every department transforms from manual overload to automated profit.</p>
       </div>
 
-                  <!-- ZERO-LAG 4KB NATIVE <canvas> 5-LAYER AIOS SPLIT STAGE (0ms Black Screen, Live AR/EN!) -->
-      <div class="glass-card overflow-hidden rounded-3xl p-2.5 sm:p-4">
-        <!-- Dedicated Clipped Badge Strip ABOVE the Canvas (Zero Mobile Overlap!) -->
-        <div dir="ltr" class="relative mb-2.5 h-9 w-full select-none overflow-hidden sm:mb-3 sm:h-10">
-          <div id="baBeforeBadgeBar" class="pointer-events-none absolute inset-0 overflow-hidden" style="clip-path: inset(0 50% 0 0);">
-            <span class="absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-rose-400/60 bg-rose-950/90 px-3 py-1 text-[10px] font-black text-rose-300 sm:px-3.5 sm:py-1.5 sm:text-xs" data-i18n="lblBefore">❌ Before AIOS (Manual Chaos)</span>
+      <div class="grid-2">
+        <!-- PANEL 1: BEFORE AIOS (Always First on Mobile!) -->
+        <div class="vis-card-before">
+          <div class="vis-hdr">
+            <span class="vis-badge-b" data-i18n="lblBefore">BEFORE AIOS • Manual Chaos &amp; Leakage</span>
           </div>
-          <div id="baAfterBadgeBar" class="pointer-events-none absolute inset-0 overflow-hidden" style="clip-path: inset(0 0 0 50%);">
-            <span class="absolute right-0 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-emerald-400/60 bg-emerald-950/90 px-3 py-1 text-[10px] font-black text-emerald-300 sm:px-3.5 sm:py-1.5 sm:text-xs" data-i18n="lblAfter">✅ After AIOS (5-Layer System)</span>
+          <div class="canvas-box">
+            <canvas id="beforeCanvas"></canvas>
           </div>
         </div>
 
-        <div id="baContainer" dir="ltr" class="relative aspect-[16/10] w-full select-none overflow-hidden rounded-2xl bg-[#05101c] sm:aspect-video">
-          <!-- Single Ultra-Fast Retina 2D Canvas Drawing Both Layers With Razor-Sharp Clip -->
-          <canvas id="aiosCanvas" class="pointer-events-none block h-full w-full"></canvas>
-
-          <!-- Glowing Vertical Divider + Drag Handle -->
-          <div id="baDivider" class="pointer-events-none absolute bottom-0 top-0 z-20 w-0.5 bg-cyan-300 shadow-[0_0_16px_rgba(34,211,238,0.95)]" style="left: 50%;">
-            <div class="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-cyan-300 bg-[#060b16] text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.7)] sm:h-11 sm:w-11">
-              <i data-lucide="chevrons-left-right" class="h-4 w-4 sm:h-5 sm:w-5"></i>
-            </div>
+        <!-- PANEL 2: AFTER AIOS (Right Side on Desktop, Below Before on Mobile!) -->
+        <div class="vis-card-after">
+          <div class="vis-hdr">
+            <span class="vis-badge-a" data-i18n="lblAfter">AFTER AIOS • 24/7 Automated Operating System</span>
           </div>
-
-          <!-- Native Range Slider for Butter-Smooth Desktop + Mobile Touch Dragging -->
-          <input type="range" id="baSlider" min="5" max="95" value="50" aria-label="Before and After Comparison Slider" class="absolute inset-0 z-30 h-full w-full cursor-ew-resize opacity-0" />
-        </div>
-      </div>
-
-      <!-- Concise 3-Pillar Breakdown Below Slider (Sales + Team Ops + Profit) -->
-      <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-        <div class="glass-card rounded-2xl p-5">
-          <div class="mb-2 flex items-center justify-between">
-            <span class="text-xs font-black text-cyan-300 sm:text-sm" data-i18n="aP1T">1. Sales &amp; Leads</span>
-            <span class="rounded bg-cyan-500/15 px-2 py-0.5 text-[10px] font-extrabold text-cyan-300" data-i18n="aP1Badge">28s Auto-Reply</span>
+          <div class="canvas-box">
+            <canvas id="afterCanvas"></canvas>
           </div>
-          <p class="text-xs text-slate-300" data-i18n="aP1D">Instant 24/7 WhatsApp &amp; social response, automatic lead qualification, calendar booking, and 30-day smart follow-up.</p>
-        </div>
-        <div class="glass-card rounded-2xl p-5">
-          <div class="mb-2 flex items-center justify-between">
-            <span class="text-xs font-black text-emerald-300 sm:text-sm" data-i18n="aP2T">2. Team &amp; Daily Operations</span>
-            <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] font-extrabold text-emerald-300" data-i18n="aP2Badge">Team Freed Up</span>
-          </div>
-          <p class="text-xs text-slate-300" data-i18n="aP2D">CRM updates, task routing, and daily reports run automatically — freeing your team to focus on closing deals and serving clients.</p>
-        </div>
-        <div class="glass-card rounded-2xl p-5">
-          <div class="mb-2 flex items-center justify-between">
-            <span class="text-xs font-black text-emerald-300 sm:text-sm" data-i18n="aP3T">3. Profit &amp; Executive Visibility</span>
-            <span class="rounded bg-emerald-500/15 px-2 py-0.5 text-[10px] font-extrabold text-emerald-300" data-i18n="aP3Badge">+65% Recovered</span>
-          </div>
-          <p class="text-xs text-slate-300" data-i18n="aP3D">Lower operating costs, zero extra payroll, and a live mobile dashboard showing leads, bookings, and ROI in real time.</p>
         </div>
       </div>
     </section>
 
-    <!-- 4 CORE AIOS SYSTEMS (Outcome-Led Services) -->
-    <section class="mb-16 sm:mb-20">
-      <div class="mb-6 text-center">
-        <h2 class="text-xl font-black text-white sm:text-2xl" data-i18n="srvTitle">إيه اللي بنبنيه فعليًا داخل شركتك؟</h2>
-        <p class="mt-1 text-xs text-slate-400 sm:text-sm" data-i18n="srvSub">4 محركات مترابطة تشتغل على أدواتك الحالية بدون ما تعقّد فريقك</p>
+    <!-- 4 Core Systems -->
+    <section class="sec">
+      <div class="center">
+        <h2 data-i18n="sysTitle">The 4 Core Systems We Build Inside Your AIOS</h2>
+        <p class="sub" data-i18n="sysSub">Every layer connects cleanly to your existing WhatsApp, CRM, Calendar, and Google Sheets.</p>
       </div>
-
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <!-- Service 1 -->
-        <div class="glass-card rounded-2xl p-6 transition hover:border-cyan-400/40">
-          <div class="mb-3 flex items-center justify-between">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-500/15 text-rose-400">
-              <i data-lucide="zap" class="h-5 w-5"></i>
-            </div>
-            <span class="rounded-full border border-rose-400/30 bg-rose-500/10 px-2.5 py-0.5 text-[10px] font-extrabold text-rose-300">01 • SALES ENGINE</span>
-          </div>
-          <h3 class="mb-2 text-base font-black text-white sm:text-lg" data-i18n="s1T">محرك المبيعات والرد الفوري 24/7</h3>
-          <p class="mb-4 text-xs leading-relaxed text-slate-300 sm:text-sm" data-i18n="s1D">رد وتأهيل فوري على واتساب وإنستغرام وفيسبوك خلال أقل من 60 ثانية، فرز العملاء الجادين عن الاستفسارات العابرة، وحجز المواعيد أوتوماتيك مع متابعة ذكية لمدة 30 يومًا.</p>
-          <div class="text-xs font-extrabold text-emerald-300" data-i18n="s1Out">✓ النتيجة: وقف نزيف 40%+ من الليدز الضائعة بدون شفت ليلي</div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="ico-box ico-c"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3 data-i18n="s1T">24/7 Sales &amp; Lead Engine</h3>
+          <p data-i18n="s1D">Instant 28-second replies on WhatsApp &amp; social, smart lead qualification, auto-booking, and 30-day follow-up.</p>
+          <div class="out-tag" data-i18n="s1O">✓ Zero lost leads &amp; 3x faster booking</div>
         </div>
-
-        <!-- Service 2 -->
-        <div class="glass-card rounded-2xl p-6 transition hover:border-cyan-400/40">
-          <div class="mb-3 flex items-center justify-between">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-300">
-              <i data-lucide="workflow" class="h-5 w-5"></i>
-            </div>
-            <span class="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-2.5 py-0.5 text-[10px] font-extrabold text-cyan-300">02 • OPS &amp; TEAM COPILOT</span>
-          </div>
-          <h3 class="mb-2 text-base font-black text-white sm:text-lg" data-i18n="s2T">أتمتة العمليات اليدوية ومساعد الفريق الداخلي</h3>
-          <p class="mb-4 text-xs leading-relaxed text-slate-300 sm:text-sm" data-i18n="s2D">ربط الـ CRM والفواتير والشيتات والإيميلات لإلغاء النسخ واللصق، مع بناء مساعد AI داخلي (Context OS) مدرّب على سياسات وأسعار شركتك يجهز الردود والعروض لفريقك في ثوانٍ.</p>
-          <div class="text-xs font-extrabold text-emerald-300" data-i18n="s2Out">✓ النتيجة: توفير 2–3 ساعات يوميًا لكل موظف وتوسع بدون توظيف جديد</div>
+        <div class="card">
+          <div class="ico-box ico-b"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h6a3 3 0 0 1 3 3v6"/></svg></div>
+          <h3 data-i18n="s2T">Team &amp; Daily Ops Automation</h3>
+          <p data-i18n="s2D">Eliminate manual data entry, auto-assign tasks, sync CRM records, and free your staff from repetitive admin.</p>
+          <div class="out-tag" data-i18n="s2O">✓ Save 4+ hours/day per team member</div>
         </div>
-
-        <!-- Service 3 -->
-        <div class="glass-card rounded-2xl p-6 transition hover:border-cyan-400/40">
-          <div class="mb-3 flex items-center justify-between">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
-              <i data-lucide="bar-chart-3" class="h-5 w-5"></i>
-            </div>
-            <span class="rounded-full border border-blue-400/30 bg-blue-500/10 px-2.5 py-0.5 text-[10px] font-extrabold text-blue-300">03 • DATA OS &amp; BRIEF</span>
-          </div>
-          <h3 class="mb-2 text-base font-black text-white sm:text-lg" data-i18n="s3T">لوحة القيادة اللحظية والتقرير الصباحي للمدير</h3>
-          <p class="mb-4 text-xs leading-relaxed text-slate-300 sm:text-sm" data-i18n="s3D">إنهاء «العمى التشغيلي» بالكامل: كل ليد ومكالمة وصفقة بتتسجل أوتوماتيك، وبيوصلك كل صباح تقرير تنفيذي مختصر بأرقام المبيعات والصفقات المتعطلة بدون ما تسأل موظف واحد.</p>
-          <div class="text-xs font-extrabold text-emerald-300" data-i18n="s3Out">✓ النتيجة: رؤية 100% لأرقام شركتك من موبايلك في 5 ثواني</div>
+        <div class="card">
+          <div class="ico-box ico-c"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
+          <h3 data-i18n="s3T">Live Executive Data OS</h3>
+          <p data-i18n="s3D">Real-time dashboard on your phone showing leads, reply speed, bookings, and daily 9AM executive briefs.</p>
+          <div class="out-tag" data-i18n="s3O">✓ Total visibility with zero spreadsheets</div>
         </div>
-
-        <!-- Service 4 -->
-        <div class="glass-card rounded-2xl p-6 transition hover:border-cyan-400/40">
-          <div class="mb-3 flex items-center justify-between">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
-              <i data-lucide="shield-check" class="h-5 w-5"></i>
-            </div>
-            <span class="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-extrabold text-emerald-300">04 • SPECIALIZED VERTICALS</span>
-          </div>
-          <h3 class="mb-2 text-base font-black text-white sm:text-lg" data-i18n="s4T">أنظمة متخصصة للعيادات والشركات متعددة الفروع</h3>
-          <p class="mb-4 text-xs leading-relaxed text-slate-300 sm:text-sm" data-i18n="s4D">حجز مواعيد تلقائي متزامن مع جداول الأطباء والفروع، تذكيرات واتساب تقلل الـ No-Show، وضوابط أمان صارمة (Non-Diagnostic Guardrails) تمنع أي فتوى طبية أو سعر خاطئ 100%.</p>
-          <div class="text-xs font-extrabold text-emerald-300" data-i18n="s4Out">✓ النتيجة: امتلاء الجداول + أمان طبي وإداري كامل</div>
+        <div class="card">
+          <div class="ico-box ico-e"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3 data-i18n="s4T">Context OS &amp; Safety Guardrails</h3>
+          <p data-i18n="s4D">Trained strictly on your pricing and rules — with non-diagnostic medical &amp; brand guardrails that escalate edge cases to humans.</p>
+          <div class="out-tag" data-i18n="s4O">✓ 100% brand safety &amp; zero hallucinations</div>
         </div>
       </div>
     </section>
 
-    <!-- 3-WEEK TRANSPARENT EXECUTION ROADMAP -->
-    <section class="mb-16 sm:mb-20">
-      <div class="mb-6 text-center">
-        <h2 class="text-xl font-black text-white sm:text-2xl" data-i18n="roadTitle">من جلسة التشخيص لأول نظام حي في 14 يومًا (أقل مخاطرة)</h2>
-        <p class="mt-1 text-xs text-slate-400 sm:text-sm" data-i18n="roadSub">نبدأ بسبرينت 14 يوم لأعلى نظام يحققلك أسرع عائد — وبعد ما تشوف النتائج بعينك، نتوسع لباقي طبقات AIOS</p>
+    <!-- 14-Day First-System Sprint Roadmap -->
+    <section class="sec">
+      <div class="center">
+        <h2 data-i18n="roadTitle">From Audit Call to Your First Live System in 14 Days</h2>
+        <p class="sub" data-i18n="roadSub">Start with a low-risk 14-day sprint on your #1 bottleneck — then expand into the full AIOS once you see live results.</p>
       </div>
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-        <div class="glass-card rounded-2xl p-5">
-          <span class="mb-3 inline-block rounded-lg bg-cyan-500/15 px-2.5 py-1 text-[11px] font-black text-cyan-300" data-i18n="w1Tag">الأيام 1–2 • التحديد والصلاحيات</span>
-          <h3 class="mb-1.5 text-sm font-black text-white sm:text-base" data-i18n="w1T">تثبيت أول نظام وخريطة Context OS</h3>
-          <p class="text-xs leading-relaxed text-slate-300" data-i18n="w1D">نراجع مسارات المبيعات والتشغيل، نجمع سياسات وأسعار شركتك، ونصمّم هندسة النظام Tool-Agnostic بحيث تملك كل بياناتك وأدواتك 100%.</p>
+      <div class="grid-3">
+        <div class="card">
+          <span class="step-tag" style="background:rgba(34,211,238,0.14);color:#67e8f9;" data-i18n="w1Tag">Days 1–2 • Scope &amp; Access</span>
+          <h3 data-i18n="w1T">Lock System #1 &amp; Context OS</h3>
+          <p data-i18n="w1D">We isolate your #1 revenue bottleneck, collect access &amp; business rules, and lock a clear 14-day sprint where you own 100% of your data.</p>
         </div>
-        <div class="glass-card rounded-2xl p-5">
-          <span class="mb-3 inline-block rounded-lg bg-blue-500/15 px-2.5 py-1 text-[11px] font-black text-blue-300" data-i18n="w2Tag">الأيام 3–11 • البناء واختبار الضغط</span>
-          <h3 class="mb-1.5 text-sm font-black text-white sm:text-base" data-i18n="w2T">بناء النظام وضوابط الأمان (Guardrails)</h3>
-          <p class="text-xs leading-relaxed text-slate-300" data-i18n="w2D">نبني الـ Workflows ونربط الواتساب والـ CRM والتقارير، ونختبر كل سيناريو حقيقي وضوابط الأمان قبل تشغيله أمام عملائك.</p>
+        <div class="card">
+          <span class="step-tag" style="background:rgba(59,130,246,0.14);color:#93c5fd;" data-i18n="w2Tag">Days 3–11 • Build &amp; Stress-Test</span>
+          <h3 data-i18n="w2T">Automation Build &amp; AI Guardrails</h3>
+          <p data-i18n="w2D">We connect WhatsApp, CRM, and calendars via n8n and stress-test real Arabic &amp; English edge cases and safety rules.</p>
         </div>
-        <div class="glass-card rounded-2xl p-5">
-          <span class="mb-3 inline-block rounded-lg bg-emerald-500/15 px-2.5 py-1 text-[11px] font-black text-emerald-300" data-i18n="w3Tag">الأيام 12–14 • الإطلاق ثم التوسع</span>
-          <h3 class="mb-1.5 text-sm font-black text-white sm:text-base" data-i18n="w3T">التشغيل الحي + تدريب الفريق (ثم التوسع)</h3>
-          <p class="text-xs leading-relaxed text-slate-300" data-i18n="w3D">تشغيل النظام لايف، تدريب فريقك عمليًا على استخدامه بدون مقاومة، ومراقبة مؤشرات الـ ROI وتقليل الساعات المهدورة من أول أسبوع.</p>
+        <div class="card">
+          <span class="step-tag" style="background:rgba(16,185,129,0.14);color:#6ee7b7;" data-i18n="w3Tag">Days 12–14 • Go-Live &amp; Expand</span>
+          <h3 data-i18n="w3T">Live Launch + Team Training</h3>
+          <p data-i18n="w3D">Deploy on live traffic and train your team — once you see the ROI firsthand, we scale into the remaining AIOS layers.</p>
         </div>
       </div>
     </section>
 
-    <!-- FAQ ACCORDION (Objection Handling Right Before CTA) -->
-    <section class="mb-16 sm:mb-20">
-      <div class="mb-6 text-center">
-        <h2 class="text-xl font-black text-white sm:text-2xl" data-i18n="faqTitle">أسئلة بيسألها كل صاحب شركة قبل ما يبدأ</h2>
-      </div>
-      <div class="mx-auto max-w-3xl space-y-4" id="faqList"></div>
+    <!-- FAQs -->
+    <section class="sec" style="max-width:820px;margin-left:auto;margin-right:auto;">
+      <h2 class="center" style="margin-bottom:24px;" data-i18n="faqTitle">Frequently Asked Questions</h2>
+      <div id="faqList"></div>
     </section>
 
-    <!-- FINAL CONVERSION CTA + FOUNDING PARTNER NOTE -->
-    <section class="cta-box rounded-3xl p-6 text-center sm:p-9">
-      <div class="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-500/15 px-3.5 py-1 text-xs font-extrabold text-emerald-300">
-        <i data-lucide="award" class="h-3.5 w-3.5"></i>
-        <span data-i18n="fpBadge">مقاعد محدودة: برنامج Founding Partner (خصم تأسيسي لـ 3 شركات فقط)</span>
-      </div>
-      <h2 class="mb-3 text-xl font-black text-white sm:text-3xl" data-i18n="finalTitle">
-        جاهز تشوف إزاي نظام AIOS يوقف النزيف في شركتك خلال 15 دقيقة؟
-      </h2>
-      <p class="mx-auto mb-6 max-w-2xl text-xs leading-relaxed text-slate-200 sm:text-sm" data-i18n="finalDesc">
-        احجز جلسة التشخيص المجانية دلوقتي — هنراجع وضعك الحالي ونطلعلك خطة واضحة بأعلى 3 أنظمة تحققلك أسرع عائد، وبتحتفظ بالخطة كاملة حتى لو مقررناش نشتغل سوا.
-      </p>
-      <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="pulse-cta inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-8 py-4 text-sm font-black text-slate-950 transition hover:brightness-110 sm:w-auto sm:text-base">
-          <i data-lucide="calendar-check-2" class="h-5 w-5"></i>
-          <span data-i18n="finalBtn">احجز جلسة الـ 15 دقيقة المجانية الآن</span>
-        </a>
-        <button type="button" data-route="/audit.html" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-600 bg-slate-900/80 px-6 py-4 text-xs font-bold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300 sm:w-auto sm:text-sm">
-          <i data-lucide="calculator" class="h-4 w-4"></i>
-          <span data-i18n="finalSecBtn">جرّب حاسبة النزيف أولاً</span>
-        </button>
+    <!-- Final CTA -->
+    <section class="final-box">
+      <h2 data-i18n="finalTitle">Ready to Stop Operational Leakage?</h2>
+      <p class="lead" style="margin-bottom:22px;" data-i18n="finalDesc">Book your free 15-minute diagnostic call — we pinpoint your #1 bottleneck and map your 14-day sprint with zero obligation.</p>
+      <div class="cta-row">
+        <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="btn-grad btn-lg"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg><span data-i18n="finalBtn">Book Free 15-Min Audit Now</span></a>
+        <button type="button" data-nav-go="/audit.html" class="btn-ghost"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="12" y2="18.01"/><line x1="16" y1="18" x2="16" y2="18.01"/></svg><span data-i18n="finalSec">Run Bleeding Calculator First</span></button>
       </div>
     </section>
 
-    <footer class="mt-16 border-t border-slate-800/80 pt-12 pb-6 text-start">
-      <div class="grid grid-cols-1 gap-10 md:grid-cols-12">
-        <!-- Brand Column -->
-        <div class="md:col-span-5">
-          <button type="button" data-nav-go="/" class="flex items-center gap-3 text-start">
-            <img src="data:image/jpeg;base64,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" alt="Ahmed Alsharqawy" class="h-10 w-10 rounded-full border border-cyan-400/50 object-cover" />
+    <!-- Pro 3-Column Footer -->
+    <footer class="ftr">
+      <div class="ftr-grid">
+        <div>
+          <button type="button" data-nav-go="/" class="brand">
+            <img src="data:image/jpeg;base64,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" alt="Ahmed Alsharqawy" />
             <div>
-              <div class="text-sm font-black tracking-wide text-white">Ahmed Alsharqawy</div>
-              <div class="text-[11px] font-bold text-cyan-300">AI Operating System (AIOS) Partner</div>
+              <div class="brand-name">Ahmed Alsharqawy</div>
+              <div class="brand-sub">AI Operating System (AIOS) Partner</div>
             </div>
           </button>
-          <p class="mt-3 max-w-sm text-xs leading-relaxed text-slate-400" data-i18n="fTagline">نحوّل المبيعات والفرق وعمليات البيزنس اليومية لماكينة تشغيل ذكية تعمل 24/7 بدون موظف واحد زيادة — الشرق الأوسط والخليج.</p>
-          <div class="mt-5 flex flex-wrap items-center gap-2">
-            <a href="https://wa.me/201017854522?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D8%AC%D8%A7%D9%8A%20%D9%85%D9%86%20%D9%85%D9%88%D9%82%D8%B9%D9%83%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D9%86%D8%B8%D8%A7%D9%85%20AIOS%20%D9%84%D8%B4%D8%B1%D9%83%D8%AA%D9%8A" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp" class="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-500/35 bg-emerald-500/10 text-emerald-300 transition hover:border-emerald-400 hover:bg-emerald-500/20"><svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.6 5.95L0 24l6.33-1.66a11.88 11.88 0 0 0 5.72 1.46h.01c6.55 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.44-8.42Zm-8.47 18.3h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.76.98 1-3.66-.24-.38a9.85 9.85 0 0 1-1.52-5.24c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.98c0 5.45-4.43 9.88-9.84 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z"/></svg></a>
-            <a href="https://www.linkedin.com/in/ahmed-alsharqawy-aios" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/90 text-slate-300 transition hover:border-sky-400/60 hover:text-sky-300"><svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/></svg></a>
-            <a href="https://youtube.com/@ahmed-alsharqawy-aios" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube" class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/90 text-slate-300 transition hover:border-rose-500/60 hover:text-rose-400"><svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg></a>
-            <a href="https://www.instagram.com/ahmed.alsharqawy.aios/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram" class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/90 text-slate-300 transition hover:border-pink-400/60 hover:text-pink-300"><svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></a>
-            <a href="https://www.facebook.com/ahmed.alsharqawy.aios" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook" class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/90 text-slate-300 transition hover:border-blue-400/60 hover:text-blue-400"><svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg></a>
-            <a href="https://www.tiktok.com/@ahmed.alsharqawy.aios" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok" class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/90 text-slate-300 transition hover:border-cyan-300/60 hover:text-cyan-200"><svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1Z"/></svg></a>
-            <a href="https://x.com/Ahmed_AIOS" target="_blank" rel="noopener noreferrer" aria-label="X" title="X" class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/90 text-slate-300 transition hover:border-slate-400 hover:text-white"><svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <p style="margin-top:12px;max-width:340px;font-size:12.5px;color:#94a3b8;line-height:1.7;" data-i18n="fTagline">Turning sales, teams, and daily business ops into a 24/7 AI Operating System — more output, less leakage, zero extra headcount (MENA &amp; GCC).</p>
+          <div class="soc-row">
+            <a href="https://wa.me/201017854522?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A3%D8%AD%D9%85%D8%AF%D8%8C%20%D8%AC%D8%A7%D9%8A%20%D9%85%D9%86%20%D9%85%D9%88%D9%82%D8%B9%D9%83%20%D9%88%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D9%86%D8%B8%D8%A7%D9%85%20AIOS%20%D9%84%D8%B4%D8%B1%D9%83%D8%AA%D9%8A" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="soc-btn soc-wa"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.6 5.95L0 24l6.33-1.66a11.88 11.88 0 0 0 5.72 1.46h.01c6.55 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.44-8.42Zm-8.47 18.3h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.76.98 1-3.66-.24-.38a9.85 9.85 0 0 1-1.52-5.24c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.98c0 5.45-4.43 9.88-9.84 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z"/></svg></a>
+            <a href="https://www.linkedin.com/in/ahmed-alsharqawy-aios" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="soc-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77Z"/></svg></a>
+            <a href="https://youtube.com/@ahmed-alsharqawy-aios" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="soc-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg></a>
+            <a href="https://www.instagram.com/ahmed.alsharqawy.aios/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="soc-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3Z"/></svg></a>
+            <a href="https://www.facebook.com/ahmed.alsharqawy.aios" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="soc-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg></a>
+            <a href="https://www.tiktok.com/@ahmed.alsharqawy.aios" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="soc-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1Z"/></svg></a>
+            <a href="https://x.com/Ahmed_AIOS" target="_blank" rel="noopener noreferrer" aria-label="X" class="soc-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
           </div>
         </div>
-
-        <!-- Navigation Column -->
-        <div class="md:col-span-3">
-          <h3 class="mb-4 text-xs font-black uppercase tracking-wider text-white" data-i18n="fColNav">التنقل</h3>
-          <ul class="space-y-2.5 text-xs font-semibold text-slate-400">
-            <li><button type="button" data-nav-go="/" class="transition hover:text-cyan-300" data-i18n="fHome">الرئيسية</button></li>
-            <li><button type="button" data-nav-go="/services.html" class="transition hover:text-cyan-300" data-i18n="fServices">خدماتنا</button></li>
-            <li><button type="button" data-nav-go="/about.html" class="transition hover:text-cyan-300" data-i18n="fAbout">عن أحمد الشرقاوي</button></li>
-            <li><button type="button" data-nav-go="/contact.html" class="transition hover:text-cyan-300" data-i18n="fContact">تواصل معنا</button></li>
+        <div class="ftr-col">
+          <h4 data-i18n="fColNav">Navigation</h4>
+          <ul class="ftr-list">
+            <li><button type="button" data-nav-go="/" data-i18n="fHome">Home</button></li>
+            <li><button type="button" data-nav-go="/services.html" data-i18n="fServices">AIOS Services</button></li>
+            <li><button type="button" data-nav-go="/about.html" data-i18n="fAbout">About Ahmed</button></li>
+            <li><button type="button" data-nav-go="/contact.html" data-i18n="fContact">Contact Us</button></li>
           </ul>
         </div>
-
-        <!-- Resources Column -->
-        <div class="md:col-span-4">
-          <h3 class="mb-4 text-xs font-black uppercase tracking-wider text-white" data-i18n="fColRes">الأدوات والموارد</h3>
-          <ul class="space-y-2.5 text-xs font-semibold text-slate-400">
-            <li><button type="button" data-nav-go="/audit.html" class="transition hover:text-cyan-300" data-i18n="fCalc">حاسبة النزيف التشغيلي</button></li>
-            <li><button type="button" data-nav-go="/vault.html" class="transition hover:text-cyan-300" data-i18n="fVault">خزنة الهدايا المجانية</button></li>
-            <li><a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-cyan-300 transition hover:text-cyan-200" data-i18n="fBook">احجز جلسة تشخيص 15 دقيقة</a></li>
+        <div class="ftr-col">
+          <h4 data-i18n="fColRes">Free Resources</h4>
+          <ul class="ftr-list">
+            <li><button type="button" data-nav-go="/audit.html" data-i18n="fCalc">Operational Bleeding Calculator</button></li>
+            <li><button type="button" data-nav-go="/vault.html" data-i18n="fVault">Free AIOS Vault</button></li>
+            <li><a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" style="color:#67e8f9;" data-i18n="fBook">Book Free 15-Min Diagnostic Audit</a></li>
           </ul>
         </div>
       </div>
-
-      <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-slate-800/70 pt-6 text-[11px] text-slate-500 sm:flex-row">
-        <p dir="ltr">&copy; <span class="js-year">2026</span> Ahmed Alsharqawy. <span data-i18n="fRights">جميع الحقوق محفوظة.</span></p>
-        <p class="font-semibold text-slate-500">MENA &amp; GCC &bull; AI Operating Systems</p>
+      <div class="ftr-bot">
+        <p dir="ltr">&copy; <span class="js-year">2026</span> Ahmed Alsharqawy. <span data-i18n="fRights">All rights reserved.</span></p>
+        <p>MENA &amp; GCC &bull; AI Operating Systems</p>
       </div>
     </footer>
   </main>
 
-  <!-- Mobile Sticky Quick CTA -->
-  <div class="fixed bottom-0 left-0 right-0 z-30 border-t border-slate-800/90 bg-[#060b16]/95 px-3 py-2.5 backdrop-blur-xl sm:hidden">
-    <div class="mx-auto flex max-w-md items-center gap-2">
-      <a href="https://cal.com/ahmed-alsharqawy/aios-audit" target="_blank" rel="noopener noreferrer" class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-3 py-2.5 text-xs font-black text-slate-950">
-        <i data-lucide="calendar-check-2" class="h-3.5 w-3.5"></i>
-        <span data-i18n="mobBookFull">احجز جلسة 15 دقيقة مجانًا</span>
-      </a>
-      <button type="button" data-route="/audit.html" class="flex items-center justify-center gap-1.5 rounded-xl border border-slate-700 bg-slate-900 px-3.5 py-2.5 text-xs font-bold text-cyan-200">
-        <i data-lucide="calculator" class="h-3.5 w-3.5"></i>
-        <span data-i18n="mobCalc">الحاسبة</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Route Preview Info Modal (Only for offline sandbox preview) -->
-  <div id="routeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm">
-    <div class="glass-card w-full max-w-sm rounded-2xl p-5 text-center">
-      <h4 class="mb-2 text-sm font-black text-white" id="routeModalTitle">مسار الصفحة على موقعك الحي</h4>
-      <p class="mb-4 text-xs text-slate-300" id="routeModalMsg"></p>
-      <button type="button" id="closeRouteModal" class="w-full rounded-xl bg-cyan-400 py-2 text-xs font-black text-slate-950">تمام</button>
-    </div>
-  </div>
-
   <script>
-    const FAQS = {
-      ar: [
-        { q: "هل أحتاج أغيّر أدواتي الحالية أو أشتري اشتراكات غالية؟", a: "لا إطلاقًا. نظام الـ AIOS مصمّم يكون Tool-Agnostic — بنربطه على أدواتك الحالية (واتساب، Google Sheets/CRM، Google Calendar، إعلاناتك) بأقل تكلفة تشغيلية ممكنة وأنت بتملك النظام وبياناتك بالكامل." },
-        { q: "هل الذكاء الاصطناعي ممكن يغلط في الأسعار أو يشخّص مريض غلط؟", a: "بنبني كل نظام بضوابط أمان صارمة (Guardrails): النظام مقفول على قاعدة بيانات وأسعار شركتك فقط، وممنوع 100% من أي تشخيص طبي أو وعود غير معتمدة، وأي سؤال خارج النطاق بيتحوّل فورًا لموظف بشري." },
-        { q: "فريقي مش تقني — هل هيرفضوا استخدام النظام؟", a: "النظام بيشتغل في الخلفية ليريّح فريقك من الشغل الممل (النسخ واللصق والردود المكررة) مش عشان يراقبهم. وكمان بنقدّم جلسة تدريب عملية قصيرة في الأسبوع الثالث عشان الفريق يحب النظام ويستخدمه من أول يوم." },
-        { q: "إيه اللي بيحصل بالظبط في جلسة الـ 15 دقيقة المجانية؟", a: "جلسة تشخيص عملية 100% بدون بيع ضاغط: بنراجع فيها أرقامك وأكبر اختناق عندك، وبنطلعلك أعلى 3 أنظمة AIOS تحققلك أسرع عائد. لو مناسبين لبعض بنعرضلك خطة التنفيذ، ولو لأ بتحتفظ بالخطة مجانًا." }
-      ],
-      en: [
-        { q: "Do I need to replace my current tools or pay huge software bills?", a: "No. Every AIOS is built tool-agnostic around your existing stack (WhatsApp, CRM/Sheets, Google Calendar, ad forms) with minimal running cost and 100% ownership of your data." },
-        { q: "Could the AI quote wrong prices or give medical/legal advice?", a: "Every system ships with strict Guardrails: responses are locked to your verified knowledge base, diagnostic/unapproved advice is 100% blocked, and edge cases escalate instantly to a human." },
-        { q: "My team isn't technical — will they actually adopt it?", a: "The system runs quietly in the background removing boring copy-paste work, and Week 3 includes hands-on team enablement so adoption is effortless from Day 1." },
-        { q: "What happens during the free 15-minute audit?", a: "Zero-pressure diagnosis: we review your real bottlenecks, map the top 3 highest-ROI AIOS layers, and you keep the roadmap whether we work together or not." }
-      ]
-    };
+    const I18N = {"en": {"navHome": "Home", "navServices": "AIOS Services", "navCalc": "Calculator", "navVault": "Free Vault", "navContact": "Contact", "navAbout": "About Ahmed", "navBook": "Book 15m", "navBookMob": "Book Free 15-Min Audit", "heroBadge": "Unified AI Operating System (AIOS) — Not Isolated Chatbots", "heroTitle": "Turn <span class=\"txt-rose\">Manual Chaos</span> into a <span class=\"txt-cyan\">24/7 AI Operating Machine</span> — Zero Extra Headcount", "heroDesc": "We architect and deploy custom AI Operating Systems (AIOS) for MENA & GCC businesses — connecting Sales, Team Ops, Live Dashboards, and Guardrails into one seamless engine.", "heroPrimary": "Book Free 15-Min AIOS Audit", "heroSec": "Calculate Your Leak First (60s)", "visBadge": "Live 5-Layer Visual Comparison", "visTitle": "Before vs. After AIOS — Across All 5 Business Layers", "visSub": "Side-by-side on desktop, stacked cleanly on mobile — watch how every department transforms from manual overload to automated profit.", "lblBefore": "BEFORE AIOS • Manual Chaos & Leakage", "lblAfter": "AFTER AIOS • 24/7 Automated Operating System", "sysTitle": "The 4 Core Systems We Build Inside Your AIOS", "sysSub": "Every layer connects cleanly to your existing WhatsApp, CRM, Calendar, and Google Sheets.", "s1T": "24/7 Sales & Lead Engine", "s1D": "Instant 28-second replies on WhatsApp & social, smart lead qualification, auto-booking, and 30-day follow-up.", "s1O": "✓ Zero lost leads & 3x faster booking", "s2T": "Team & Daily Ops Automation", "s2D": "Eliminate manual data entry, auto-assign tasks, sync CRM records, and free your staff from repetitive admin.", "s2O": "✓ Save 4+ hours/day per team member", "s3T": "Live Executive Data OS", "s3D": "Real-time dashboard on your phone showing leads, reply speed, bookings, and daily 9AM executive briefs.", "s3O": "✓ Total visibility with zero spreadsheets", "s4T": "Context OS & Safety Guardrails", "s4D": "Trained strictly on your pricing and rules — with non-diagnostic medical & brand guardrails that escalate edge cases to humans.", "s4O": "✓ 100% brand safety & zero hallucinations", "roadTitle": "From Audit Call to Your First Live System in 14 Days", "roadSub": "Start with a low-risk 14-day sprint on your #1 bottleneck — then expand into the full AIOS once you see live results.", "w1Tag": "Days 1–2 • Scope & Access", "w1T": "Lock System #1 & Context OS", "w1D": "We isolate your #1 revenue bottleneck, collect access & business rules, and lock a clear 14-day sprint where you own 100% of your data.", "w2Tag": "Days 3–11 • Build & Stress-Test", "w2T": "Automation Build & AI Guardrails", "w2D": "We connect WhatsApp, CRM, and calendars via n8n and stress-test real Arabic & English edge cases and safety rules.", "w3Tag": "Days 12–14 • Go-Live & Expand", "w3T": "Live Launch + Team Training", "w3D": "Deploy on live traffic and train your team — once you see the ROI firsthand, we scale into the remaining AIOS layers.", "faqTitle": "Frequently Asked Questions", "finalTitle": "Ready to Stop Operational Leakage?", "finalDesc": "Book your free 15-minute diagnostic call — we pinpoint your #1 bottleneck and map your 14-day sprint with zero obligation.", "finalBtn": "Book Free 15-Min Audit Now", "finalSec": "Run Bleeding Calculator First", "fTagline": "Turning sales, teams, and daily business ops into a 24/7 AI Operating System — more output, less leakage, zero extra headcount (MENA & GCC).", "fColNav": "Navigation", "fColRes": "Free Resources", "fHome": "Home", "fServices": "AIOS Services", "fAbout": "About Ahmed", "fContact": "Contact Us", "fCalc": "Operational Bleeding Calculator", "fVault": "Free AIOS Vault", "fBook": "Book Free 15-Min Diagnostic Audit", "fRights": "All rights reserved."}, "ar": {"navHome": "الرئيسية", "navServices": "خدماتنا", "navCalc": "حاسبة النزيف", "navVault": "خزنة الهدايا", "navContact": "تواصل معنا", "navAbout": "عن أحمد", "navBook": "احجز 15د", "navBookMob": "احجز جلسة تشخيص 15 دقيقة مجانًا", "heroBadge": "نظام تشغيل ذكي متكامل (AIOS) — مش بوتات عشوائية منفصلة", "heroTitle": "حوّل شركتك من <span class=\"txt-rose\">فوضى يدوية</span> إلى <span class=\"txt-cyan\">ماكينة تشغيل ذكية 24/7</span> بدون موظف واحد زيادة", "heroDesc": "نصمّم ونبني لشركتك في الشرق الأوسط والخليج نظام تشغيل كامل بالذكاء الاصطناعي يربط المبيعات، تشغيل الفريق، الداشبورد اللحظي، وضوابط الأمان في منظومة واحدة.", "heroPrimary": "احجز جلسة التشخيص المجانية (15 دقيقة)", "heroSec": "احسب نزيف شركتك الأول (60 ثانية)", "visBadge": "مقارنة بصرية حية للطبقات الخمس", "visTitle": "شركتك قبل وبعد نظام AIOS — في كل الأقسام", "visSub": "شاشتين واضحتين جنب بعض على الكمبيوتر وتحت بعض على الموبايل — شوف إزاي كل قسم بيتحول من ضغط وخسارة لانسيابية وأرباح.", "lblBefore": "قبل AIOS • فوضى يدوية ونزيف مستمر", "lblAfter": "بعد AIOS • نظام تشغيل ذكي 24/7", "sysTitle": "الأنظمة الأربعة الأساسية اللي بنبنيها جوه شركتك", "sysSub": "كل طبقة بتتربط مباشرة بأدواتك الحالية: واتساب، الـ CRM، التقويم، وGoogle Sheets.", "s1T": "محرك المبيعات والليدز 24/7", "s1D": "رد فوري في 28 ثانية على الواتساب والسوشيال، فرز وتأهيل تلقائي، حجز مواعيد، ومتابعة ذكية 30 يوم.", "s1O": "✓ صفر عملاء ضائعين و3 أضعاف سرعة الحجز", "s2T": "أتمتة تشغيل الفريق والمهام اليومية", "s2D": "إلغاء إدخال البيانات اليدوي، توزيع المهام تلقائيًا، وتفريغ موظفيك من الشغل الروتيني المكرر.", "s2O": "✓ توفير +4 ساعات يوميًا لكل موظف", "s3T": "لوحة الأرقام اللحظية (Data OS)", "s3D": "داشبورد لايف على موبايلك يوريك الليدز وسرعة الرد والحجوزات مع تقرير صباحي يومي الساعة 9.", "s3O": "✓ رؤية كاملة بدون شيتات يدوية", "s4T": "الذاكرة وضوابط الأمان (Guardrails)", "s4D": "نظام مدرّب على أسعارك وسياساتك فقط مع ضوابط أمان طبية وإدارية صارمة تحوّل الحالات الحساسة لفريقك.", "s4O": "✓ أمان كامل 100% وصفر أخطاء", "roadTitle": "من جلسة التشخيص لأول نظام حي في 14 يومًا (أقل مخاطرة)", "roadSub": "نبدأ بسبرينت 14 يوم لأعلى نظام يحققلك أسرع عائد — وبعد ما تشوف النتائج بعينك، نتوسع لباقي طبقات AIOS.", "w1Tag": "الأيام 1–2 • التحديد والصلاحيات", "w1T": "تثبيت أول نظام وخريطة Context OS", "w1D": "نختار أعلى اختناق بيهدر فلوس في شركتك، نستلم الصلاحيات وسياسات البيع، ونثبت خطة السبرينت بحيث تملك كل بياناتك 100%.", "w2Tag": "الأيام 3–11 • البناء واختبار الضغط", "w2T": "بناء النظام وضوابط الأمان (Guardrails)", "w2D": "نبني الـ Workflows ونربط الواتساب والـ CRM والتقويم، ونختبر اللهجة المصرية والخليجية وضوابط الأمان قبل الإطلاق الحي.", "w3Tag": "الأيام 12–14 • الإطلاق ثم التوسع", "w3T": "التشغيل الحي + تدريب الفريق (ثم التوسع)", "w3D": "إطلاق النظام على رسائل العملاء الحقيقية وتدريب فريقك بالكامل — وبعد ما تشوف الفرق والأرقام بعينك، ننتقل لباقي طبقات AIOS.", "faqTitle": "الأسئلة الشائعة", "finalTitle": "جاهز توقّف النزيف التشغيلي في شركتك؟", "finalDesc": "احجز جلسة التشخيص المجانية (15 دقيقة) — بنحدد فيها أول نظام تبدأ بيه في سبرينت 14 يوم بدون أي التزام.", "finalBtn": "احجز جلسة التشخيص المجانية الآن", "finalSec": "جرّب حاسبة النزيف الأول", "fTagline": "نحوّل المبيعات والفرق وعمليات البيزنس اليومية لماكينة تشغيل ذكية تعمل 24/7 بدون موظف واحد زيادة — الشرق الأوسط والخليج.", "fColNav": "التنقل", "fColRes": "الأدوات والموارد", "fHome": "الرئيسية", "fServices": "خدماتنا", "fAbout": "عن أحمد الشرقاوي", "fContact": "تواصل معنا", "fCalc": "حاسبة النزيف التشغيلي", "fVault": "خزنة الهدايا المجانية", "fBook": "احجز جلسة تشخيص 15 دقيقة", "fRights": "جميع الحقوق محفوظة."}};
+    const FAQS = {"en": [{"q": "Why start with a 14-day sprint instead of building everything at once?", "a": "A 14-day sprint eliminates risk. We deploy your highest-ROI bottleneck first (e.g., WhatsApp Lead Engine or Clinic Booking), train your team, and prove real numbers before expanding into the remaining AIOS layers."}, {"q": "Will this disrupt my team or force us to change our tools?", "a": "No. We build on top of the tools you already use — WhatsApp, Google Sheets, Google Calendar, HubSpot, or your existing CRM — with zero downtime."}, {"q": "Is it safe for medical clinics and sensitive B2B pricing?", "a": "Yes. Every system includes strict deterministic guardrails: it never diagnoses patients, never prescribes medication, and escalates sensitive inquiries to a human instantly."}], "ar": [{"q": "ليه نبدأ بسبرينت 14 يوم بدل ما نبني كل حاجة مرة واحدة؟", "a": "سبرينت الـ 14 يوم بيقلل المخاطرة تمامًا — بننفذ أول نظام يحققلك أسرع عائد وندرب فريقك عليه وتشوف النتائج والأرقام بعينك قبل ما تتوسع في باقي طبقات النظام."}, {"q": "هل النظام هيعطّل شغل فريقي أو يجبرنا نغيّر أدواتنا؟", "a": "لأ تمامًا. بنبني النظام فوق أدواتك الحالية (واتساب، Google Sheets، التقويم، أو الـ CRM بتاعك) بدون أي تعطيل لشغلك اليومي."}, {"q": "هل النظام آمن للعيادات والمراكز الطبية والأسعار الحساسة؟", "a": "نعم 100%. بنركّب ضوابط أمان صارمة تمنع الـ AI تمامًا من التشخيص أو وصف الأدوية، وتحوّل أي حالة حساسة لفريقك البشري فورًا."}]};
+    const CHEV_SVG = "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"/></svg>";
 
-    const I18N = {
-      ar: {
-        navHome: "الرئيسية",
-        navServices: "خدماتنا (AIOS)",
-        navCalc: "حاسبة النزيف",
-        navVault: "مكتبة الهدايا", navContact: "تواصل معنا",
-        navBook: "احجز 15 دقيقة",
-        navBookFull: "احجز جلسة تشخيص مجانية (15 دقيقة)",
-        heroBadge: "نبني نظام تشغيل ذكي (AIOS) — مش بوتات عشوائية منفصلة",
-        heroTitle: 'حوّل شركتك من <span class="text-rose-400">فوضى يدوية</span> إلى <span class="text-cyan-300">ماكينة تشغيل ذكية 24/7</span> بدون موظف واحد زيادة',
-        heroDesc: 'نصمّم ونبني لشركتك في الشرق الأوسط والخليج بنية <strong class="text-white">AI Operating System (AIOS)</strong> كاملة تربط المبيعات، الواتساب، الـ CRM، وتقارير الإدارة في منظومة واحدة تشتغل بدقة حتى وأنت بعيد عن المكتب.',
-        heroPrimaryCta: "احجز جلسة التشخيص المجانية (15 دقيقة)",
-        heroSecCta: "احسب نزيف شركتك الأول (60 ثانية)",
-        dragHint: "اسحب الخط يمين وشمال وشوف التحوّل الفوري",
-        simTitle: "شركتك قبل وبعد نظام AIOS (مقارنة بصرية حية)",
-        simSub: "الوضعين قدامك فورًا — حرّك شريط المقارنة وشوف الفرق بين الفوضى اليدوية وماكينة الـ AIOS",
-        lblBefore: "❌ قبل AIOS (فوضى يدوية)",
-        lblAfter: "✅ بعد AIOS (تشغيل 24/7)",
-        cmpBeforeTitle: "❌ قبل نظام AIOS (الوضع اليدوي)",
-        cmpBeforeBadge: "نزيف -40%",
-        cb1: "• تأخر الرد على الواتساب 4–12 ساعة وضياع العميل للمنافس.",
-        cb2: "• 73% من الليدز اللي سألوا ومشتروش محدش بيكلمهم تاني.",
-        cb3: "• نسخ ولصق يدوي بين الشيتات وعمى تشغيلي تام لمدير الشركة.",
-        cmpAfterTitle: "✅ بعد نظام AIOS (ماكينة 24/7)",
-        cmpAfterBadge: "استرداد +65%",
-        ca1: "• رد وتأهيل فوري في 28 ثانية 24/7 وحجز مباشر في الجدول.",
-        ca2: "• متابعة تلقائية Value-First لمدة 30 يوم تسترجع الصفقات الضائعة.",
-        ca3: "• CRM محدث لحظيًا وتقرير صباحي للمدير بدون موظف واحد زيادة.",
-        srvTitle: "إيه اللي بنبنيه فعليًا داخل شركتك؟",
-        srvSub: "4 محركات مترابطة تشتغل على أدواتك الحالية بدون ما تعقّد فريقك",
-        s1T: "محرك المبيعات والرد الفوري 24/7",
-        s1D: "رد وتأهيل فوري على واتساب وإنستغرام وفيسبوك خلال أقل من 60 ثانية، فرز العملاء الجادين عن الاستفسارات العابرة، وحجز المواعيد أوتوماتيك مع متابعة ذكية لمدة 30 يومًا.",
-        s1Out: "✓ النتيجة: وقف نزيف 40%+ من الليدز الضائعة بدون شفت ليلي",
-        s2T: "أتمتة العمليات اليدوية ومساعد الفريق الداخلي",
-        s2D: "ربط الـ CRM والفواتير والشيتات والإيميلات لإلغاء النسخ واللصق، مع بناء مساعد AI داخلي (Context OS) مدرّب على سياسات وأسعار شركتك يجهز الردود والعروض لفريقك في ثوانٍ.",
-        s2Out: "✓ النتيجة: توفير 2–3 ساعات يوميًا لكل موظف وتوسع بدون توظيف جديد",
-        s3T: "لوحة القيادة اللحظية والتقرير الصباحي للمدير",
-        s3D: "إنهاء «العمى التشغيلي» بالكامل: كل ليد ومكالمة وصفقة بتتسجل أوتوماتيك، وبيوصلك كل صباح تقرير تنفيذي مختصر بأرقام المبيعات والصفقات المتعطلة بدون ما تسأل موظف واحد.",
-        s3Out: "✓ النتيجة: رؤية 100% لأرقام شركتك من موبايلك في 5 ثواني",
-        s4T: "أنظمة متخصصة للعيادات والشركات متعددة الفروع",
-        s4D: "حجز مواعيد تلقائي متزامن مع جداول الأطباء والفروع، تذكيرات واتساب تقلل الـ No-Show، وضوابط أمان صارمة (Non-Diagnostic Guardrails) تمنع أي فتوى طبية أو سعر خاطئ 100%.",
-        s4Out: "✓ النتيجة: امتلاء الجداول + أمان طبي وإداري كامل",
-        roadTitle: "من جلسة التشخيص لأول نظام حي في 14 يومًا (أقل مخاطرة)",
-        roadSub: "نبدأ بسبرينت 14 يوم لأعلى نظام يحققلك أسرع عائد — وبعد ما تشوف النتائج بعينك، نتوسع لباقي طبقات AIOS",
-        w1Tag: "الأيام 1–2 • التحديد والصلاحيات",
-        w1T: "تثبيت أول نظام وخريطة Context OS",
-        w1D: "نراجع مسارات المبيعات والتشغيل، نجمع سياسات وأسعار شركتك، ونصمّم هندسة النظام Tool-Agnostic بحيث تملك كل بياناتك وأدواتك 100%.",
-        w2Tag: "الأيام 3–11 • البناء واختبار الضغط",
-        w2T: "بناء النظام وضوابط الأمان (Guardrails)",
-        w2D: "نبني الـ Workflows ونربط الواتساب والـ CRM والتقارير، ونختبر كل سيناريو حقيقي وضوابط الأمان قبل تشغيله أمام عملائك.",
-        w3Tag: "الأيام 12–14 • الإطلاق ثم التوسع",
-        w3T: "التشغيل الحي + تدريب الفريق (ثم التوسع)",
-        w3D: "تشغيل النظام لايف، تدريب فريقك عمليًا على استخدامه بدون مقاومة، ومراقبة مؤشرات الـ ROI وتقليل الساعات المهدورة من أول أسبوع.",
-        faqTitle: "أسئلة بيسألها كل صاحب شركة قبل ما يبدأ",
-        fpBadge: "مقاعد محدودة: برنامج Founding Partner (خصم تأسيسي لـ 3 شركات فقط)",
-        finalTitle: "جاهز تشوف إزاي نظام AIOS يوقف النزيف في شركتك خلال 15 دقيقة؟",
-        finalDesc: "احجز جلسة التشخيص المجانية دلوقتي — هنراجع وضعك الحالي ونطلعلك خطة واضحة بأعلى 3 أنظمة تحققلك أسرع عائد، وبتحتفظ بالخطة كاملة حتى لو مقررناش نشتغل سوا.",
-        finalBtn: "احجز جلسة الـ 15 دقيقة المجانية الآن",
-        finalSecBtn: "جرّب حاسبة النزيف أولاً",
-        mobBookFull: "احجز جلسة 15 دقيقة مجانًا",
-        mobCalc: "الحاسبة"
-      },
-      en: {
-        navHome: "Home",
-        navServices: "Services (AIOS)",
-        navCalc: "Calculator",
-        navVault: "Free Vault", navContact: "Contact",
-        navBook: "Book 15m",
-        navBookFull: "Book Free 15-Min AIOS Audit",
-        heroBadge: "Unified AI Operating System (AIOS) — Not Isolated Chatbots",
-        heroTitle: 'Turn <span class="text-rose-400">Manual Chaos</span> into a <span class="text-cyan-300">24/7 AI Operating Machine</span> — Zero Extra Headcount',
-        heroDesc: 'We architect and deploy custom <strong class="text-white">AI Operating Systems (AIOS)</strong> for MENA &amp; GCC businesses — unifying WhatsApp, CRM, team workflows, and live executive reporting.',
-        heroPrimaryCta: "Book Free 15-Min AIOS Audit",
-        heroSecCta: "Calculate Your Leak First (60s)",
-        dragHint: "Drag the handle left & right to see the instant transformation",
-        simTitle: "Your Business Before vs. After AIOS",
-        simSub: "Both states side-by-side immediately — drag the divider to compare manual chaos vs. 24/7 AIOS",
-        lblBefore: "❌ Before AIOS (Manual Chaos)",
-        lblAfter: "✅ After AIOS (24/7 Machine)",
-        cmpBeforeTitle: "❌ Before AIOS (Manual Ops)",
-        cmpBeforeBadge: "-40% Leakage",
-        cb1: "• 4–12 hour WhatsApp delays losing hot buyers to faster competitors.",
-        cb2: "• 73% of leads never receive a structured second follow-up.",
-        cb3: "• Manual spreadsheet copy-paste and zero live visibility for founders.",
-        cmpAfterTitle: "✅ After AIOS (24/7 Machine)",
-        cmpAfterBadge: "+65% Recovered",
-        ca1: "• 28-second 24/7 AI qualification and direct calendar booking.",
-        ca2: "• Automated 30-day Value-First follow-up recovering ghosted deals.",
-        ca3: "• Live CRM & daily morning CEO brief with zero extra hires.",
-        srvTitle: "What We Actually Build Inside Your Business",
-        srvSub: "4 connected engines wired into your existing tools with zero disruption",
-        s1T: "24/7 Speed-to-Lead & Follow-Up Engine",
-        s1D: "Sub-60-second AI response & qualification across WhatsApp and socials, automatic booking, and 30-day value-first nurture sequences.",
-        s1Out: "✓ Outcome: Stop 40%+ lead leakage without night-shift hiring",
-        s2T: "Manual Ops Automation & Internal Team Copilot",
-        s2D: "Eliminate copy-paste across CRM, sheets, and invoicing, plus a private Context OS AI copilot trained on your SOPs and pricing.",
-        s2Out: "✓ Outcome: Save 2–3 hrs/day per employee and scale output",
-        s3T: "Live Data OS & Morning Executive Brief",
-        s3D: "End operational blind spots forever — every lead, call, and deal logs automatically with a crisp morning CEO summary on your phone.",
-        s3Out: "✓ Outcome: 100% live visibility in 5 seconds",
-        s4T: "Multi-Branch Clinics & Specialized Verticals",
-        s4D: "Doctor calendar sync, automated WhatsApp no-show reminders, and strict 100% Non-Diagnostic AI Guardrails for medical centers.",
-        s4Out: "✓ Outcome: Fuller schedules + 100% medical compliance",
-        roadTitle: "From Audit Call to Live System in 21 Days",
-        roadSub: "Transparent 3-week execution without disrupting daily operations",
-        w1Tag: "Week 1 • Audit & Architecture",
-        w1T: "Bottleneck Map & Context OS",
-        w1D: "Audit sales & ops workflows, structure your company knowledge, and design a tool-agnostic system you own 100%.",
-        w2Tag: "Week 2 • Build & Guardrails",
-        w2T: "Automation Wiring & Safety Testing",
-        w2D: "Connect WhatsApp, CRM, calendars, and reporting, then stress-test every guardrail before going live.",
-        w3Tag: "Week 3 • Launch & Handover",
-        w3T: "Go-Live & Team Enablement",
-        w3D: "Deploy live, train your team smoothly with zero resistance, and track real ROI from week one.",
-        faqTitle: "Questions Every Founder Asks Before Starting",
-        fpBadge: "Limited Spots: Founding Partner Program (Special Rate for 3 Companies)",
-        finalTitle: "Ready to Map How AIOS Stops Your Leak in 15 Minutes?",
-        finalDesc: "Book your free diagnostic call — we pinpoint the top 3 AIOS systems for fastest ROI, and you keep the written roadmap even if we never work together.",
-        finalBtn: "Book Your Free 15-Min Audit Now",
-        finalSecBtn: "Try Bleeding Calculator First",
-        mobBookFull: "Book Free 15-Min Audit",
-        mobCalc: "Calculator"
-      }
-    };
-
-    const state = { lang: "en", userInteracted: false };
-    const els = {
-      faqList: document.getElementById("faqList"),
-      langToggle: document.getElementById("langToggle"),
-      langToggleLabel: document.getElementById("langToggleLabel"),
-      mobileMenu: document.getElementById("unifiedMobileMenu"),
-      routeModal: document.getElementById("routeModal"),
-      routeModalMsg: document.getElementById("routeModalMsg"),
-      closeRouteModal: document.getElementById("closeRouteModal")
-    };
-
-    
-            // Zero-Network 4KB Native <canvas> 5-Layer AIOS Motion Engine (0ms Black Screen + Live AR/EN)
-    (function initAiosCanvasEngine() {
-      const canvas = document.getElementById("aiosCanvas");
-      const slider = document.getElementById("baSlider");
-      const beforeBadge = document.getElementById("baBeforeBadgeBar");
-      const afterBadge = document.getElementById("baAfterBadgeBar");
-      const divider = document.getElementById("baDivider");
-      if (!canvas || !slider || !beforeBadge || !afterBadge || !divider) return;
-      const ctx = canvas.getContext("2d");
-      let splitPct = 50;
-      let isVisible = true;
-      let rafId = null;
-
-      const COPY = {
-        en: {
-          bCore1: "MANUAL", bCore2: "MANAGEMENT", bCoreSub: "Disconnected Tools",
-          aCore1: "AIOS 24/7", aCore2: "CORE BRAIN", aCoreSub: "5 Connected Layers",
-          b1T: "1. Sales & Leads", b1M: "Reply Delay: 47 hrs", b1S: "99+ Unread Messages",
-          a1T: "1. Sales & Leads", a1M: "Auto-Reply: 28 sec", a1S: "24/7 Auto-Booking ✓",
-          b2T: "2. Team & Ops", b2M: "Team Overload: 98%", b2S: "Manual Repetitive Tasks",
-          a2T: "2. Team & Ops", a2M: "Workload Cut: -70%", a2S: "Automated Workflows ✓",
-          b3T: "3. Data & Dashboard", b3M: "Scattered Sheets", b3S: "No Live KPIs or Visibility",
-          a3T: "3. Data & Dashboard", a3M: "Live Data OS ✓", a3S: "Real-Time Mobile KPIs",
-          b4T: "4. Rules & Guardrails", b4M: "Frequent Human Errors", b4S: "No Safety Guardrails",
-          a4T: "4. Rules & Guardrails", a4M: "100% Guardrails ✓", a4S: "Strict Brand & Safety Rules",
-          bOutLbl: "5. Monthly Revenue Leakage:", bOutVal: "-$14,400 / mo",
-          aOutLbl: "5. Monthly Revenue Recovered:", aOutVal: "+$18,650 / mo"
-        },
-        ar: {
-          bCore1: "إدارة يدوية", bCore2: "مرهقة", bCoreSub: "أدوات مفككة بدون ربط",
-          aCore1: "نظام AIOS", aCore2: "المركزي 24/7", aCoreSub: "5 طبقات متصلة تلقائيًا",
-          b1T: "1. المبيعات والعملاء", b1M: "تأخير الرد: 47 ساعة", b1S: "+99 رسالة غير مقروءة",
-          a1T: "1. المبيعات والعملاء", a1M: "رد تلقائي: 28 ثانية", a1S: "تأهيل وحجز تلقائي ✓",
-          b2T: "2. الفريق والتشغيل", b2M: "ضغط الفريق: 98%", b2S: "شغل يدوي مكرر يوميًا",
-          a2T: "2. الفريق والتشغيل", a2M: "تخفيف الضغط: -70%", a2S: "أتمتة كاملة للمهام ✓",
-          b3T: "3. البيانات والداشبورد", b3M: "شيتات مفرّقة", b3S: "بدون أرقام لحظية للمدير",
-          a3T: "3. البيانات والداشبورد", a3M: "داشبورد أرقام لايف ✓", a3S: "تقارير فورية على موبايلك",
-          b4T: "4. القواعد والأمان", b4M: "أخطاء بشرية متكررة", b4S: "بدون ضوابط أمان واضحة",
-          a4T: "4. القواعد والأمان", a4M: "ضوابط أمان 100% ✓", a4S: "التزام كامل بسياسة شركتك",
-          bOutLbl: "5. نزيف مالي شهري مستمر:", bOutVal: "-$14,400 / شهر",
-          aOutLbl: "5. عائد وتوفير شهري مسترد:", aOutVal: "+$18,650 / شهر"
-        }
-      };
-
-      function rr(x, y, w, h, r) {
-        ctx.beginPath();
-        ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h);
-      }
-
-      function drawScene(isAfter, t, W, H) {
-        const lang = (typeof state !== "undefined" && state.lang === "ar") ? "ar" : "en";
-        const c = COPY[lang];
-        const fontFam = lang === "ar" ? "'Cairo', sans-serif" : "'Inter', system-ui, sans-serif";
-        const s = W / 900; // Responsive scale factor
-
-        // Solid opaque background (ZERO bleed-through!)
-        ctx.fillStyle = isAfter ? "#051220" : "#150710";
-        ctx.fillRect(0, 0, W, H);
-
-        // Subtle grid
-        ctx.strokeStyle = isAfter ? "rgba(34,211,238,0.06)" : "rgba(244,63,94,0.07)";
-        ctx.lineWidth = 1;
-        const step = 36 * s;
-        for (let gx = step; gx < W; gx += step) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
-        for (let gy = step; gy < H; gy += step) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
-
-        const cx = W * 0.5, cy = H * 0.43;
-        const cardW = 265 * s, cardH = 112 * s;
-        const nodes = [
-          { x: 34 * s, y: 36 * s, t: isAfter ? c.a1T : c.b1T, m: isAfter ? c.a1M : c.b1M, sub: isAfter ? c.a1S : c.b1S, acc: isAfter ? "#22d3ee" : "#f43f5e" },
-          { x: W - 34 * s - cardW, y: 36 * s, t: isAfter ? c.a2T : c.b2T, m: isAfter ? c.a2M : c.b2M, sub: isAfter ? c.a2S : c.b2S, acc: isAfter ? "#34d399" : "#f59e0b" },
-          { x: 34 * s, y: H - 118 * s - cardH, t: isAfter ? c.a3T : c.b3T, m: isAfter ? c.a3M : c.b3M, sub: isAfter ? c.a3S : c.b3S, acc: isAfter ? "#38bdf8" : "#f43f5e" },
-          { x: W - 34 * s - cardW, y: H - 118 * s - cardH, t: isAfter ? c.a4T : c.b4T, m: isAfter ? c.a4M : c.b4M, sub: isAfter ? c.a4S : c.b4S, acc: isAfter ? "#10b981" : "#fb7185" }
-        ];
-
-        // Connector Lines: Broken flickering red (Before) vs Smooth glowing cyan pulses (After)
-        nodes.forEach((n, idx) => {
-          const nx = n.x + (idx % 2 === 0 ? cardW : 0);
-          const ny = n.y + cardH * 0.5;
-          ctx.save();
-          ctx.beginPath();
-          ctx.moveTo(nx, ny);
-          ctx.lineTo(cx, cy);
-          if (isAfter) {
-            ctx.strokeStyle = "rgba(34,211,238,0.45)";
-            ctx.lineWidth = 2.5 * s;
-            ctx.stroke();
-            // Smooth gliding light orb from card -> core -> card
-            const prog = (t * 0.55 + idx * 0.25) % 1;
-            const ox = nx + (cx - nx) * prog;
-            const oy = ny + (cy - ny) * prog;
-            ctx.beginPath();
-            ctx.arc(ox, oy, 4.5 * s, 0, Math.PI * 2);
-            ctx.fillStyle = idx % 2 === 0 ? "#67e8f9" : "#34d399";
-            ctx.fill();
-          } else {
-            const blink = Math.sin(t * 7 + idx) > -0.2;
-            ctx.setLineDash([7 * s, 8 * s]);
-            ctx.strokeStyle = blink ? "rgba(244,63,94,0.85)" : "rgba(244,63,94,0.25)";
-            ctx.lineWidth = 2 * s;
-            ctx.stroke();
-            ctx.setLineDash([]);
-            // Red X disconnect badge midway
-            const mx = (nx + cx) * 0.5, my = (ny + cy) * 0.5;
-            ctx.beginPath();
-            ctx.arc(mx, my, 10 * s, 0, Math.PI * 2);
-            ctx.fillStyle = "#380d1b";
-            ctx.fill();
-            ctx.strokeStyle = "#f43f5e";
-            ctx.lineWidth = 1.5 * s;
-            ctx.stroke();
-            ctx.fillStyle = "#fda4af";
-            ctx.font = `800 ${11 * s}px sans-serif`;
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText("✕", mx, my + 0.5 * s);
-          }
-          ctx.restore();
-        });
-
-        // Draw 4 Department Cards (Self-Explanatory!)
-        nodes.forEach((n, idx) => {
-          const jx = isAfter ? 0 : Math.sin(t * 9 + idx * 1.7) * 1.8 * s;
-          const jy = isAfter ? Math.sin(t * 2.2 + idx) * 2 * s : Math.cos(t * 8 + idx) * 1.2 * s;
-          const x = n.x + jx, y = n.y + jy;
-
-          rr(x, y, cardW, cardH, 16 * s);
-          ctx.fillStyle = isAfter ? "#0a2034" : "#250c18";
-          ctx.fill();
-          ctx.strokeStyle = n.acc;
-          ctx.lineWidth = 1.8 * s;
-          ctx.stroke();
-
-          ctx.textAlign = lang === "ar" ? "right" : "left";
-          ctx.textBaseline = "top";
-          const tx = lang === "ar" ? (x + cardW - 16 * s) : (x + 16 * s);
-
-          // Department Title
-          ctx.fillStyle = n.acc;
-          ctx.font = `800 ${13.5 * s}px ${fontFam}`;
-          ctx.fillText(n.t, tx, y + 14 * s);
-
-          // Main Self-Explanatory Metric
-          ctx.fillStyle = "#ffffff";
-          ctx.font = `900 ${17.5 * s}px ${fontFam}`;
-          ctx.fillText(n.m, tx, y + 40 * s);
-
-          // Clear Sub-description
-          ctx.fillStyle = isAfter ? "#94a3b8" : "#fda4af";
-          ctx.font = `600 ${12.5 * s}px ${fontFam}`;
-          ctx.fillText(n.sub, tx, y + 74 * s);
-        });
-
-        // Center Hub Core (Manual Stress vs Unified AIOS 24/7)
-        const pulse = isAfter ? Math.sin(t * 2.6) * 5 * s : Math.sin(t * 8) * 3 * s;
-        ctx.beginPath();
-        ctx.arc(cx, cy, 68 * s + pulse, 0, Math.PI * 2);
-        ctx.strokeStyle = isAfter ? "rgba(34,211,238,0.35)" : "rgba(244,63,94,0.45)";
-        ctx.lineWidth = 2 * s;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(cx, cy, 56 * s, 0, Math.PI * 2);
-        ctx.fillStyle = isAfter ? "#082d3f" : "#3a0c1c";
-        ctx.fill();
-        ctx.strokeStyle = isAfter ? "#22d3ee" : "#f43f5e";
-        ctx.lineWidth = 2.8 * s;
-        ctx.stroke();
-
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillStyle = "#ffffff";
-        ctx.font = `900 ${16 * s}px ${fontFam}`;
-        ctx.fillText(isAfter ? c.aCore1 : c.bCore1, cx, cy - 11 * s);
-        ctx.fillStyle = isAfter ? "#67e8f9" : "#fda4af";
-        ctx.font = `800 ${12.5 * s}px ${fontFam}`;
-        ctx.fillText(isAfter ? c.aCore2 : c.bCore2, cx, cy + 10 * s);
-
-        // Label Pill right under Core
-        rr(cx - 76 * s, cy + 64 * s, 152 * s, 24 * s, 12 * s);
-        ctx.fillStyle = isAfter ? "#063a35" : "#421020";
-        ctx.fill();
-        ctx.fillStyle = isAfter ? "#6ee7b7" : "#fda4af";
-        ctx.font = `700 ${11 * s}px ${fontFam}`;
-        ctx.fillText(isAfter ? c.aCoreSub : c.bCoreSub, cx, cy + 76 * s);
-
-        // Bottom Layer #5 Outcome Strip (Clear Monthly Profit Impact)
-        const bx = 34 * s, by = H - 72 * s, bw = W - 68 * s, bh = 48 * s;
-        rr(bx, by, bw, bh, 14 * s);
-        ctx.fillStyle = isAfter ? "#062e2c" : "#2f0b18";
-        ctx.fill();
-        ctx.strokeStyle = isAfter ? "#10b981" : "#f43f5e";
-        ctx.lineWidth = 1.8 * s;
-        ctx.stroke();
-
-        ctx.textBaseline = "middle";
-        const midY = by + bh * 0.5;
-        if (lang === "ar") {
-          ctx.textAlign = "right";
-          ctx.fillStyle = isAfter ? "#a7f3d0" : "#fecdd3";
-          ctx.font = `800 ${14.5 * s}px ${fontFam}`;
-          ctx.fillText(isAfter ? c.aOutLbl : c.bOutLbl, bx + bw - 18 * s, midY);
-          ctx.textAlign = "left";
-          ctx.fillStyle = isAfter ? "#34d399" : "#fb7185";
-          ctx.font = `900 ${19 * s}px ${fontFam}`;
-          ctx.fillText(isAfter ? c.aOutVal : c.bOutVal, bx + 18 * s, midY);
-        } else {
-          ctx.textAlign = "left";
-          ctx.fillStyle = isAfter ? "#a7f3d0" : "#fecdd3";
-          ctx.font = `800 ${14.5 * s}px ${fontFam}`;
-          ctx.fillText(isAfter ? c.aOutLbl : c.bOutLbl, bx + 18 * s, midY);
-          ctx.textAlign = "right";
-          ctx.fillStyle = isAfter ? "#34d399" : "#fb7185";
-          ctx.font = `900 ${19 * s}px ${fontFam}`;
-          ctx.fillText(isAfter ? c.aOutVal : c.bOutVal, bx + bw - 18 * s, midY);
-        }
-      }
-
-      function renderFrame(ts) {
-        const rect = canvas.getBoundingClientRect();
-        if (rect.width > 10 && rect.height > 10) {
-          const dpr = Math.min(window.devicePixelRatio || 1, 2);
-          const cw = Math.round(rect.width * dpr);
-          const ch = Math.round(rect.height * dpr);
-          if (canvas.width !== cw || canvas.height !== ch) {
-            canvas.width = cw;
-            canvas.height = ch;
-          }
-          const t = (ts || 0) * 0.001;
-          // 1. Paint full AFTER scene
-          drawScene(true, t, cw, ch);
-          // 2. Clip left side at splitPct% and paint BEFORE scene cleanly on top
-          ctx.save();
-          ctx.beginPath();
-          ctx.rect(0, 0, cw * (splitPct / 100), ch);
-          ctx.clip();
-          drawScene(false, t, cw, ch);
-          ctx.restore();
-        }
-        if (isVisible) rafId = requestAnimationFrame(renderFrame);
-      }
-
-      function setPos(val) {
-        splitPct = Math.max(5, Math.min(95, Number(val)));
-        const rightInset = `inset(0 ${100 - splitPct}% 0 0)`;
-        beforeBadge.style.clipPath = rightInset;
-        afterBadge.style.clipPath = `inset(0 0 0 ${splitPct}%)`;
-        divider.style.left = splitPct + "%";
-        if (!isVisible) renderFrame(performance.now());
-      }
-
-      slider.addEventListener("input", (e) => setPos(e.target.value));
-      setPos(50);
-
-      // Pause automatically when scrolled off-screen to save battery/CPU
-      if ("IntersectionObserver" in window) {
-        new IntersectionObserver((entries) => {
-          isVisible = entries[0].isIntersecting;
-          if (isVisible && !rafId) rafId = requestAnimationFrame(renderFrame);
-          else if (!isVisible && rafId) { cancelAnimationFrame(rafId); rafId = null; }
-        }, { threshold: 0.05 }).observe(canvas);
-      }
-      // Draw frame 0 synchronously immediately -> 0.00s black screen!
-      renderFrame(0);
-    })();
+    let lang = "en";
+    try { const s = localStorage.getItem("aios_lang"); if (s === "ar" || s === "en") lang = s; } catch (e) {}
 
     function renderFaqs() {
-      const items = FAQS[state.lang];
-      els.faqList.innerHTML = items.map((item, idx) => `
-        <div class="glass-card overflow-hidden rounded-2xl">
-          <button type="button" class="faq-toggle flex w-full items-center justify-between gap-3 px-5 py-4 text-start text-xs font-extrabold text-white sm:text-sm" data-faq="${idx}">
-            <span>${item.q}</span>
-            <i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-cyan-300 transition-transform duration-200"></i>
-          </button>
-          <div class="faq-body hidden border-t border-slate-800/80 px-5 py-3.5 text-xs leading-relaxed text-slate-300 sm:text-sm">${item.a}</div>
+      const box = document.getElementById("faqList");
+      box.innerHTML = FAQS[lang].map((item, i) => `
+        <div class="faq-item" data-faq-item="${i}">
+          <button type="button" class="faq-btn"><span>${item.q}</span><span class="faq-chev">${CHEV_SVG}</span></button>
+          <div class="faq-body">${item.a}</div>
         </div>
       `).join("");
-      
-    // Unified Navbar + Mobile Menu + Dynamic Copyright Year
-    (function initUnifiedNav() {
-      const mBtn = document.getElementById("unifiedMenuBtn");
-      const mMenu = document.getElementById("unifiedMobileMenu");
-      if (mBtn && mMenu && !mBtn.dataset.bound) {
-        mBtn.dataset.bound = "1";
-        mBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          const isHidden = mMenu.classList.toggle("hidden");
-          mBtn.setAttribute("aria-expanded", String(!isHidden));
-        });
-      }
-      document.querySelectorAll(".js-year").forEach(el => {
-        el.textContent = String(new Date().getFullYear());
-      });
-      document.querySelectorAll("[data-nav-go]").forEach(btn => {
-        if (btn.dataset.navBound) return;
-        btn.dataset.navBound = "1";
-        btn.addEventListener("click", () => {
-          const dest = btn.dataset.navGo;
-          if (mMenu) mMenu.classList.add("hidden");
-          if (mBtn) mBtn.setAttribute("aria-expanded", "false");
-          if (window.location.protocol === "http:" || window.location.protocol === "https:") {
-            window.location.href = dest;
-          } else if (typeof showToast === "function") {
-            showToast("المسار على الموقع الحي: " + dest);
-          }
-        });
-      });
-    })();
-
-    try { const _sl = localStorage.getItem("aios_lang"); applyLanguage(_sl === "ar" ? "ar" : "en"); } catch (e) {}
-    if (typeof lucide !== "undefined") lucide.createIcons(); window.addEventListener("DOMContentLoaded", () => { if (typeof lucide !== "undefined") lucide.createIcons(); });
-
-      document.querySelectorAll(".faq-toggle").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const body = btn.nextElementSibling;
-          const icon = btn.querySelector("svg");
-          const isHidden = body.classList.contains("hidden");
-          body.classList.toggle("hidden", !isHidden);
-          if (icon) icon.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
-        });
+      box.querySelectorAll(".faq-btn").forEach(btn => {
+        btn.addEventListener("click", () => btn.parentElement.classList.toggle("open"));
       });
     }
 
-    
-    // Merge Shared Navbar & Pro Footer I18N + Persist Language Across Pages
-    (function mergeSharedI18N() {
-      const sAr = {"navHome": "الرئيسية", "navServices": "خدماتنا", "navCalc": "حاسبة النزيف", "navVault": "خزنة الهدايا", "navContact": "تواصل معنا", "navAbout": "عن أحمد", "navBook": "احجز 15د", "navBookMob": "احجز جلسة تشخيص 15 دقيقة مجانًا", "fTagline": "نحوّل المبيعات والفرق وعمليات البيزنس اليومية لماكينة تشغيل ذكية تعمل 24/7 بدون موظف واحد زيادة — الشرق الأوسط والخليج.", "fColNav": "التنقل", "fColRes": "الأدوات والموارد", "fHome": "الرئيسية", "fServices": "خدماتنا", "fAbout": "عن أحمد الشرقاوي", "fContact": "تواصل معنا", "fCalc": "حاسبة النزيف التشغيلي", "fVault": "خزنة الهدايا المجانية", "fBook": "احجز جلسة تشخيص 15 دقيقة", "fRights": "جميع الحقوق محفوظة."};
-      const sEn = {"navHome": "Home", "navServices": "AIOS Services", "navCalc": "Calculator", "navVault": "Free Vault", "navContact": "Contact", "navAbout": "About Ahmed", "navBook": "Book 15m", "navBookMob": "Book Free 15-Min Audit", "fTagline": "Turning sales, teams, and daily business ops into a 24/7 AI Operating System — more output, less leakage, zero extra headcount (MENA & GCC).", "fColNav": "Navigation", "fColRes": "Free Resources", "fHome": "Home", "fServices": "AIOS Services", "fAbout": "About Ahmed (Why AIOS)", "fContact": "Contact Us", "fCalc": "Operational Bleeding Calculator", "fVault": "Free AIOS Vault", "fBook": "Book Free 15-Min Diagnostic Audit", "fRights": "All rights reserved."};
-      if (typeof I18N !== "undefined" && I18N.ar && I18N.en) {
-        Object.assign(I18N.ar, sAr);
-        Object.assign(I18N.en, sEn);
-      }
-    })();
-
-    
-    // Merge Motion Graphics & 14-Day Sprint I18N + Live Counter Ticker
-    (function initLiveMotionScene() {
-      const mAr = {"mBeforeIn1": "رسائل متراكمة وتأخير", "mBeforeIn1Sub": "متوسط رد 47 ساعة!", "mBeforeIn2": "عميل سأل ومشي ❌", "mBeforeIn2Sub": "نسينا نتابع في الشيت", "mBeforeCenter": "ضغط وتوتر!", "mBeforeCenterSub": "شغل يدوي + أدوات مفككة", "mBeforeOut1": "73% ليدز بتبرد", "mBeforeOut1Sub": "إعلانات مدفوعة بتضيع", "mBeforeLeakLbl": "فلوس بتطير شهريًا", "mBeforeFoot1": "⚠ زحمة رسائل • إرهاق فريق • خسارة عملاء", "mBeforeFoot2": "نزيف مستمر كل ساعة", "mAfterIn1": "رد تلقائي 28 ثانية", "mAfterIn1Sub": "واتساب + إنستجرام 24/7", "mAfterIn2": "متابعة ذكية 30 يوم", "mAfterIn2Sub": "بدون نسيان عميل واحد", "mAfterCenter": "انسيابية وراحة تامة ✓", "mAfterOut1": "حجز ومزامنة CRM ✓", "mAfterOut1Sub": "العميل المؤهل فقط لفريقك", "mAfterRevLbl": "عائد وتوفير متصاعد", "mAfterFoot1": "✓ 0 رسائل متأخرة • 0 ضغط على الفريق", "mAfterFoot2": "فلوس بتدخل والنظام شغال لوحده", "roadTitle": "من جلسة التشخيص لأول نظام حي في 14 يومًا (أقل مخاطرة)", "roadSub": "نبدأ بسبرينت 14 يوم لأعلى نظام يحققلك أسرع عائد — وبعد ما تشوف النتائج بعينك، نتوسع لباقي طبقات AIOS", "w1Tag": "الأيام 1–2 • التحديد والصلاحيات", "w1T": "تثبيت أول نظام وخريطة Context OS", "w1D": "نختار أعلى اختناق بيهدر فلوس في شركتك، نستلم الصلاحيات وسياسات البيع، ونثبت خطة السبرينت بحيث تملك كل بياناتك 100%.", "w2Tag": "الأيام 3–11 • البناء واختبار الضغط", "w2T": "بناء النظام وضوابط الأمان (Guardrails)", "w2D": "نبني الـ Workflows ونربط الواتساب والـ CRM والتقويم، ونختبر اللهجة المصرية والخليجية وضوابط الأمان قبل الإطلاق الحي.", "w3Tag": "الأيام 12–14 • الإطلاق ثم التوسع", "w3T": "التشغيل الحي + تدريب الفريق (ثم التوسع)", "w3D": "إطلاق النظام على رسائل العملاء الحقيقية وتدريب فريقك بالكامل — وبعد ما تشوف الفرق والأرقام بعينك، ننتقل لباقي طبقات AIOS."};
-      const mEn = {"mBeforeIn1": "Unread Flood & Delays", "mBeforeIn1Sub": "47h avg response time!", "mBeforeIn2": "Lead Asked & Left ❌", "mBeforeIn2Sub": "Forgot spreadsheet follow-up", "mBeforeCenter": "Stress & Chaos!", "mBeforeCenterSub": "Manual work + broken tools", "mBeforeOut1": "73% Leads Go Cold", "mBeforeOut1Sub": "Paid ad spend wasted", "mBeforeLeakLbl": "Cash Leaking Monthly", "mBeforeFoot1": "⚠ Message overload • Team burnout • Lost deals", "mBeforeFoot2": "Continuous revenue bleeding", "mAfterIn1": "28s Auto-Reply", "mAfterIn1Sub": "WhatsApp & IG 24/7", "mAfterIn2": "30-Day Smart Nurture", "mAfterIn2Sub": "Zero leads ever forgotten", "mAfterCenter": "Smooth & Effortless ✓", "mAfterOut1": "Auto-Book & CRM Sync ✓", "mAfterOut1Sub": "Only hot leads to your team", "mAfterRevLbl": "Recovered Revenue", "mAfterFoot1": "✓ 0 delayed replies • 0 team burnout", "mAfterFoot2": "Revenue flowing on autopilot", "roadTitle": "From Audit Call to Your First Live System in 14 Days", "roadSub": "Start with a low-risk 14-day sprint on your #1 bottleneck — then expand into the full AIOS once you see real numbers", "w1Tag": "Days 1–2 • Scope & Access", "w1T": "Lock System #1 & Context OS", "w1D": "We isolate your #1 revenue bottleneck, collect access & business rules, and lock a clear 14-day sprint where you own 100% of your data.", "w2Tag": "Days 3–11 • Build & Stress-Test", "w2T": "Automation Build & AI Guardrails", "w2D": "We connect WhatsApp, CRM, and calendars via n8n and stress-test real Arabic/English edge cases and safety guardrails.", "w3Tag": "Days 12–14 • Go-Live & Expand", "w3T": "Live Launch + Team Training", "w3D": "Deploy on live customer traffic and train your team — once you see the ROI firsthand, we scale into the remaining AIOS layers."};
-      if (typeof I18N !== "undefined" && I18N.ar && I18N.en) {
-        Object.assign(I18N.ar, mAr);
-        Object.assign(I18N.en, mEn);
-      }
-      
-    })();
-
-    
-    (function mergeOptionAI18N() {
-      const oAr = {"dragHint": "اسحب الخط يمين وشمال وشوف الفرق الحقيقي", "simTitle": "شركتك قبل وبعد نظام AIOS", "simSub": "مقارنة مباشرة تشمل المبيعات، تشغيل الفريق والموظفين، والأرباح — بوضوح كامل بدون أي تداخل.", "lblBefore": "قبل AIOS (فوضى وضغط يدوي)", "mBeforeTag": "توتر ونزيف مستمر", "bP1T": "1. المبيعات والعملاء", "bP1Badge": "تأخير 47 ساعة", "bP1D": "رسائل واتساب متراكمة بدون رد فوري، عملاء بيبردوا قبل التواصل، و73% من الاستفسارات مفيش حد بيتابعها.", "bP2T": "2. تشغيل الفريق والموظفين", "bP2Badge": "إرهاق وشغل مكرر", "bP2D": "الموظفين بيضيعوا أكتر من 4 ساعات يوميًا في نقل بيانات يدوي وشيتات مفككة ومهام روتينية بتستنزف طاقتهم.", "bP3T": "3. الفلوس والرؤية الإدارية", "bP3Badge": "خسائر بتتسرب", "bP3D": "فلوس إعلانات ورواتب بتضيع بصمت كل شهر، ومدير الشركة بياخد قراراته من غير أرقام لحظية واضحة.", "bFootLbl": "حالة التشغيل", "bFootVal": "ضغط عالي ونزيف شهري", "lblAfter": "بعد AIOS (ماكينة تشغيل 24/7)", "mAfterTag": "انسيابية وعائد متصاعد", "aP1T": "1. المبيعات والعملاء", "aP1Badge": "رد في 28 ثانية", "aP1D": "رد فوري وتأهيل وحجز تلقائي على الواتساب والسوشيال 24/7 مع متابعة ذكية لمدة 30 يوم بدون نسيان عميل واحد.", "aP2T": "2. تشغيل الفريق والموظفين", "aP2Badge": "راحة وتركيز للفريق", "aP2D": "تحديث البيانات وتوزيع المهام والتقارير اليومية بيحصلوا تلقائيًا — وفريقك يتفرغ لتقفيل الصفقات وخدمة العملاء.", "aP3T": "3. الفلوس والرؤية الإدارية", "aP3Badge": "+65% عائد مسترد", "aP3D": "توفير وقت وتكاليف بدون توظيف إضافي، مع لوحة أرقام لايف على موبايلك بتوريك الليدز والحجوزات والعائد لحظة بلحظة.", "aFootLbl": "حالة التشغيل", "aFootVal": "تشغيل سلس ونمو مستمر ✓"};
-      const oEn = {"dragHint": "Drag Left & Right to See the Transformation", "simTitle": "Your Business Before vs. After AIOS", "simSub": "Clear comparison across Sales, Team Operations, and Profitability — zero guesswork, zero overlap.", "lblBefore": "Before AIOS (Manual Chaos)", "mBeforeTag": "High Stress & Leakage", "bP1T": "1. Sales & Leads", "bP1Badge": "47h Avg Reply", "bP1D": "Unread WhatsApp messages pile up, leads cool down before anyone replies, and 73% of inquiries are never followed up.", "bP2T": "2. Team & Daily Operations", "bP2Badge": "Manual Burnout", "bP2D": "Staff waste 4+ hours daily copying data into disconnected spreadsheets, chasing repetitive tasks, and fixing human errors.", "bP3T": "3. Profit & Executive Visibility", "bP3Badge": "Revenue Bleeding", "bP3D": "Silent monthly cash leakage from wasted ad spend and payroll overhead, with zero real-time visibility for leadership.", "bFootLbl": "Operational State", "bFootVal": "Overwhelmed & Losing Cash", "lblAfter": "After AIOS (24/7 Automated Machine)", "mAfterTag": "Smooth & Profitable", "aP1T": "1. Sales & Leads", "aP1Badge": "28s Auto-Reply", "aP1D": "Instant 24/7 WhatsApp & social response, automatic lead qualification, calendar booking, and 30-day smart follow-up.", "aP2T": "2. Team & Daily Operations", "aP2Badge": "Team Freed Up", "aP2D": "CRM updates, task routing, and daily reports run automatically — freeing your team to focus on closing deals and serving clients.", "aP3T": "3. Profit & Executive Visibility", "aP3Badge": "+65% Recovered", "aP3D": "Lower operating costs, zero extra payroll, and a live mobile dashboard showing leads, bookings, and ROI in real time.", "aFootLbl": "Operational State", "aFootVal": "Effortless 24/7 Growth ✓"};
-      if (typeof I18N !== "undefined" && I18N.ar && I18N.en) {
-        Object.assign(I18N.ar, oAr);
-        Object.assign(I18N.en, oEn);
-      }
-    })();
-
-    function applyLanguage(lang) {
-      state.lang = lang;
+    function applyLanguage(newLang) {
+      lang = newLang;
       try { localStorage.setItem("aios_lang", lang); } catch (e) {}
       document.documentElement.lang = lang;
       document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-      els.langToggleLabel.textContent = lang === "ar" ? "EN" : "العربية";
+      document.getElementById("langToggleLabel").textContent = lang === "ar" ? "EN" : "العربية";
       const t = I18N[lang];
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.dataset.i18n;
-        if (t[key]) el.innerHTML = t[key];
-      });
+      document.querySelectorAll("[data-i18n]").forEach(el => { const k = el.dataset.i18n; if (t[k]) el.textContent = t[k]; });
+      document.querySelectorAll("[data-i18n-html]").forEach(el => { const k = el.dataset.i18nHtml; if (t[k]) el.innerHTML = t[k]; });
       renderFaqs();
+      drawBothCanvases(performance.now() * 0.001);
     }
 
-    els.langToggle.addEventListener("click", () => applyLanguage(state.lang === "ar" ? "en" : "ar"));
-    
+    document.getElementById("langToggle").addEventListener("click", () => applyLanguage(lang === "ar" ? "en" : "ar"));
 
-    document.querySelectorAll("[data-route]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const path = btn.dataset.route;
-        els.mobileMenu.classList.add("hidden");
-        if (window.location.protocol === "http:" || window.location.protocol === "https:") {
-          window.location.href = path;
-        } else {
-          els.routeModalMsg.textContent = state.lang === "ar"
-            ? `عند رفع الملفات على Vercel، الزر ده بينقلك مباشرة إلى ${path} داخل موقعك.`
-            : `Once deployed to Vercel, this navigates directly to ${path} on your live site.`;
-          els.routeModal.classList.remove("hidden");
-          els.routeModal.classList.add("flex");
-        }
-      });
-    });
-
-    els.closeRouteModal.addEventListener("click", () => {
-      els.routeModal.classList.add("hidden");
-      els.routeModal.classList.remove("flex");
-    });
-    els.routeModal.addEventListener("click", e => {
-      if (e.target === els.routeModal) {
-        els.routeModal.classList.add("hidden");
-        els.routeModal.classList.remove("flex");
+    // Unified Navbar + Mobile Menu + Year
+    (function initNav() {
+      const mBtn = document.getElementById("unifiedMenuBtn");
+      const mMenu = document.getElementById("unifiedMobileMenu");
+      if (mBtn && mMenu) {
+        mBtn.addEventListener("click", () => {
+          const open = mMenu.classList.toggle("open");
+          mBtn.setAttribute("aria-expanded", String(open));
+        });
       }
-    });
+      document.querySelectorAll(".js-year").forEach(el => el.textContent = String(new Date().getFullYear()));
+      document.querySelectorAll("[data-nav-go]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (mMenu) mMenu.classList.remove("open");
+          if (window.location.protocol === "http:" || window.location.protocol === "https:") {
+            window.location.href = btn.dataset.navGo;
+          }
+        });
+      });
+    })();
 
-    if (typeof lucide !== "undefined") lucide.createIcons();
-    try { const _sl = localStorage.getItem("aios_lang"); applyLanguage(_sl === "ar" ? "ar" : "en"); } catch (e) { applyLanguage("en"); }
-    
+    // =========================================================================
+    // DUAL ICON-DRIVEN 5-LAYER VISUAL CANVASES (Zero Overlap, Creative Symbols,
+    // Animated Layer #5 Money Flow, True Arabic RTL, Ultra-Light 20fps!)
+    // =========================================================================
+    const beforeC = document.getElementById("beforeCanvas");
+    const afterC = document.getElementById("afterCanvas");
+    const bCtx = beforeC.getContext("2d");
+    const aCtx = afterC.getContext("2d");
+
+    const VIS_TXT = {
+      en: {
+        bCore: "MANUAL", aCore: "AIOS 24/7",
+        n1: "Sales & Inbox", b1: "47h Delay • 99+", a1: "28s Auto-Reply ✓",
+        n2: "Team & Ops", b2: "98% Burnout", a2: "Team Freed -70% ✓",
+        n3: "Data & KPIs", b3: "No Live Data", a3: "Live Dashboard ✓",
+        n4: "Safety Rules", b4: "Human Errors", a4: "100% Guardrails ✓",
+        b5: "Monthly Leakage", a5: "Monthly Profit Saved"
+      },
+      ar: {
+        bCore: "إدارة يدوية", aCore: "AIOS 24/7",
+        n1: "المبيعات والرسائل", b1: "تأخير 47 ساعة", a1: "رد 28 ثانية ✓",
+        n2: "الفريق والتشغيل", b2: "ضغط 98%", a2: "راحة الفريق ✓",
+        n3: "البيانات والأرقام", b3: "بدون داشبورد", a3: "داشبورد لايف ✓",
+        n4: "القواعد والأمان", b4: "أخطاء بشرية", a4: "أمان 100% ✓",
+        b5: "نزيف مالي شهري", a5: "عائد وتوفير شهري"
+      }
+    };
+
+    function drawIcon(ctx, type, cx, cy, s, col, t, isAfter) {
+      ctx.save();
+      ctx.strokeStyle = col;
+      ctx.fillStyle = col;
+      ctx.lineWidth = 2.2 * s;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      if (type === "chat") {
+        // Chat bubble icon + pulsing 99+ or green check
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(cx - 14*s, cy - 11*s, 28*s, 20*s, 6*s) : ctx.rect(cx - 14*s, cy - 11*s, 28*s, 20*s);
+        ctx.stroke();
+        if (!isAfter) {
+          const r = (7 + Math.sin(t * 7) * 1.4) * s;
+          ctx.beginPath(); ctx.arc(cx + 12*s, cy - 10*s, r, 0, Math.PI * 2); ctx.fillStyle = "#e11d48"; ctx.fill();
+          ctx.fillStyle = "#fff"; ctx.font = `900 ${8*s}px sans-serif`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+          ctx.fillText("99+", cx + 12*s, cy - 10*s);
+        } else {
+          ctx.beginPath(); ctx.moveTo(cx - 6*s, cy - 1*s); ctx.lineTo(cx - 1*s, cy + 4*s); ctx.lineTo(cx + 7*s, cy - 5*s); ctx.strokeStyle = "#34d399"; ctx.stroke();
+        }
+      } else if (type === "team") {
+        // 3 people icons + workload gauge
+        [-11, 0, 11].forEach((ox, i) => {
+          const c = isAfter ? "#34d399" : ((i === 1 && Math.sin(t*6) > 0) ? "#f43f5e" : "#f59e0b");
+          ctx.fillStyle = c;
+          ctx.beginPath(); ctx.arc(cx + ox*s, cy - 7*s, 4*s, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(cx + ox*s, cy + 6*s, 6.5*s, Math.PI, 0); ctx.fill();
+        });
+        // Mini workload gauge under people
+        ctx.fillStyle = isAfter ? "#0c3540" : "#431220";
+        ctx.fillRect(cx - 18*s, cy + 11*s, 36*s, 4.5*s);
+        ctx.fillStyle = isAfter ? "#10b981" : "#f43f5e";
+        const w = isAfter ? 11*s : (31 + Math.sin(t*5)*3)*s;
+        ctx.fillRect(cx - 18*s, cy + 11*s, w, 4.5*s);
+      } else if (type === "chart") {
+        // Bar chart icon (broken ? vs animated rising bars)
+        const heights = isAfter
+          ? [10 + Math.sin(t*2.5)*3, 17 + Math.sin(t*2.5+1)*3, 24 + Math.sin(t*2.5+2)*3]
+          : [14, 7, 10];
+        heights.forEach((h, i) => {
+          ctx.fillStyle = isAfter ? (i === 2 ? "#34d399" : "#22d3ee") : "#64748b";
+          ctx.fillRect(cx - 14*s + i*11*s, cy + 12*s - h*s, 7*s, h*s);
+        });
+        if (!isAfter) {
+          ctx.fillStyle = "#f43f5e"; ctx.font = `900 ${14*s}px sans-serif`; ctx.textAlign = "center"; ctx.fillText("?", cx + 10*s, cy - 4*s);
+        }
+      } else if (type === "shield") {
+        // Shield with check (After) vs warning triangle (Before)
+        if (isAfter) {
+          ctx.beginPath();
+          ctx.moveTo(cx, cy - 14*s); ctx.lineTo(cx + 12*s, cy - 9*s); ctx.lineTo(cx + 10*s, cy + 5*s);
+          ctx.lineTo(cx, cy + 14*s); ctx.lineTo(cx - 10*s, cy + 5*s); ctx.lineTo(cx - 12*s, cy - 9*s); ctx.closePath();
+          ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx - 5*s, cy); ctx.lineTo(cx - 1*s, cy + 4*s); ctx.lineTo(cx + 6*s, cy - 4*s); ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.moveTo(cx, cy - 13*s); ctx.lineTo(cx + 13*s, cy + 11*s); ctx.lineTo(cx - 13*s, cy + 11*s); ctx.closePath();
+          ctx.strokeStyle = Math.sin(t*7) > 0 ? "#f43f5e" : "#f59e0b"; ctx.stroke();
+          ctx.fillStyle = "#fda4af"; ctx.font = `900 ${13*s}px sans-serif`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+          ctx.fillText("!", cx, cy + 3*s);
+        }
+      }
+      ctx.restore();
+    }
+
+    function drawPanel(canvas, ctx, isAfter, t) {
+      const rect = canvas.getBoundingClientRect();
+      if (rect.width < 20 || rect.height < 20) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const W = Math.round(rect.width * dpr);
+      const H = Math.round(rect.height * dpr);
+      if (canvas.width !== W || canvas.height !== H) { canvas.width = W; canvas.height = H; }
+
+      const s = W / 560;
+      const tx = VIS_TXT[lang];
+      const isAr = (lang === "ar");
+      const font = isAr ? "'Cairo', Tahoma, sans-serif" : "'Inter', system-ui, sans-serif";
+
+      // Background
+      ctx.fillStyle = isAfter ? "#051220" : "#150710";
+      ctx.fillRect(0, 0, W, H);
+
+      // Subtle grid
+      ctx.strokeStyle = isAfter ? "rgba(34,211,238,0.06)" : "rgba(244,63,94,0.07)";
+      ctx.lineWidth = 1;
+      for (let gx = 28*s; gx < W; gx += 28*s) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
+      for (let gy = 28*s; gy < H; gy += 28*s) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+
+      const cx = W * 0.5, cy = H * 0.39;
+      const cw = 186 * s, ch = 82 * s;
+      const cards = [
+        { x: 18*s, y: 18*s, icon: "chat", title: tx.n1, val: isAfter ? tx.a1 : tx.b1, col: isAfter ? "#22d3ee" : "#f43f5e" },
+        { x: W - 18*s - cw, y: 18*s, icon: "team", title: tx.n2, val: isAfter ? tx.a2 : tx.b2, col: isAfter ? "#34d399" : "#f59e0b" },
+        { x: 18*s, y: H - 102*s - ch, icon: "chart", title: tx.n3, val: isAfter ? tx.a3 : tx.b3, col: isAfter ? "#38bdf8" : "#f43f5e" },
+        { x: W - 18*s - cw, y: H - 102*s - ch, icon: "shield", title: tx.n4, val: isAfter ? tx.a4 : tx.b4, col: isAfter ? "#10b981" : "#fb7185" }
+      ];
+
+      // Connector Lines to Center Hub
+      cards.forEach((c, idx) => {
+        const nx = c.x + (idx % 2 === 0 ? cw : 0);
+        const ny = c.y + ch * 0.5;
+        ctx.save();
+        ctx.beginPath(); ctx.moveTo(nx, ny); ctx.lineTo(cx, cy);
+        if (isAfter) {
+          ctx.strokeStyle = "rgba(34,211,238,0.42)"; ctx.lineWidth = 2.2 * s; ctx.stroke();
+          const p = (t * 0.55 + idx * 0.25) % 1;
+          ctx.beginPath(); ctx.arc(nx + (cx - nx)*p, ny + (cy - ny)*p, 4*s, 0, Math.PI*2);
+          ctx.fillStyle = idx % 2 === 0 ? "#67e8f9" : "#34d399"; ctx.fill();
+        } else {
+          ctx.setLineDash([5*s, 6*s]);
+          ctx.strokeStyle = Math.sin(t*6 + idx) > 0 ? "rgba(244,63,94,0.85)" : "rgba(244,63,94,0.28)";
+          ctx.lineWidth = 2 * s; ctx.stroke();
+          ctx.setLineDash([]);
+          const mx = (nx + cx)*0.5, my = (ny + cy)*0.5;
+          ctx.beginPath(); ctx.arc(mx, my, 8*s, 0, Math.PI*2); ctx.fillStyle = "#3a0c1c"; ctx.fill();
+          ctx.strokeStyle = "#f43f5e"; ctx.lineWidth = 1.4*s; ctx.stroke();
+          ctx.fillStyle = "#fda4af"; ctx.font = `900 ${9*s}px sans-serif`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+          ctx.fillText("✕", mx, my);
+        }
+        ctx.restore();
+      });
+
+      // Vertical Pipe from Center Hub -> Layer #5 Money Outcome Strip
+      const py1 = cy + 36*s, py2 = H - 84*s;
+      ctx.save();
+      ctx.beginPath(); ctx.moveTo(cx, py1); ctx.lineTo(cx, py2);
+      if (isAfter) {
+        ctx.strokeStyle = "#10b981"; ctx.lineWidth = 2.6*s; ctx.stroke();
+        const mp = (t * 0.8) % 1;
+        ctx.beginPath(); ctx.arc(cx, py1 + (py2 - py1)*mp, 4.5*s, 0, Math.PI*2); ctx.fillStyle = "#6ee7b7"; ctx.fill();
+      } else {
+        ctx.setLineDash([5*s, 5*s]); ctx.strokeStyle = "#f43f5e"; ctx.lineWidth = 2.2*s; ctx.stroke();
+      }
+      ctx.restore();
+
+      // Draw 4 Icon-Driven Department Cards
+      cards.forEach((c, idx) => {
+        const jx = isAfter ? 0 : Math.sin(t * 7 + idx * 1.5) * 1.4 * s;
+        const jy = isAfter ? Math.sin(t * 2 + idx) * 1.5 * s : 0;
+        const x = c.x + jx, y = c.y + jy;
+
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(x, y, cw, ch, 14*s) : ctx.rect(x, y, cw, ch);
+        ctx.fillStyle = isAfter ? "#0a2034" : "#250c18"; ctx.fill();
+        ctx.strokeStyle = c.col; ctx.lineWidth = 1.6*s; ctx.stroke();
+
+        // Icon on left (EN) or right (AR)
+        const icX = isAr ? (x + cw - 28*s) : (x + 28*s);
+        drawIcon(ctx, c.icon, icX, y + ch*0.5, s, c.col, t, isAfter);
+
+        // Short clear label next to icon with proper RTL direction!
+        ctx.save();
+        ctx.direction = isAr ? "rtl" : "ltr";
+        ctx.textAlign = isAr ? "right" : "left";
+        ctx.textBaseline = "top";
+        const txX = isAr ? (x + cw - 54*s) : (x + 54*s);
+        ctx.fillStyle = c.col;
+        ctx.font = `800 ${11*s}px ${font}`;
+        ctx.fillText(c.title, txX, y + 17*s);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = `900 ${13.5*s}px ${font}`;
+        ctx.fillText(c.val, txX, y + 40*s);
+        ctx.restore();
+      });
+
+      // Center Hub
+      const pr = isAfter ? Math.sin(t*2.4)*4*s : Math.sin(t*7)*2.5*s;
+      ctx.beginPath(); ctx.arc(cx, cy, 44*s + pr, 0, Math.PI*2);
+      ctx.strokeStyle = isAfter ? "rgba(34,211,238,0.35)" : "rgba(244,63,94,0.45)"; ctx.lineWidth = 2*s; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, 36*s, 0, Math.PI*2);
+      ctx.fillStyle = isAfter ? "#082e40" : "#3b0c1c"; ctx.fill();
+      ctx.strokeStyle = isAfter ? "#22d3ee" : "#f43f5e"; ctx.lineWidth = 2.4*s; ctx.stroke();
+      ctx.save();
+      ctx.direction = isAr ? "rtl" : "ltr";
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.fillStyle = "#fff"; ctx.font = `900 ${12.5*s}px ${font}`;
+      ctx.fillText(isAfter ? tx.aCore : tx.bCore, cx, cy);
+      ctx.restore();
+
+      // LAYER #5: ANIMATED PROFIT & CASH FLOW STRIP (Rising +$ Coins vs Falling -$ Coins + Live Curve!)
+      const bx = 18*s, by = H - 82*s, bw = W - 36*s, bh = 66*s;
+      ctx.beginPath();
+      ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 16*s) : ctx.rect(bx, by, bw, bh);
+      ctx.fillStyle = isAfter ? "#062c2a" : "#2d0b17"; ctx.fill();
+      ctx.strokeStyle = isAfter ? "#10b981" : "#f43f5e"; ctx.lineWidth = 1.8*s; ctx.stroke();
+
+      // Animated Sparkline Curve inside Layer #5
+      const gx0 = bx + bw * 0.36, gw = bw * 0.28;
+      ctx.save();
+      ctx.beginPath();
+      const pts = isAfter
+        ? [[0, 0.78], [0.25, 0.65], [0.5, 0.52], [0.75, 0.34], [1, 0.18]]
+        : [[0, 0.22], [0.25, 0.36], [0.5, 0.44], [0.75, 0.68], [1, 0.84]];
+      pts.forEach((p, i) => {
+        const px = gx0 + p[0]*gw, py = by + p[1]*bh;
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      });
+      ctx.strokeStyle = isAfter ? "#34d399" : "#f43f5e";
+      ctx.lineWidth = 3*s; ctx.stroke();
+
+      // Floating Animated Money Particles (+$ Rising vs -$ Falling!)
+      for (let i = 0; i < 4; i++) {
+        const prog = (t * 0.55 + i * 0.25) % 1;
+        const mx = gx0 + (i * 0.28 + 0.08) * gw;
+        const my = isAfter ? (by + bh - 10*s - prog * (bh - 18*s)) : (by + 12*s + prog * (bh - 18*s));
+        ctx.globalAlpha = Math.sin(prog * Math.PI);
+        ctx.fillStyle = isAfter ? "#6ee7b7" : "#fda4af";
+        ctx.font = `900 ${13*s}px sans-serif`;
+        ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillText(isAfter ? "+$" : "-$", mx, my);
+      }
+      ctx.restore();
+
+      // Layer #5 Label + Live Ticking Amount
+      ctx.save();
+      ctx.direction = isAr ? "rtl" : "ltr";
+      ctx.textBaseline = "middle";
+      const midY = by + bh * 0.5;
+      const tick = Math.floor((t * 14) % 450);
+      const valStr = isAfter ? `+$${(18400 + tick).toLocaleString("en-US")}` : `-$${(14200 + tick).toLocaleString("en-US")}`;
+      if (isAr) {
+        ctx.textAlign = "right"; ctx.fillStyle = isAfter ? "#a7f3d0" : "#fecdd3"; ctx.font = `800 ${13*s}px ${font}`;
+        ctx.fillText(isAfter ? tx.a5 : tx.b5, bx + bw - 16*s, midY);
+        ctx.direction = "ltr"; ctx.textAlign = "left"; ctx.fillStyle = isAfter ? "#34d399" : "#fb7185"; ctx.font = `900 ${18*s}px sans-serif`;
+        ctx.fillText(valStr, bx + 16*s, midY);
+      } else {
+        ctx.textAlign = "left"; ctx.fillStyle = isAfter ? "#a7f3d0" : "#fecdd3"; ctx.font = `800 ${13*s}px ${font}`;
+        ctx.fillText(isAfter ? tx.a5 : tx.b5, bx + 16*s, midY);
+        ctx.textAlign = "right"; ctx.fillStyle = isAfter ? "#34d399" : "#fb7185"; ctx.font = `900 ${18*s}px sans-serif`;
+        ctx.fillText(valStr, bx + bw - 16*s, midY);
+      }
+      ctx.restore();
+    }
+
+    function drawBothCanvases(t) {
+      drawPanel(beforeC, bCtx, false, t);
+      drawPanel(afterC, aCtx, true, t);
+    }
+
+    // Smooth 20fps throttled loop + IntersectionObserver (0% CPU waste when scrolled away)
+    let visActive = true, lastDraw = 0;
+    function loop(ts) {
+      if (visActive && ts - lastDraw >= 48) {
+        lastDraw = ts;
+        drawBothCanvases(ts * 0.001);
+      }
+      if (visActive) requestAnimationFrame(loop);
+    }
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        visActive = entries.some(e => e.isIntersecting);
+        if (visActive) requestAnimationFrame(loop);
+      }, { threshold: 0.05 }).observe(beforeC.parentElement.parentElement.parentElement);
+    }
+
+    applyLanguage(lang);
+    requestAnimationFrame(loop);
   </script>
 </body>
 </html>
