@@ -230,26 +230,21 @@
         <p class="mx-auto mt-2 max-w-2xl text-xs text-slate-400 sm:text-sm" data-i18n="simSub">Live looping comparison across Inbox, Team &amp; Ops, and Profit — drag the handle to switch instantly.</p>
       </div>
 
-            <!-- Dual-GIF Draggable Split Stage (Dedicated Clipped Header Bar Above GIF = ZERO Mobile Overlap!) -->
+                  <!-- ZERO-LAG 4KB NATIVE <canvas> 5-LAYER AIOS SPLIT STAGE (0ms Black Screen, Live AR/EN!) -->
       <div class="glass-card overflow-hidden rounded-3xl p-2.5 sm:p-4">
-        <!-- Dedicated Clipped Badge Strip ABOVE the GIF (Synced with Slider — Never Overlaps Rectangles!) -->
+        <!-- Dedicated Clipped Badge Strip ABOVE the Canvas (Zero Mobile Overlap!) -->
         <div dir="ltr" class="relative mb-2.5 h-9 w-full select-none overflow-hidden sm:mb-3 sm:h-10">
           <div id="baBeforeBadgeBar" class="pointer-events-none absolute inset-0 overflow-hidden" style="clip-path: inset(0 50% 0 0);">
             <span class="absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-rose-400/60 bg-rose-950/90 px-3 py-1 text-[10px] font-black text-rose-300 sm:px-3.5 sm:py-1.5 sm:text-xs" data-i18n="lblBefore">❌ Before AIOS (Manual Chaos)</span>
           </div>
           <div id="baAfterBadgeBar" class="pointer-events-none absolute inset-0 overflow-hidden" style="clip-path: inset(0 0 0 50%);">
-            <span class="absolute right-0 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-emerald-400/60 bg-emerald-950/90 px-3 py-1 text-[10px] font-black text-emerald-300 sm:px-3.5 sm:py-1.5 sm:text-xs" data-i18n="lblAfter">✅ After AIOS (24/7 Machine)</span>
+            <span class="absolute right-0 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-emerald-400/60 bg-emerald-950/90 px-3 py-1 text-[10px] font-black text-emerald-300 sm:px-3.5 sm:py-1.5 sm:text-xs" data-i18n="lblAfter">✅ After AIOS (5-Layer System)</span>
           </div>
         </div>
 
-        <div id="baContainer" dir="ltr" class="relative aspect-video w-full select-none overflow-hidden rounded-2xl bg-[#05101c]">
-          <!-- Base Layer: AFTER AIOS Animated GIF -->
-          <img src="/assets/after-aios.gif" alt="After AIOS — Automated 24/7 Inbox, Relieved Team & Rising Profit" decoding="async" fetchpriority="high" class="pointer-events-none block h-full w-full object-cover" />
-
-          <!-- Overlay Clipped Layer: BEFORE AIOS Animated GIF (100% Opaque) -->
-          <div id="baBeforeLayer" class="pointer-events-none absolute inset-0 overflow-hidden bg-[#12070e]" style="clip-path: inset(0 50% 0 0);">
-            <img src="/assets/before-aios.gif" alt="Before AIOS — Inbox Flood, Overwhelmed Team & Leaking Profit" decoding="async" fetchpriority="high" class="block h-full w-full object-cover" />
-          </div>
+        <div id="baContainer" dir="ltr" class="relative aspect-[16/10] w-full select-none overflow-hidden rounded-2xl bg-[#05101c] sm:aspect-video">
+          <!-- Single Ultra-Fast Retina 2D Canvas Drawing Both Layers With Razor-Sharp Clip -->
+          <canvas id="aiosCanvas" class="pointer-events-none block h-full w-full"></canvas>
 
           <!-- Glowing Vertical Divider + Drag Handle -->
           <div id="baDivider" class="pointer-events-none absolute bottom-0 top-0 z-20 w-0.5 bg-cyan-300 shadow-[0_0_16px_rgba(34,211,238,0.95)]" style="left: 50%;">
@@ -636,24 +631,270 @@
     };
 
     
-        // Lightweight Before/After GIF Split Slider Handler (Syncs GIF + Dedicated Above-GIF Badge Bar)
-    (function initGifSlider() {
+            // Zero-Network 4KB Native <canvas> 5-Layer AIOS Motion Engine (0ms Black Screen + Live AR/EN)
+    (function initAiosCanvasEngine() {
+      const canvas = document.getElementById("aiosCanvas");
       const slider = document.getElementById("baSlider");
-      const beforeLayer = document.getElementById("baBeforeLayer");
       const beforeBadge = document.getElementById("baBeforeBadgeBar");
       const afterBadge = document.getElementById("baAfterBadgeBar");
       const divider = document.getElementById("baDivider");
-      if (!slider || !beforeLayer || !beforeBadge || !afterBadge || !divider) return;
-      function setPos(val) {
-        const pct = Math.max(5, Math.min(95, Number(val)));
-        const rightInset = `inset(0 ${100 - pct}% 0 0)`;
-        beforeLayer.style.clipPath = rightInset;
-        beforeBadge.style.clipPath = rightInset;
-        afterBadge.style.clipPath = `inset(0 0 0 ${pct}%)`;
-        divider.style.left = pct + "%";
+      if (!canvas || !slider || !beforeBadge || !afterBadge || !divider) return;
+      const ctx = canvas.getContext("2d");
+      let splitPct = 50;
+      let isVisible = true;
+      let rafId = null;
+
+      const COPY = {
+        en: {
+          bCore1: "MANUAL", bCore2: "MANAGEMENT", bCoreSub: "Disconnected Tools",
+          aCore1: "AIOS 24/7", aCore2: "CORE BRAIN", aCoreSub: "5 Connected Layers",
+          b1T: "1. Sales & Leads", b1M: "Reply Delay: 47 hrs", b1S: "99+ Unread Messages",
+          a1T: "1. Sales & Leads", a1M: "Auto-Reply: 28 sec", a1S: "24/7 Auto-Booking ✓",
+          b2T: "2. Team & Ops", b2M: "Team Overload: 98%", b2S: "Manual Repetitive Tasks",
+          a2T: "2. Team & Ops", a2M: "Workload Cut: -70%", a2S: "Automated Workflows ✓",
+          b3T: "3. Data & Dashboard", b3M: "Scattered Sheets", b3S: "No Live KPIs or Visibility",
+          a3T: "3. Data & Dashboard", a3M: "Live Data OS ✓", a3S: "Real-Time Mobile KPIs",
+          b4T: "4. Rules & Guardrails", b4M: "Frequent Human Errors", b4S: "No Safety Guardrails",
+          a4T: "4. Rules & Guardrails", a4M: "100% Guardrails ✓", a4S: "Strict Brand & Safety Rules",
+          bOutLbl: "5. Monthly Revenue Leakage:", bOutVal: "-$14,400 / mo",
+          aOutLbl: "5. Monthly Revenue Recovered:", aOutVal: "+$18,650 / mo"
+        },
+        ar: {
+          bCore1: "إدارة يدوية", bCore2: "مرهقة", bCoreSub: "أدوات مفككة بدون ربط",
+          aCore1: "نظام AIOS", aCore2: "المركزي 24/7", aCoreSub: "5 طبقات متصلة تلقائيًا",
+          b1T: "1. المبيعات والعملاء", b1M: "تأخير الرد: 47 ساعة", b1S: "+99 رسالة غير مقروءة",
+          a1T: "1. المبيعات والعملاء", a1M: "رد تلقائي: 28 ثانية", a1S: "تأهيل وحجز تلقائي ✓",
+          b2T: "2. الفريق والتشغيل", b2M: "ضغط الفريق: 98%", b2S: "شغل يدوي مكرر يوميًا",
+          a2T: "2. الفريق والتشغيل", a2M: "تخفيف الضغط: -70%", a2S: "أتمتة كاملة للمهام ✓",
+          b3T: "3. البيانات والداشبورد", b3M: "شيتات مفرّقة", b3S: "بدون أرقام لحظية للمدير",
+          a3T: "3. البيانات والداشبورد", a3M: "داشبورد أرقام لايف ✓", a3S: "تقارير فورية على موبايلك",
+          b4T: "4. القواعد والأمان", b4M: "أخطاء بشرية متكررة", b4S: "بدون ضوابط أمان واضحة",
+          a4T: "4. القواعد والأمان", a4M: "ضوابط أمان 100% ✓", a4S: "التزام كامل بسياسة شركتك",
+          bOutLbl: "5. نزيف مالي شهري مستمر:", bOutVal: "-$14,400 / شهر",
+          aOutLbl: "5. عائد وتوفير شهري مسترد:", aOutVal: "+$18,650 / شهر"
+        }
+      };
+
+      function rr(x, y, w, h, r) {
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h);
       }
+
+      function drawScene(isAfter, t, W, H) {
+        const lang = (typeof state !== "undefined" && state.lang === "ar") ? "ar" : "en";
+        const c = COPY[lang];
+        const fontFam = lang === "ar" ? "'Cairo', sans-serif" : "'Inter', system-ui, sans-serif";
+        const s = W / 900; // Responsive scale factor
+
+        // Solid opaque background (ZERO bleed-through!)
+        ctx.fillStyle = isAfter ? "#051220" : "#150710";
+        ctx.fillRect(0, 0, W, H);
+
+        // Subtle grid
+        ctx.strokeStyle = isAfter ? "rgba(34,211,238,0.06)" : "rgba(244,63,94,0.07)";
+        ctx.lineWidth = 1;
+        const step = 36 * s;
+        for (let gx = step; gx < W; gx += step) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
+        for (let gy = step; gy < H; gy += step) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+
+        const cx = W * 0.5, cy = H * 0.43;
+        const cardW = 265 * s, cardH = 112 * s;
+        const nodes = [
+          { x: 34 * s, y: 36 * s, t: isAfter ? c.a1T : c.b1T, m: isAfter ? c.a1M : c.b1M, sub: isAfter ? c.a1S : c.b1S, acc: isAfter ? "#22d3ee" : "#f43f5e" },
+          { x: W - 34 * s - cardW, y: 36 * s, t: isAfter ? c.a2T : c.b2T, m: isAfter ? c.a2M : c.b2M, sub: isAfter ? c.a2S : c.b2S, acc: isAfter ? "#34d399" : "#f59e0b" },
+          { x: 34 * s, y: H - 118 * s - cardH, t: isAfter ? c.a3T : c.b3T, m: isAfter ? c.a3M : c.b3M, sub: isAfter ? c.a3S : c.b3S, acc: isAfter ? "#38bdf8" : "#f43f5e" },
+          { x: W - 34 * s - cardW, y: H - 118 * s - cardH, t: isAfter ? c.a4T : c.b4T, m: isAfter ? c.a4M : c.b4M, sub: isAfter ? c.a4S : c.b4S, acc: isAfter ? "#10b981" : "#fb7185" }
+        ];
+
+        // Connector Lines: Broken flickering red (Before) vs Smooth glowing cyan pulses (After)
+        nodes.forEach((n, idx) => {
+          const nx = n.x + (idx % 2 === 0 ? cardW : 0);
+          const ny = n.y + cardH * 0.5;
+          ctx.save();
+          ctx.beginPath();
+          ctx.moveTo(nx, ny);
+          ctx.lineTo(cx, cy);
+          if (isAfter) {
+            ctx.strokeStyle = "rgba(34,211,238,0.45)";
+            ctx.lineWidth = 2.5 * s;
+            ctx.stroke();
+            // Smooth gliding light orb from card -> core -> card
+            const prog = (t * 0.55 + idx * 0.25) % 1;
+            const ox = nx + (cx - nx) * prog;
+            const oy = ny + (cy - ny) * prog;
+            ctx.beginPath();
+            ctx.arc(ox, oy, 4.5 * s, 0, Math.PI * 2);
+            ctx.fillStyle = idx % 2 === 0 ? "#67e8f9" : "#34d399";
+            ctx.fill();
+          } else {
+            const blink = Math.sin(t * 7 + idx) > -0.2;
+            ctx.setLineDash([7 * s, 8 * s]);
+            ctx.strokeStyle = blink ? "rgba(244,63,94,0.85)" : "rgba(244,63,94,0.25)";
+            ctx.lineWidth = 2 * s;
+            ctx.stroke();
+            ctx.setLineDash([]);
+            // Red X disconnect badge midway
+            const mx = (nx + cx) * 0.5, my = (ny + cy) * 0.5;
+            ctx.beginPath();
+            ctx.arc(mx, my, 10 * s, 0, Math.PI * 2);
+            ctx.fillStyle = "#380d1b";
+            ctx.fill();
+            ctx.strokeStyle = "#f43f5e";
+            ctx.lineWidth = 1.5 * s;
+            ctx.stroke();
+            ctx.fillStyle = "#fda4af";
+            ctx.font = `800 ${11 * s}px sans-serif`;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("✕", mx, my + 0.5 * s);
+          }
+          ctx.restore();
+        });
+
+        // Draw 4 Department Cards (Self-Explanatory!)
+        nodes.forEach((n, idx) => {
+          const jx = isAfter ? 0 : Math.sin(t * 9 + idx * 1.7) * 1.8 * s;
+          const jy = isAfter ? Math.sin(t * 2.2 + idx) * 2 * s : Math.cos(t * 8 + idx) * 1.2 * s;
+          const x = n.x + jx, y = n.y + jy;
+
+          rr(x, y, cardW, cardH, 16 * s);
+          ctx.fillStyle = isAfter ? "#0a2034" : "#250c18";
+          ctx.fill();
+          ctx.strokeStyle = n.acc;
+          ctx.lineWidth = 1.8 * s;
+          ctx.stroke();
+
+          ctx.textAlign = lang === "ar" ? "right" : "left";
+          ctx.textBaseline = "top";
+          const tx = lang === "ar" ? (x + cardW - 16 * s) : (x + 16 * s);
+
+          // Department Title
+          ctx.fillStyle = n.acc;
+          ctx.font = `800 ${13.5 * s}px ${fontFam}`;
+          ctx.fillText(n.t, tx, y + 14 * s);
+
+          // Main Self-Explanatory Metric
+          ctx.fillStyle = "#ffffff";
+          ctx.font = `900 ${17.5 * s}px ${fontFam}`;
+          ctx.fillText(n.m, tx, y + 40 * s);
+
+          // Clear Sub-description
+          ctx.fillStyle = isAfter ? "#94a3b8" : "#fda4af";
+          ctx.font = `600 ${12.5 * s}px ${fontFam}`;
+          ctx.fillText(n.sub, tx, y + 74 * s);
+        });
+
+        // Center Hub Core (Manual Stress vs Unified AIOS 24/7)
+        const pulse = isAfter ? Math.sin(t * 2.6) * 5 * s : Math.sin(t * 8) * 3 * s;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 68 * s + pulse, 0, Math.PI * 2);
+        ctx.strokeStyle = isAfter ? "rgba(34,211,238,0.35)" : "rgba(244,63,94,0.45)";
+        ctx.lineWidth = 2 * s;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(cx, cy, 56 * s, 0, Math.PI * 2);
+        ctx.fillStyle = isAfter ? "#082d3f" : "#3a0c1c";
+        ctx.fill();
+        ctx.strokeStyle = isAfter ? "#22d3ee" : "#f43f5e";
+        ctx.lineWidth = 2.8 * s;
+        ctx.stroke();
+
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "#ffffff";
+        ctx.font = `900 ${16 * s}px ${fontFam}`;
+        ctx.fillText(isAfter ? c.aCore1 : c.bCore1, cx, cy - 11 * s);
+        ctx.fillStyle = isAfter ? "#67e8f9" : "#fda4af";
+        ctx.font = `800 ${12.5 * s}px ${fontFam}`;
+        ctx.fillText(isAfter ? c.aCore2 : c.bCore2, cx, cy + 10 * s);
+
+        // Label Pill right under Core
+        rr(cx - 76 * s, cy + 64 * s, 152 * s, 24 * s, 12 * s);
+        ctx.fillStyle = isAfter ? "#063a35" : "#421020";
+        ctx.fill();
+        ctx.fillStyle = isAfter ? "#6ee7b7" : "#fda4af";
+        ctx.font = `700 ${11 * s}px ${fontFam}`;
+        ctx.fillText(isAfter ? c.aCoreSub : c.bCoreSub, cx, cy + 76 * s);
+
+        // Bottom Layer #5 Outcome Strip (Clear Monthly Profit Impact)
+        const bx = 34 * s, by = H - 72 * s, bw = W - 68 * s, bh = 48 * s;
+        rr(bx, by, bw, bh, 14 * s);
+        ctx.fillStyle = isAfter ? "#062e2c" : "#2f0b18";
+        ctx.fill();
+        ctx.strokeStyle = isAfter ? "#10b981" : "#f43f5e";
+        ctx.lineWidth = 1.8 * s;
+        ctx.stroke();
+
+        ctx.textBaseline = "middle";
+        const midY = by + bh * 0.5;
+        if (lang === "ar") {
+          ctx.textAlign = "right";
+          ctx.fillStyle = isAfter ? "#a7f3d0" : "#fecdd3";
+          ctx.font = `800 ${14.5 * s}px ${fontFam}`;
+          ctx.fillText(isAfter ? c.aOutLbl : c.bOutLbl, bx + bw - 18 * s, midY);
+          ctx.textAlign = "left";
+          ctx.fillStyle = isAfter ? "#34d399" : "#fb7185";
+          ctx.font = `900 ${19 * s}px ${fontFam}`;
+          ctx.fillText(isAfter ? c.aOutVal : c.bOutVal, bx + 18 * s, midY);
+        } else {
+          ctx.textAlign = "left";
+          ctx.fillStyle = isAfter ? "#a7f3d0" : "#fecdd3";
+          ctx.font = `800 ${14.5 * s}px ${fontFam}`;
+          ctx.fillText(isAfter ? c.aOutLbl : c.bOutLbl, bx + 18 * s, midY);
+          ctx.textAlign = "right";
+          ctx.fillStyle = isAfter ? "#34d399" : "#fb7185";
+          ctx.font = `900 ${19 * s}px ${fontFam}`;
+          ctx.fillText(isAfter ? c.aOutVal : c.bOutVal, bx + bw - 18 * s, midY);
+        }
+      }
+
+      function renderFrame(ts) {
+        const rect = canvas.getBoundingClientRect();
+        if (rect.width > 10 && rect.height > 10) {
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const cw = Math.round(rect.width * dpr);
+          const ch = Math.round(rect.height * dpr);
+          if (canvas.width !== cw || canvas.height !== ch) {
+            canvas.width = cw;
+            canvas.height = ch;
+          }
+          const t = (ts || 0) * 0.001;
+          // 1. Paint full AFTER scene
+          drawScene(true, t, cw, ch);
+          // 2. Clip left side at splitPct% and paint BEFORE scene cleanly on top
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(0, 0, cw * (splitPct / 100), ch);
+          ctx.clip();
+          drawScene(false, t, cw, ch);
+          ctx.restore();
+        }
+        if (isVisible) rafId = requestAnimationFrame(renderFrame);
+      }
+
+      function setPos(val) {
+        splitPct = Math.max(5, Math.min(95, Number(val)));
+        const rightInset = `inset(0 ${100 - splitPct}% 0 0)`;
+        beforeBadge.style.clipPath = rightInset;
+        afterBadge.style.clipPath = `inset(0 0 0 ${splitPct}%)`;
+        divider.style.left = splitPct + "%";
+        if (!isVisible) renderFrame(performance.now());
+      }
+
       slider.addEventListener("input", (e) => setPos(e.target.value));
       setPos(50);
+
+      // Pause automatically when scrolled off-screen to save battery/CPU
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver((entries) => {
+          isVisible = entries[0].isIntersecting;
+          if (isVisible && !rafId) rafId = requestAnimationFrame(renderFrame);
+          else if (!isVisible && rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        }, { threshold: 0.05 }).observe(canvas);
+      }
+      // Draw frame 0 synchronously immediately -> 0.00s black screen!
+      renderFrame(0);
     })();
 
     function renderFaqs() {

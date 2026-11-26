@@ -164,6 +164,14 @@
     <section class="mb-14">
       <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
         <h2 class="text-lg font-black text-white sm:text-xl">خزنة الأصول والبرومبتات الجاهزة للنسخ</h2>
+        <div id="kitUsageNote" class="mb-4 rounded-2xl border border-cyan-400/35 bg-cyan-500/10 p-4 text-start text-xs leading-relaxed text-cyan-100 sm:text-sm">
+          <div class="mb-1 flex items-center gap-1.5 font-black text-cyan-300"><i data-lucide="info" class="h-4 w-4"></i><span>إزاي تستخدم الملفات والبرومبتات دي خطوة بخطوة؟</span></div>
+          <p>إزاي تستخدم البرومبت ده في 3 خطوات؟ (1) استورد ملف الـ CSV تحت في Google Sheets، (2) استورد ملف الـ n8n Workflow تحت واربطه بالشيت، (3) انسخ البرومبت ده وحطه في نود الـ AI عشان يبعتلك تقرير صباحي يومي الساعة 9 صباحًا على واتساب أو إيميلك بأرقام شركتك وتنبيهات أي ليد متأخر.</p>
+        </div>
+        <button type="button" id="downloadExtraKitBtn" class="mb-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-400/50 bg-emerald-500/15 px-5 py-3.5 text-xs font-black text-emerald-200 transition hover:bg-emerald-500/25 sm:w-auto sm:text-sm">
+          <i data-lucide="workflow" class="h-4 w-4"></i>
+          <span>تحميل ملف n8n Workflow لربط الشيت والتقرير الصباحي (.json)</span>
+        </button>
         <button type="button" id="downloadFileBtn" class="inline-flex items-center gap-2 rounded-xl border border-emerald-400/45 bg-emerald-500/15 px-4 py-2 text-xs font-extrabold text-emerald-200 transition hover:bg-emerald-500/25">
           <i data-lucide="download" class="h-4 w-4"></i>
           <span>تحميل قالب شيت Data OS جاهز للاستيراد في Google Sheets (.csv)</span>
@@ -412,6 +420,26 @@
             showToast("المسار على الموقع الحي: " + dest);
           }
         });
+      });
+    })();
+
+    
+    // Companion Complete-Kit Download Handler (AIOS_DataOS_Live_Dashboard_Starter.json)
+    (function initExtraKitDownload() {
+      const btn = document.getElementById("downloadExtraKitBtn");
+      if (!btn) return;
+      const payload = "{\n  \"name\": \"AIOS Data OS - Live Dashboard & 9AM Executive Brief\",\n  \"nodes\": [\n    {\n      \"id\": \"1\",\n      \"name\": \"Daily 9AM Trigger\",\n      \"type\": \"n8n-nodes-base.scheduleTrigger\",\n      \"typeVersion\": 1.2,\n      \"position\": [\n        200,\n        300\n      ],\n      \"parameters\": {\n        \"rule\": {\n          \"interval\": [\n            {\n              \"field\": \"hours\",\n              \"triggerAtHour\": 9\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"id\": \"2\",\n      \"name\": \"Read Data OS Sheet\",\n      \"type\": \"n8n-nodes-base.googleSheets\",\n      \"typeVersion\": 4.5,\n      \"position\": [\n        440,\n        300\n      ],\n      \"parameters\": {\n        \"operation\": \"read\",\n        \"sheetName\": \"Leads_Data_OS\"\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"name\": \"Generate 9AM Executive Brief (AI)\",\n      \"type\": \"@n8n/n8n-nodes-langchain.openAi\",\n      \"typeVersion\": 1.4,\n      \"position\": [\n        680,\n        300\n      ],\n      \"parameters\": {\n        \"model\": \"gpt-4o-mini\",\n        \"prompt\": \"Paste the 9AM Executive Brief Prompt from ahmed-alsharqawy.vercel.app/g/dashboard.html here\"\n      }\n    },\n    {\n      \"id\": \"4\",\n      \"name\": \"Send Brief to Founder (WhatsApp/Email)\",\n      \"type\": \"n8n-nodes-base.httpRequest\",\n      \"typeVersion\": 4.2,\n      \"position\": [\n        920,\n        300\n      ],\n      \"parameters\": {\n        \"method\": \"POST\",\n        \"url\": \"https://graph.facebook.com/v20.0/YOUR_PHONE_ID/messages\"\n      }\n    }\n  ],\n  \"connections\": {\n    \"Daily 9AM Trigger\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Read Data OS Sheet\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Read Data OS Sheet\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Generate 9AM Executive Brief (AI)\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Generate 9AM Executive Brief (AI)\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Send Brief to Founder (WhatsApp/Email)\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  },\n  \"active\": false,\n  \"settings\": {\n    \"executionOrder\": \"v1\"\n  }\n}";
+      btn.addEventListener("click", () => {
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "AIOS_DataOS_Live_Dashboard_Starter.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        if (typeof showToast === "function") showToast("تم تحميل الملف الجاهز: AIOS_DataOS_Live_Dashboard_Starter.json");
       });
     })();
 

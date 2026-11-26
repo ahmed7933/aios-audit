@@ -192,6 +192,14 @@
     <section class="mb-14">
       <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
         <h2 class="text-lg font-black text-white sm:text-xl">خزنة الأصول والبرومبتات الجاهزة للنسخ</h2>
+        <div id="kitUsageNote" class="mb-4 rounded-2xl border border-cyan-400/35 bg-cyan-500/10 p-4 text-start text-xs leading-relaxed text-cyan-100 sm:text-sm">
+          <div class="mb-1 flex items-center gap-1.5 font-black text-cyan-300"><i data-lucide="info" class="h-4 w-4"></i><span>إزاي تستخدم الملفات والبرومبتات دي خطوة بخطوة؟</span></div>
+          <p>إزاي تستخدم ملفات البداية دي؟ (1) افتح ملف التقييم الـ CSV تحت وقيّم الـ 5 طبقات في شركتك عشان تعرف أضعف طبقة تبدأ بيها، (2) استورد ملف الـ n8n Router تحت كبنية مبدئية تربط المبيعات والتشغيل والبيانات مع بعض.</p>
+        </div>
+        <button type="button" id="downloadExtraKitBtn" class="mb-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-400/50 bg-emerald-500/15 px-5 py-3.5 text-xs font-black text-emerald-200 transition hover:bg-emerald-500/25 sm:w-auto sm:text-sm">
+          <i data-lucide="workflow" class="h-4 w-4"></i>
+          <span>تحميل ملف n8n Core Router للطبقات الخمس (.json)</span>
+        </button>
         <button type="button" id="downloadFileBtn" class="inline-flex items-center gap-2 rounded-xl border border-emerald-400/45 bg-emerald-500/15 px-4 py-2 text-xs font-extrabold text-emerald-200 transition hover:bg-emerald-500/25">
           <i data-lucide="download" class="h-4 w-4"></i>
           <span>تحميل خريطة الطبقات الـ 5 لنظام AIOS (.txt)</span>
@@ -462,6 +470,26 @@
             showToast("المسار على الموقع الحي: " + dest);
           }
         });
+      });
+    })();
+
+    
+    // Companion Complete-Kit Download Handler (AIOS_5Layer_Core_Starter.json)
+    (function initExtraKitDownload() {
+      const btn = document.getElementById("downloadExtraKitBtn");
+      if (!btn) return;
+      const payload = "{\n  \"name\": \"AIOS 5-Layer Core Starter Architecture\",\n  \"nodes\": [\n    {\n      \"id\": \"1\",\n      \"name\": \"Layer 1 - Incoming Channel Webhook\",\n      \"type\": \"n8n-nodes-base.webhook\",\n      \"typeVersion\": 2,\n      \"position\": [\n        200,\n        300\n      ],\n      \"parameters\": {\n        \"path\": \"aios-core-intake\",\n        \"httpMethod\": \"POST\"\n      }\n    },\n    {\n      \"id\": \"2\",\n      \"name\": \"Layer 2 - Context OS & Guardrails AI\",\n      \"type\": \"@n8n/n8n-nodes-langchain.openAi\",\n      \"typeVersion\": 1.4,\n      \"position\": [\n        460,\n        300\n      ],\n      \"parameters\": {\n        \"model\": \"gpt-4o-mini\"\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"name\": \"Layer 3 - Data OS Live Sheet Sync\",\n      \"type\": \"n8n-nodes-base.googleSheets\",\n      \"typeVersion\": 4.5,\n      \"position\": [\n        720,\n        300\n      ],\n      \"parameters\": {\n        \"operation\": \"append\",\n        \"sheetName\": \"AIOS_Master_Log\"\n      }\n    },\n    {\n      \"id\": \"4\",\n      \"name\": \"Layer 4 - Instant Customer Reply\",\n      \"type\": \"n8n-nodes-base.httpRequest\",\n      \"typeVersion\": 4.2,\n      \"position\": [\n        980,\n        300\n      ],\n      \"parameters\": {\n        \"method\": \"POST\",\n        \"url\": \"https://graph.facebook.com/v20.0/YOUR_PHONE_ID/messages\"\n      }\n    }\n  ],\n  \"connections\": {\n    \"Layer 1 - Incoming Channel Webhook\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Layer 2 - Context OS & Guardrails AI\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Layer 2 - Context OS & Guardrails AI\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Layer 3 - Data OS Live Sheet Sync\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Layer 3 - Data OS Live Sheet Sync\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Layer 4 - Instant Customer Reply\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  },\n  \"active\": false,\n  \"settings\": {\n    \"executionOrder\": \"v1\"\n  }\n}";
+      btn.addEventListener("click", () => {
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "AIOS_5Layer_Core_Starter.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        if (typeof showToast === "function") showToast("تم تحميل الملف الجاهز: AIOS_5Layer_Core_Starter.json");
       });
     })();
 
