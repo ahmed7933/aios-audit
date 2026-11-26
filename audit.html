@@ -139,6 +139,10 @@
       0%, 100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.42); }
       50% { box-shadow: 0 0 0 10px rgba(34, 211, 238, 0); }
     }
+
+    /* Calm executive Arabic reading rhythm & generous breathing room */
+    p, li { line-height: 1.85; }
+    h1, h2, h3 { line-height: 1.45; letter-spacing: -0.01em; }
   </style>
 </head>
 <body class="antialiased selection:bg-cyan-400/30 selection:text-cyan-100">
@@ -181,12 +185,12 @@
 
   <main class="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:pb-20 sm:px-6 lg:pt-10">
     <!-- Hero Section -->
-    <section class="mx-auto mb-8 max-w-4xl text-center">
+    <section class="mx-auto mb-12 max-w-3xl text-center sm:mb-14">
       <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-500/10 px-4 py-1.5 text-xs font-bold text-cyan-300">
         <span class="h-2 w-2 rounded-full bg-cyan-400"></span>
         <span data-i18n="heroPill">تشخيص فوري في 60 ثانية — مجاني بالكامل لأي نوع بيزنس</span>
       </div>
-      <h1 class="mb-3 text-2xl font-black leading-tight text-white sm:text-4xl lg:text-[42px]" data-i18n="heroTitle">
+      <h1 class="mb-5 text-2xl font-black leading-tight text-white sm:text-4xl lg:text-[42px]" data-i18n="heroTitle">
         كام بتخسر شركتك شهريًا بسبب <span class="text-rose-400">الليدز الضايعة</span> و<span class="text-cyan-300">الشغل اليدوي</span>؟
       </h1>
       <p class="mx-auto max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base" data-i18n="heroDesc">
@@ -195,8 +199,8 @@
     </section>
 
     <!-- Industry Presets Strip -->
-    <section class="mb-7">
-      <div class="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+    <section class="mb-10 sm:mb-12">
+      <div class="mb-3.5 flex flex-wrap items-center justify-between gap-2">
         <span class="text-xs font-bold text-slate-400" data-i18n="presetLabel">اختار نوع البيزنس لتعبئة أرقام مبدئية (أو عدّلها بحرية):</span>
         <button type="button" id="noNumbersBtn" class="inline-flex items-center gap-1.5 rounded-full border border-amber-400/40 bg-amber-500/10 px-3 py-1 text-[11px] font-extrabold text-amber-300 transition hover:bg-amber-500/20">
           <i data-lucide="help-circle" class="h-3.5 w-3.5"></i>
@@ -245,12 +249,12 @@
     </section>
 
     <!-- Main 2-Column Calculator Grid -->
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
       <!-- Left/Start Column: Inputs (5 cols on lg) -->
-      <div class="space-y-5 lg:col-span-5">
+      <div class="space-y-7 lg:col-span-5">
         <!-- Pillar 1: Sales & Lead Leakage -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6">
-          <div class="mb-5 flex items-center gap-3 border-b border-slate-800 pb-3.5">
+        <div class="glass-card rounded-3xl p-6 sm:p-8">
+          <div class="mb-6 flex items-center gap-3.5 border-b border-slate-800 pb-4">
             <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-500/15 text-rose-400">
               <i data-lucide="flame" class="h-5 w-5"></i>
             </div>
@@ -260,10 +264,10 @@
             </div>
           </div>
 
-          <div class="space-y-5">
+          <div class="space-y-7 divide-y divide-slate-800/60 [&>div:not(:first-child)]:pt-6">
             <!-- Monthly Leads -->
             <div>
-              <div class="mb-2 flex items-center justify-between gap-2">
+              <div class="mb-3 flex items-center justify-between gap-2">
                 <label for="monthlyLeads" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblLeads">عدد الاستفسارات / الليدز شهريًا</label>
                 <div class="flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1">
                   <input type="number" id="monthlyLeadsNum" min="10" max="5000" step="10" value="300" class="tabular-nums w-16 bg-transparent text-center text-sm font-extrabold text-cyan-300 outline-none" />
@@ -274,7 +278,7 @@
 
             <!-- Average Deal Value -->
             <div>
-              <div class="mb-2 flex items-center justify-between gap-2">
+              <div class="mb-3 flex items-center justify-between gap-2">
                 <label for="avgDealValue" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblDeal">متوسط قيمة العميل / الصفقة</label>
                 <div class="flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1">
                   <input type="number" id="avgDealValueNum" min="100" max="500000" step="100" value="4500" class="tabular-nums w-20 bg-transparent text-center text-sm font-extrabold text-cyan-300 outline-none" />
@@ -286,7 +290,7 @@
 
             <!-- Current Closing Rate -->
             <div>
-              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
                 <label for="closeRate" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblCloseRate">نسبة تحويل الليدز الحالية (تقريبًا)</label>
                 <div class="flex items-center gap-1.5">
                   <button type="button" data-unsure="closeRate" class="unsure-btn rounded-lg border border-slate-700/80 bg-slate-900/70 px-2 py-1 text-[10px] font-bold text-slate-400 transition hover:border-amber-400/50 hover:text-amber-300" data-i18n="unsureBtn">مش متأكد؟ متوسط السوق</button>
@@ -309,7 +313,7 @@
 
             <!-- Missed Follow-up % -->
             <div>
-              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
                 <label for="missedFollowUp" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblFollowUp">نسبة العملاء اللي مش بيتعملهم متابعة تانية</label>
                 <div class="flex items-center gap-1.5">
                   <button type="button" data-unsure="missedFollowUp" class="unsure-btn rounded-lg border border-slate-700/80 bg-slate-900/70 px-2 py-1 text-[10px] font-bold text-slate-400 transition hover:border-amber-400/50 hover:text-amber-300" data-i18n="unsureBtn">مش متأكد؟ متوسط السوق</button>
@@ -322,8 +326,8 @@
         </div>
 
         <!-- Pillar 2: Manual Ops & Team Bottleneck -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6">
-          <div class="mb-5 flex items-center gap-3 border-b border-slate-800 pb-3.5">
+        <div class="glass-card rounded-3xl p-6 sm:p-8">
+          <div class="mb-6 flex items-center gap-3.5 border-b border-slate-800 pb-4">
             <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/15 text-amber-400">
               <i data-lucide="clock" class="h-5 w-5"></i>
             </div>
@@ -333,10 +337,10 @@
             </div>
           </div>
 
-          <div class="space-y-5">
+          <div class="space-y-7 divide-y divide-slate-800/60 [&>div:not(:first-child)]:pt-6">
             <!-- Team Size -->
             <div>
-              <div class="mb-2 flex items-center justify-between gap-2">
+              <div class="mb-3 flex items-center justify-between gap-2">
                 <label for="opsTeamSize" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblTeam">عدد الموظفين في المبيعات / التشغيل / خدمة العملاء</label>
                 <span class="tabular-nums rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-sm font-extrabold text-cyan-300"><span id="opsTeamSizeVal">5</span></span>
               </div>
@@ -345,7 +349,7 @@
 
             <!-- Manual Hours Per Day -->
             <div>
-              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
                 <label for="manualHours" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblHours">ساعات الشغل اليدوي المتكرر يوميًا لكل موظف</label>
                 <div class="flex items-center gap-1.5">
                   <button type="button" data-unsure="manualHours" class="unsure-btn rounded-lg border border-slate-700/80 bg-slate-900/70 px-2 py-1 text-[10px] font-bold text-slate-400 transition hover:border-amber-400/50 hover:text-amber-300" data-i18n="unsureBtn">مش متأكد؟ متوسط السوق</button>
@@ -357,7 +361,7 @@
 
             <!-- Average Monthly Salary -->
             <div>
-              <div class="mb-2 flex items-center justify-between gap-2">
+              <div class="mb-3 flex items-center justify-between gap-2">
                 <label for="avgSalary" class="text-xs font-bold text-slate-200 sm:text-sm" data-i18n="lblSalary">متوسط الراتب الشهري للموظف</label>
                 <div class="flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1">
                   <input type="number" id="avgSalaryNum" min="500" max="100000" step="500" value="12000" class="tabular-nums w-20 bg-transparent text-center text-sm font-extrabold text-cyan-300 outline-none" />
@@ -371,11 +375,11 @@
       </div>
 
       <!-- Right/End Column: Shock Results + Chart + Audit CTA (7 cols on lg) -->
-      <div class="space-y-5 lg:col-span-7">
+      <div class="space-y-7 lg:col-span-7">
         <!-- Top Shock KPI Cards -->
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <!-- Monthly & Annual Leakage -->
-          <div class="leak-card rounded-2xl p-5 sm:p-6">
+          <div class="leak-card rounded-3xl p-6 sm:p-7">
             <div class="mb-2 flex items-center justify-between">
               <span class="text-xs font-bold uppercase tracking-wider text-rose-300" data-i18n="kpiLeakLabel">إجمالي النزيف الشهري المقدر</span>
               <span id="severityBadge" class="rounded-full bg-rose-500/20 px-2.5 py-0.5 text-[11px] font-extrabold text-rose-300">حرج</span>
@@ -388,7 +392,7 @@
           </div>
 
           <!-- Recoverable AIOS Value -->
-          <div class="recovery-card rounded-2xl p-5 sm:p-6">
+          <div class="recovery-card rounded-3xl p-6 sm:p-7">
             <div class="mb-2 flex items-center justify-between">
               <span class="text-xs font-bold uppercase tracking-wider text-emerald-300" data-i18n="kpiGainLabel">العائد القابل للاسترداد بـ AIOS</span>
               <span class="rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[11px] font-extrabold text-emerald-300" data-i18n="kpiConservative">تقدير متحفظ 65%</span>
@@ -402,23 +406,23 @@
         </div>
 
         <!-- Secondary Micro-Metrics Strip -->
-        <div class="grid grid-cols-3 gap-3">
-          <div class="glass-card rounded-xl p-3.5 text-center">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
             <div class="text-[11px] font-semibold text-slate-400" data-i18n="statSalesLeak">نزيف المبيعات/شهر</div>
             <div id="salesLeakMini" class="tabular-nums mt-1 text-sm font-extrabold text-rose-300 sm:text-base">0</div>
           </div>
-          <div class="glass-card rounded-xl p-3.5 text-center">
+          <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
             <div class="text-[11px] font-semibold text-slate-400" data-i18n="statOpsLeak">نزيف الشغل اليدوي/شهر</div>
             <div id="opsLeakMini" class="tabular-nums mt-1 text-sm font-extrabold text-amber-300 sm:text-base">0</div>
           </div>
-          <div class="glass-card rounded-xl p-3.5 text-center">
+          <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
             <div class="text-[11px] font-semibold text-slate-400" data-i18n="statHoursYr">ساعات مهدورة سنويًا</div>
             <div id="wastedHoursYr" class="tabular-nums mt-1 text-sm font-extrabold text-cyan-300 sm:text-base">0</div>
           </div>
         </div>
 
         <!-- Chart + Visual Breakdown -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6">
+        <div class="glass-card rounded-3xl p-6 sm:p-8">
           <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
             <div>
               <h3 class="text-sm font-extrabold text-white sm:text-base" data-i18n="chartTitle">تحليل النزيف الشهري مقابل ما يسترده نظام AIOS</h3>
@@ -436,7 +440,7 @@
         </div>
 
         <!-- Personalized Diagnosis Box -->
-        <div class="glass-card rounded-2xl p-5 sm:p-6">
+        <div class="glass-card rounded-3xl p-6 sm:p-8">
           <div class="mb-3 flex items-center gap-2">
             <i data-lucide="stethoscope" class="h-4 w-4 text-cyan-400"></i>
             <h3 class="text-sm font-extrabold text-white sm:text-base" data-i18n="diagTitle">التشخيص المبدئي لأكبر اختناق عندك حاليًا</h3>
@@ -447,7 +451,7 @@
         </div>
 
         <!-- High-Converting Free Audit CTA Card -->
-        <div class="cta-card rounded-2xl p-6 sm:p-7">
+        <div class="cta-card rounded-3xl p-7 sm:p-9">
           <div class="mb-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-400/35 bg-emerald-500/15 px-3 py-1 text-[11px] font-extrabold text-emerald-300">
             <i data-lucide="sparkles" class="h-3.5 w-3.5"></i>
             <span data-i18n="ctaTag">جلسة تشخيص 1-on-1 مجانية بالكامل (15 دقيقة)</span>
