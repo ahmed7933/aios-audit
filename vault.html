@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -198,10 +198,11 @@
       { id: "guardrails", cat: "clinics", triggerAr: "دليل", triggerEn: "Guardrails", titleAr: "وثيقة ضوابط الأمان الطبي للعيادات", titleEn: "Non-Diagnostic Medical AI Guardrails Protocol", descAr: "القواعد الـ 4 الصارمة اللي بتمنع الـ AI من التشخيص أو وصف الأدوية بنسبة 100% في العيادات.", descEn: "The 4 strict guardrails ensuring 100% non-diagnostic safety for medical centers and clinics.", href: "/g/guardrails.html", icon: "shield-check", accent: "cyan" }
     ];
 
-    let lang = "en";
+    let lang = "ar";
     let activeCat = "all";
     let searchTerm = "";
     try { const saved = localStorage.getItem("aios_lang"); if (saved === "ar" || saved === "en") lang = saved; } catch (e) {}
+    try { const q = new URLSearchParams(location.search).get("lang"); if (q === "en" || q === "ar") lang = q; } catch (e) {}
 
     const toastEl = document.getElementById("toast");
     function showToast(m) {

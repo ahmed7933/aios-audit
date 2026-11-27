@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -346,8 +346,9 @@
     const FAQS = {"en": [{"q": "Why start with a 14-day sprint instead of building everything at once?", "a": "A 14-day sprint eliminates risk. We deploy your highest-ROI bottleneck first (e.g., WhatsApp Lead Engine or Clinic Booking), train your team, and prove real numbers before expanding into the remaining AIOS layers."}, {"q": "Will this disrupt my team or force us to change our tools?", "a": "No. We build on top of the tools you already use — WhatsApp, Google Sheets, Google Calendar, HubSpot, or your existing CRM — with zero downtime."}, {"q": "Is it safe for medical clinics and sensitive B2B pricing?", "a": "Yes. Every system includes strict deterministic guardrails: it never diagnoses patients, never prescribes medication, and escalates sensitive inquiries to a human instantly."}], "ar": [{"q": "ليه نبدأ بسبرينت 14 يوم بدل ما نبني كل حاجة مرة واحدة؟", "a": "سبرينت الـ 14 يوم بيقلل المخاطرة تمامًا — بننفذ أول نظام يحققلك أسرع عائد وندرب فريقك عليه وتشوف النتائج والأرقام بعينك قبل ما تتوسع في باقي طبقات النظام."}, {"q": "هل النظام هيعطّل شغل فريقي أو يجبرنا نغيّر أدواتنا؟", "a": "لأ تمامًا. بنبني النظام فوق أدواتك الحالية (واتساب، Google Sheets، التقويم، أو الـ CRM بتاعك) بدون أي تعطيل لشغلك اليومي."}, {"q": "هل النظام آمن للعيادات والمراكز الطبية والأسعار الحساسة؟", "a": "نعم 100%. بنركّب ضوابط أمان صارمة تمنع الـ AI تمامًا من التشخيص أو وصف الأدوية، وتحوّل أي حالة حساسة لفريقك البشري فورًا."}]};
     const CHEV_SVG = "<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"6 9 12 15 18 9\"/></svg>";
 
-    let lang = "en";
+    let lang = "ar";
     try { const s = localStorage.getItem("aios_lang"); if (s === "ar" || s === "en") lang = s; } catch (e) {}
+    try { const q = new URLSearchParams(location.search).get("lang"); if (q === "en" || q === "ar") lang = q; } catch (e) {}
 
     function renderFaqs() {
       const box = document.getElementById("faqList");

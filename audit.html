@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -766,7 +766,7 @@
     };
 
     const state = {
-      lang: "en",
+      lang: "ar",
       currency: "EGP",
       preset: "clinic",
       leads: 350,
@@ -1427,7 +1427,7 @@
       });
     })();
 
-    try { const _sl = localStorage.getItem("aios_lang"); applyLanguage(_sl === "ar" ? "ar" : "en"); } catch (e) {}
+    try { let _sl = localStorage.getItem("aios_lang"); const _q = new URLSearchParams(location.search).get("lang"); if (_q === "en" || _q === "ar") _sl = _q; applyLanguage(_sl === "en" ? "en" : "ar"); } catch (e) { applyLanguage("ar"); }
     if (typeof lucide !== "undefined") lucide.createIcons(); window.addEventListener("DOMContentLoaded", () => { if (typeof lucide !== "undefined") lucide.createIcons(); });
     applyPreset("clinic");
   </script>
